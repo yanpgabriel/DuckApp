@@ -1,0 +1,29 @@
+/* You can add global styles to this file, and also import other style files */
+
+/* Importing Bootstrap SCSS file. */
+@import '~bootstrap/scss/bootstrap';
+@import '~@fortawesome/fontawesome-free/css/all.css';
+@import url(https://fonts.googleapis.com/css?family=Roboto:500);
+
+/* Famoso reset do css */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+}
+
+main {
+  &.com-menu {
+    width: calc(100vw - 15rem) !important;
+    margin-left: 15rem !important;
+  }
+  &.sem-menu {
+    width: 100vw !important;
+  }
+  height: 100%;
+  overflow-y: scroll;
+}

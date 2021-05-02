@@ -1,1 +1,34 @@
-<h1 translate>system.name</h1>
+<div *ngIf="authService.user" class="d-flex flex-column p-3 side-menu">
+  <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-decoration-none">
+    <img src="/assets/img/duck.png" alt="Duck" width="35" height="35" class="rounded-circle me-2">
+    <span>&nbsp;</span>
+    <span class="fs-4">{{ 'system.name' | translate:{'name':title} }}</span>
+  </a>
+  <hr>
+  <ul class="nav nav-pills flex-column mb-auto">
+
+    <li class="nav-item" *ngFor="let item of menu">
+      <a class="nav-link" routerLinkActive="active" [routerLink]="[item.link]">
+        <em class="{{item.icon}}"></em> {{item.nome}}
+      </a>
+    </li>
+  </ul>
+  <hr>
+  <div ngbDropdown class="d-inline-block">
+    <a id="dropdownBasic1" ngbDropdownToggle>
+      <img src="{{authService.user?.photoUrl || '/assets/img/duck.png'}}"
+           alt="{{authService.user?.name}}" width="32" height="32"
+           class="rounded-circle me-2"
+           style="margin-right: 1rem;">
+      <strong>{{authService.user?.name}}</strong>
+    </a>
+    <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+      <button ngbDropdownItem>Perfil</button>
+      <hr class="dropdown-divider">
+      <button ngbDropdownItem (click)="signOut()">Sair</button>
+    </div>
+  </div>
+</div>
+<main class="container-fluid" [class.com-menu]="authService.user" [class.sem-menu]="!authService.user">
+  <router-outlet></router-outlet>
+</main>
