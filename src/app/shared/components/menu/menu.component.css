@@ -1,0 +1,30 @@
+:host {
+  height: 100%;
+}
+
+ol.duck-menu, ul.duck-menu {
+  list-style:none;
+  margin-top: 1rem;
+}
+
+ol.duck-menu, ul.duck-menu li {
+  display: flex;
+}
+
+ol.duck-menu, ul.duck-menu li a {
+  width: 100%;
+  color: var(--text-color);
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  margin-bottom: 0.5rem;
+  text-decoration: none;
+}
+
+ol.duck-menu, ul.duck-menu li a:hover, ol.duck-menu, ul.duck-menu li a.active {
+  color: var(--text-color);
+  background-color: var(--surface-c);
+}
+
+ol.duck-menu, ul.duck-menu li a em {
+  margin-right: 0.5rem;
+}

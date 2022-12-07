@@ -1,0 +1,23 @@
+.duck-terminal {
+  height: 18rem;
+  padding: 0.5rem;
+  overflow: auto;
+}
+
+.duck-terminal-prompt-container {
+  display: flex;
+  align-items: center;
+}
+
+.duck-terminal-input {
+  flex: 1 1 auto;
+  border: 0 none;
+  background-color: transparent;
+  color: inherit;
+  padding: 0 0 0 0.5rem;
+  outline: 0 none;
+}
+
+.duck-terminal-input::-ms-clear {
+  display: none;
+}

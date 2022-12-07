@@ -1,0 +1,37 @@
+<p> user works! {{action}}</p>
+<div *ngIf="action === 'create'">
+  <duck-create-user></duck-create-user>
+</div>
+<button type="button" pButton [routerLink]="['/users/create']" *ngIf="action==='list'">Create</button>
+<button type="button" pButton (click)="toggleLoading()">Loading</button>
+
+<p>{{users | json}}</p>
+
+<p-table [columns]="cols" [value]="users" responsiveLayout="scroll">
+  <ng-template pTemplate="header" let-columns>
+    <tr>
+      <th *ngFor="let col of columns">
+        <p-tableHeaderCheckbox *ngIf="col.field === 'check'"></p-tableHeaderCheckbox>
+        {{col.header}}
+      </th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-usuario let-columns="columns">
+    <tr>
+      <td *ngFor="let col of columns">
+        <ng-container [ngSwitch]="col.pipe">
+          <span *ngSwitchCase="'data'">{{usuario[col.field] | date:'dd/MM/yyyy'}}</span>
+          <ng-container *ngSwitchDefault>
+            <p-tableCheckbox *ngIf="col.field === 'check'" [value]="usuario"></p-tableCheckbox>
+            <div *ngIf="col.field === 'actions'">
+              <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success mr-2" (click)="editUser(usuario)"></button>
+              <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-warning" (click)="deleteUser(usuario)"></button>
+            </div>
+            {{usuario[col.field]}}
+            <!--<ngb-highlight [result]="usuario[col.field]" [term]="''"></ngb-highlight>-->
+          </ng-container>
+        </ng-container>
+      </td>
+    </tr>
+  </ng-template>
+</p-table>

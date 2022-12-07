@@ -1,0 +1,16 @@
+<div [ngClass]="'duck-terminal duck-border duck-border-radius'" [ngStyle]="style" [class]="styleClass" (click)="focus(in)">
+  <div *ngIf="welcomeMessage">{{welcomeMessage}}</div>
+  <div class="duck-terminal-content">
+    <div *ngFor="let command of commands">
+      <span class="duck-terminal-prompt">{{prompt}}</span>
+      <span class="duck-terminal-command">{{command.text}}</span>
+      <ng-container *ngFor="let res of command.response">
+        <div class="duck-terminal-response">{{res}}</div>
+      </ng-container>
+    </div>
+  </div>
+  <div class="duck-terminal-prompt-container">
+    <span class="duck-terminal-content-prompt">{{prompt}}</span>
+    <input #in type="text" [(ngModel)]="command" class="duck-terminal-input" autocomplete="off" (keydown)="handleCommand($event)" autofocus>
+  </div>
+</div>

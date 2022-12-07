@@ -1,0 +1,48 @@
+<div class="duck-box">
+
+  <div class="grid">
+    <div class="col-3">
+      <p-button label="Iniciar Bot" icon="fas fa-robot" styleClass="duck-button" [disabled]="botUp" [loading]="loading" (onClick)="iniciarBot()"></p-button>
+    </div>
+    <div class="col-6">
+      <p-dropdown #dropdown
+                  placeholder="Escolha um servidor"
+                  optionLabel="nome"
+                  filterBy="nome"
+                  [filter]="true"
+                  [showClear]="true"
+                  [options]="servers"
+                  [(ngModel)]="selectedServer"
+                  (ngModelChange)="queueFromServer(); dropdown.disabled = true"
+      ></p-dropdown>
+    </div>
+    <div class="col-3">
+      <p-button label="Parar Bot" icon="fas fa-robot" styleClass="duck-button p-button-danger" [disabled]="!botUp" [loading]="loading" (onClick)="pararBot()"></p-button>
+    </div>
+  </div>
+  <div class="grid">
+    <div class="col-12">
+      <duck-terminal #terminal *ngIf="selectedServer" welcomeMessage="Sessão iniciada!" [prompt]="'BOT $ '"></duck-terminal>
+    </div>
+  </div>
+
+  <div class="grid">
+    <div class="col-2">Thumbnail</div>
+    <div class="col-4">Titulo</div>
+    <div class="col"></div>
+  </div>
+  <ng-container *ngFor="let musica of queue">
+    <div class="grid">
+      <div class="col-2">
+        <img class="duck-img" [src]="'https://i.ytimg.com/vi/'+musica.info.identifier+'/maxresdefault.jpg'" alt="Thumbnail">
+      </div>
+      <div class="col-4">
+        <a class="duck-link" [href]="musica.info.uri">{{musica.info.title}}</a>
+      </div>
+      <div class="col-6">
+        {{musica|json}}
+      </div>
+    </div>
+  </ng-container>
+
+</div>

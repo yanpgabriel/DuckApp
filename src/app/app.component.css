@@ -1,0 +1,42 @@
+main {
+  overflow-y: auto;
+}
+
+.bg-transparent {
+  background-color: transparent;
+}
+
+.photo {
+  object-fit: contain;
+}
+
+.card {
+  width: 20rem;
+  margin: 0 auto;
+}
+.side-menu {
+  width: 15rem;
+  height: 100%;
+  position: fixed;
+  border-right: 1px solid #eee;
+}
+
+
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #121212;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #282828;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #151515;
+}

@@ -1,0 +1,20 @@
+{
+  "system": {
+    "name": "Duck-App",
+    "toggleLanguage": "Portuguese language",
+    "toggleDarkmode": "Dark Mode",
+    "profile": "Profile",
+    "leave": "Leave",
+    "menu": {
+      "dashboard": "Dashboard",
+      "users": "Users",
+      "bot": "Bot Discord",
+      "kanban": "Kanban"
+    }
+  },
+  "LOGIN": "Successfully Logged In,",
+  "LOGOUT": "Successfully Logged Out.",
+  "NOT_AUTHORIZED": "You are not logged in.",
+  "FORBIDDEN": "You are not allowed to do this!",
+  "GOOGLE_TOKEN_INVALID": "The token received is invalid!"
+}

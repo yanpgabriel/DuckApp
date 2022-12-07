@@ -1,0 +1,24 @@
+{
+  "system": {
+    "name": "Duck-App",
+    "toggleLanguage": "Idioma Ingles",
+    "toggleDarkmode": "Modo Escuro",
+    "profile": "Perfil",
+    "leave": "Sair",
+    "menu": {
+      "dashboard": "Dashboard",
+      "users": "Usuários",
+      "bot": "Bot Discord",
+      "kanban": "Kanban"
+    }
+  },
+  "avisos": {
+    "NOT_CONNECTION": "Não foi possivel estabelecer conexão com o servidor!",
+    "LOGIN_ERROR": "Não foi possivel fazer login!",
+    "LOGIN": "Logado com Sucesso.",
+    "LOGOUT": "Deslogado com Sucesso.",
+    "NOT_AUTHORIZED": "Você não esta logado.",
+    "FORBIDDEN": "Você não tem permissão para isso!",
+    "GOOGLE_TOKEN_INVALID": "O token recebido é invalido!"
+  }
+}

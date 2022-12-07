@@ -1,0 +1,74 @@
+<div class="grid kanban" cdkDropListGroup>
+  <ng-container *ngFor="let estado of estados">
+    <div id="col-{{estado.id}}" class="">
+      <div class="kanban-container box duck-border">
+        <h2>{{estado.desc}}</h2>
+
+        <div id="{{estado.id}}" class="kanban-coluna"
+             cdkDropList
+             [cdkDropListData]="demandas[estado.id]"
+             (cdkDropListDropped)="drop($event)">
+          <div class="kanban-card box duck-border" cdkDrag *ngFor="let item of demandas[estado.id]">
+            <span>{{item.titulo}}</span>
+            <div class="actions">
+              <button pButton pRipple type="button" icon="fas fa-edit" class="p-button-rounded p-button-info p-button-text" (click)="editarDemanda(item.id)"></button>
+              <button pButton pRipple type="button" icon="fas fa-trash" class="p-button-rounded p-button-danger p-button-text" (click)="deletarDemanda(item.id)"></button>
+            </div>
+            <div class="kanban-placeholder" *cdkDragPlaceholder></div>
+          </div>
+        </div>
+
+        <div class="kanban-card box duck-border duck-link add" (click)="add(estado.id)">
+          <!--<button pButton pRipple type="button" label="Primary" class="p-button-outlined"></button>-->
+          <em class="fas fa-plus"></em> Adicionar Card
+        </div>
+      </div>
+    </div>
+
+  </ng-container>
+  <div id="col-add" class="">
+    <div class="kanban-container box duck-border">
+      <div id="add" class="kanban-coluna" (click)="addEstado()" style="color: #eee; cursor: pointer; display: flex; flex-direction: column; justify-content: center;">
+        <em class="fas fa-plus fa-10x"></em>
+      </div>
+    </div>
+  </div>
+</div>
+
+<form [formGroup]="demandaForm">
+  <p-dialog header="Header" [(visible)]="modal_add" [modal]="true" [breakpoints]="{'960px': '75vw'}"
+            [style]="{width: '50vw'}"
+            [draggable]="false" [resizable]="false" [maximizable]="true">
+
+    <div class="grid">
+      <div class="col-12">
+        <duck-input-text id="title" label="Titulo" formControlName="titulo"></duck-input-text>
+      </div>
+      <div class="col-6">
+        <duck-input-dropdown id="estimativa" label="Estimativa" formControlName="estimativa" [options]="estimativas"></duck-input-dropdown>
+      </div>
+      <div class="col-6">
+        <duck-input-autocomplete id="membro" label="Membro" formControlName="membro"
+                                 [options]="membros" [multiple]="false" [itemTemplate]="ti"
+                                 (completeMethod)="completeMethod($event)">
+          <ng-template #ti let-item pTemplate="item">
+            <div class="country-item">
+              <img src="assets/img/duck.png" alt="user picture" style="width: 25px;"/>
+              <div>{{item}}</div>
+            </div>
+          </ng-template>
+        </duck-input-autocomplete>
+      </div>
+      <div class="col">
+        <duck-input-editor id="desc" label="Descrição"  formControlName="descricao"></duck-input-editor>
+      </div>
+    </div>
+
+    <ng-template pTemplate="footer">
+      <button pButton pRipple type="button" icon="fas fa-times" label="Cancelar" (click)="close()"
+              class="p-button-outlined p-button-danger"></button>
+      <button pButton pRipple type="button" icon="pi pi-check" label="Salvar" (click)="salvar(demandaForm)"
+              class="p-button-outlined"></button>
+    </ng-template>
+  </p-dialog>
+</form>
