@@ -25,10 +25,10 @@ import {delay} from 'rxjs/operators';
     `
       .duck-loading {
         color: white;
-        /*z-index: 1;*/
         position: fixed;
         /*background-color: #ffffffd4;*/
         /*background-color: #000000e0;*/
+        z-index: 1;
       }
       .duck-loading div {
         box-shadow: none;

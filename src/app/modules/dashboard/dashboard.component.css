@@ -1,0 +1,30 @@
+* {
+  --cor-bola: #c8c8c8;
+}
+
+.col >>> .p-card-content {
+  gap: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  font-weight: bold;
+}
+
+.col >>> .p-card-content .icone {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 80px;
+  height: 80px;
+
+  border: 4px solid var(--cor-bola);
+  border-radius: 50%;
+  background-color:  var(--cor-bola);
+}
+.col >>> .p-card-content .icone img {
+  height: 100%;
+  border-radius: 50%;
+}

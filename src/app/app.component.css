@@ -1,4 +1,8 @@
 main {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+
   overflow-y: auto;
 }
 
@@ -19,6 +23,8 @@ main {
   height: 100%;
   position: fixed;
   border-right: 1px solid #eee;
+
+  z-index: 10;
 }
 
 
