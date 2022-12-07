@@ -8,13 +8,16 @@
     "menu": {
       "dashboard": "Dashboard",
       "users": "Users",
+      "tasks": "Tarefas",
       "bot": "Bot Discord",
       "kanban": "Kanban"
     }
   },
-  "LOGIN": "Successfully Logged In,",
-  "LOGOUT": "Successfully Logged Out.",
-  "NOT_AUTHORIZED": "You are not logged in.",
-  "FORBIDDEN": "You are not allowed to do this!",
-  "GOOGLE_TOKEN_INVALID": "The token received is invalid!"
-}
+  "avisos": {
+    "LOGIN": "Successfully Logged In,",
+    "LOGOUT": "Successfully Logged Out.",
+    "NOT_AUTHORIZED": "You are not logged in.",
+    "FORBIDDEN": "You are not allowed to do this!",
+    "GOOGLE_TOKEN_INVALID": "The token received is invalid!"
+  }
+},

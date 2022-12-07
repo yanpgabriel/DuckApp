@@ -74,9 +74,9 @@ export class AppComponent implements OnInit {
         icon: 'fas fa-users',
         roles: ['DUCK_ADM', 'USER_LIST']
       }, {
-        label: 'system.menu.users',
+        label: 'system.menu.tasks',
         routerLink: '/tasks',
-        icon: 'fas fa-users',
+        icon: 'fas fa-list-ul',
         roles: ['DUCK_ADM', 'TASKS']
       }, {
         label: 'system.menu.bot',
