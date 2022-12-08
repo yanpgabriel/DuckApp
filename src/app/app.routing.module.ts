@@ -1,7 +1,7 @@
-import {NgModule} from '@angular/core';
-import {RouterModule, Routes} from '@angular/router';
-import {NotFoundComponent} from './modules/notfound/not-found.component';
-import {AuthGuard} from './shared/guards/auth.guard';
+import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
+import { NotFoundComponent } from './modules/notfound/not-found.component';
+import { AuthGuard } from './shared/guards/auth.guard';
 
 const routes: Routes = [
   {
@@ -26,6 +26,10 @@ const routes: Routes = [
   {
     path: 'kanban',
     loadChildren: () => import('./modules/kanban/kanban.module').then(m => m.KanbanModule)
+  },
+  {
+    path: 'ponto',
+    loadChildren: () => import('./modules/ponto/ponto.module').then(m => m.PontoModule)
   },
   {
     path: 'teste',

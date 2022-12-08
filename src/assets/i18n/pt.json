@@ -8,6 +8,7 @@
     "menu": {
       "dashboard": "Dashboard",
       "users": "Usuários",
+      "ponto": "Ponto",
       "tasks": "Tarefas",
       "bot": "Bot Discord",
       "kanban": "Kanban"
