@@ -1,14 +1,12 @@
-import {Injectable} from '@angular/core';
-import {KeycloakEventType, KeycloakService} from 'keycloak-angular';
-import {UtilsService} from './utils.service';
-import * as Keycloak_ from 'keycloak-js';
-import {HttpClient} from '@angular/common/http';
-import {environment} from '../../../environments/environment';
-import {LoginResponse} from '../models/LoginResponse';
-import {TokenInfo} from '../models/TokenInfo';
+import { Injectable } from '@angular/core';
+import { UtilsService } from './utils.service';
+import { HttpClient } from '@angular/common/http';
+import { environment } from '../../../environments/environment';
+import { LoginResponse } from '../models/LoginResponse';
+import { TokenInfo } from '../models/TokenInfo';
 import UserDTO from '../models/UserDTO';
-import {Router} from '@angular/router';
-import {Subject} from 'rxjs';
+import { Router } from '@angular/router';
+import { Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -20,7 +18,6 @@ export class AuthService {
   private loginEvents = new Subject();
 
   constructor(
-    public kc: KeycloakService,
     public http: HttpClient,
     public router: Router,
     public utilsService: UtilsService,
@@ -42,8 +39,8 @@ export class AuthService {
   retoken() {
     const refreshToken = this.getRefreshToken();
     return new Promise((resolve, reject) => {
-    this.http.get<LoginResponse>(`${environment.api_host}/auth/retoken/${refreshToken}`)
-      .subscribe(res => this.sucesso(res, resolve), error => this.erro(error, reject));
+      this.http.get<LoginResponse>(`${environment.api_host}/auth/retoken/${refreshToken}`)
+        .subscribe(res => this.sucesso(res, resolve), error => this.erro(error, reject));
     });
   }
 
@@ -86,56 +83,43 @@ export class AuthService {
     this.taskIdRefreshToken = setTimeout(async () => {
       await this.retoken();
     }, timeToNextToken);
+    console.debug('Proximo agendamento do refresh token marcado para: ' + timeToNextToken + 's');
   }
 
   async usuarioEstaLogado(): Promise<boolean> {
-    if (!this.utilsService.ignoreLogin) {
-      return this.tokenInfo != null;
-    } else if (this.utilsService.ignoreKeycloak || await this.kc.isLoggedIn()) {
-      return true;
+    if (this.utilsService.ignoreLogin) {
+      return false;
     }
-    return false;
+    return this.tokenInfo != null;
   }
 
-  async obterProfile(): Promise<Keycloak_.KeycloakProfile | UserDTO> {
-    if (!this.utilsService.ignoreLogin && this.tokenInfo != null) {
-      return this.tokenInfo.user;
-    } else if (this.utilsService.ignoreKeycloak) {
-      return {
-        id: '0',
-        email: 'yanpgabriel@gmail.com',
-        firstName: 'Yan',
-      }
+  async obterProfile(): Promise<UserDTO | null> {
+    if (this.utilsService.ignoreLogin) {
+      return new UserDTO(0, 'yanpgabriel@gmail.com', 'Yan');
+    } else if (this.tokenInfo != null) {
+      return this.tokenInfo.user
     }
-    return await this.kc.loadUserProfile();
+    console.error('Não foi encontrado nenhum dado do usuario logado!');
+    return null;
   }
 
   efetuarLogout() {
-    const redirectUri = window.location.origin;
-    if (!this.utilsService.ignoreLogin) {
-      this.cleanTokens();
-      this.loginEvents.next(false);
-      this.router.navigate(['/auth']);
-    } else if (!this.utilsService.ignoreKeycloak) {
-      this.kc.logout(redirectUri);
+    if (this.utilsService.ignoreLogin) {
+      return;
     }
+    this.cleanTokens();
+    this.loginEvents.next(false);
+    this.router.navigate(['/auth']);
   }
 
   listenLoginEvents() {
     return this.loginEvents;
   }
 
-  listenKeycloakEvents() {
-    this.kc.keycloakEvents$.subscribe(keycloakEvent => {
-      if (keycloakEvent.type == KeycloakEventType.OnAuthLogout) {
-        // Deslogou
-      }
-    });
-  }
-
   private sucesso(res, resolve) {
     this.updateTokens(res.entity);
     this.tokenInfo = this.decodeToken();
+    console.debug(this.tokenInfo);
     this.agendarProximoToken();
     this.loginEvents.next(true);
     resolve(true);

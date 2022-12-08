@@ -15,10 +15,6 @@ export class UtilsService {
   get ignoreLogin(): boolean {
     return this._ignoreLogin;
   }
-  _ignoreKeycloak = false;
-  get ignoreKeycloak(): boolean {
-    return this._ignoreKeycloak;
-  }
 
   constructor(
     private readonly injector: Injector
@@ -61,7 +57,7 @@ export class UtilsService {
   }
 
   hasRoles(roles: any[]): boolean {
-    if (this.ignoreLogin || this.ignoreKeycloak) {
+    if (this.ignoreLogin) {
       return true;
     }
     let ok = false;
@@ -76,10 +72,6 @@ export class UtilsService {
       return ok;
     }
     return true;
-  }
-
-  disableKeycloak(): void {
-    this._ignoreKeycloak = true;
   }
 
   // @ts-ignore

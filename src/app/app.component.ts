@@ -1,13 +1,12 @@
-import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute, Router} from '@angular/router';
-import {UserService} from './modules/user/user.service';
-import {KeycloakProfile} from 'keycloak-js';
-import {MenuItem} from 'primeng/api/menuitem';
-import {BreadcrumbService} from './shared/services/breadcrumb.service';
-import {NetworkService} from './shared/services/network.service';
-import {AuthService} from './shared/services/auth.service';
-import {isNullOrUndefined} from './shared/util';
-import {TranslateService} from '@ngx-translate/core';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
+import { KeycloakProfile } from 'keycloak-js';
+import { MenuItem } from 'primeng/api/menuitem';
+import { NetworkService } from './shared/services/network.service';
+import { AuthService } from './shared/services/auth.service';
+import { isNullOrUndefined } from './shared/util';
+import { filter } from "rxjs";
+import { UtilsService } from "./shared/services/utils.service";
 
 @Component({
   selector: 'duck-root',
@@ -32,27 +31,24 @@ export class AppComponent implements OnInit {
     private router: Router,
     private activatedRoute: ActivatedRoute,
     private networkService: NetworkService,
-    public userService: UserService,
-    public translateService: TranslateService,
-    public breadcrumbService: BreadcrumbService,
     public authService: AuthService,
-    // public utilsService: UtilsService,
+    public utilsService: UtilsService,
   ) {
   }
 
   async ngOnInit(): Promise<void> {
-    this.authService.listenKeycloakEvents();
+    // this.authService.listenKeycloakEvents();
     this.listenLogin();
 
     // Trata idiomas
-    if (isNullOrUndefined(this.translateService.currentLang)) {
-      this.translateService.reloadLang(this.translateService.getDefaultLang());
+    if (isNullOrUndefined(this.utilsService.getLang())) {
+      this.utilsService.reloadLang(this.utilsService.getDefaultLang());
     }
 
     // Trata breadcrumb
-    // this.router.events
-    //   .pipe(filter(event => event instanceof NavigationEnd))
-    //   .subscribe(() => this.breadcrumb = this.utilsService.createBreadcrumbs(this.activatedRoute.root));
+    this.router.events
+      .pipe(filter(event => event instanceof NavigationEnd))
+      .subscribe(() => this.breadcrumb = this.utilsService.createBreadcrumbs(this.activatedRoute.root));
 
     this.profile = await this.authService.obterProfile();
     this.picture = this.profile?.attributes?.picture_google;
@@ -100,10 +96,10 @@ export class AppComponent implements OnInit {
   }
 
   toggleLanguage(): void {
-    if (this.translateService.getDefaultLang() === 'pt') {
-      this.translateService.setDefaultLang('en');
+    if (this.utilsService.getDefaultLang() === 'pt') {
+      this.utilsService.setDefaultLang('en');
     } else {
-      this.translateService.setDefaultLang('pt');
+      this.utilsService.setDefaultLang('pt');
     }
     this.updateTranslate();
   }
@@ -126,7 +122,7 @@ export class AppComponent implements OnInit {
       }
     ];
     this.minimenu.forEach(async (item: any) => {
-      // item.label = await firstValueFrom(this.translateService.get(item.label));
+      item.label = this.utilsService.traduzir(item.label);
     });
   }
 

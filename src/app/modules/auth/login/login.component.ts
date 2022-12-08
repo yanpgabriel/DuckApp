@@ -1,7 +1,7 @@
-import {Component, OnInit} from '@angular/core';
-import {AuthService} from '../../../shared/services/auth.service';
-import {Router} from '@angular/router';
-import {ToastService} from '../../../shared/services/toast.service';
+import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../../../shared/services/auth.service';
+import { Router } from '@angular/router';
+import { ToastService } from '../../../shared/services/toast.service';
 
 @Component({
   selector: 'duck-login',
@@ -21,7 +21,9 @@ import {ToastService} from '../../../shared/services/toast.service';
               <label for="float-input">Senha</label>
           </span>
         </div>
-        <button type="button" pButton (click)="login()">Enviar</button>
+        <div class="field col">
+            <button type="button" pButton class="p-button-outlined" (click)="login()">Enviar</button>
+        </div>
       </div>
     </div>
 

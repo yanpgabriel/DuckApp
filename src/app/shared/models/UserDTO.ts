@@ -1,11 +1,16 @@
 import ProfileDTO from './ProfileDTO';
 
-export default interface UserDTO {
-  dtcreation: string;
-  email: string;
-  fullname: string;
-  id: number;
-  keycloackId: string;
-  password: ""
-  profile: ProfileDTO
+export default class UserDTO {
+
+  dtcreation: string | null = null;
+  password: string | null = null;
+  profile: ProfileDTO | null = null;
+
+  constructor(
+    id: number,
+    email: string,
+    fullname: string,
+  ) {
+  }
+
 }
