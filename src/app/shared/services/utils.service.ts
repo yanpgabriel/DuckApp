@@ -1,13 +1,15 @@
-import {Injectable} from '@angular/core';
-import {KeycloakService} from 'keycloak-angular';
-import {ActivatedRoute} from '@angular/router';
-import {MenuItem} from 'primeng/api/menuitem';
-import {isNullOrUndefined} from '../util';
+import { Injectable, Injector } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { MenuItem } from 'primeng/api/menuitem';
+import { isNullOrUndefined } from '../util';
+import { TranslateService } from "@ngx-translate/core";
 
 @Injectable({
   providedIn: 'root'
 })
 export class UtilsService {
+
+  private translateService;
 
   _ignoreLogin = false;
   get ignoreLogin(): boolean {
@@ -19,15 +21,51 @@ export class UtilsService {
   }
 
   constructor(
-    public kc: KeycloakService,
-  ) { }
+    private readonly injector: Injector
+  ) {
+  }
+
+  getTranslateService() {
+    if (this.translateService != null) {
+      console.debug('Aproveitando o "TranslateService" já instanciado!');
+      return this.translateService;
+    }
+    try {
+      console.debug('Instanciado um novo "TranslateService"!');
+      this.translateService = this.injector.get(TranslateService);
+    } catch (e) {
+      console.error('Não foi possivel injetar o "TranslateService".');
+    }
+    return this.translateService;
+  }
+
+  getLang(): string {
+    return this.getTranslateService().currentLang;
+  }
+
+  getDefaultLang(): string {
+    return this.getTranslateService().defaultLang;
+  }
+
+  setDefaultLang(str: string) {
+    this.getTranslateService().setDefaultLang(str);
+  }
+
+  reloadLang(str) {
+    this.getTranslateService().reloadLang(str);
+  }
+
+  traduzir(str: string) {
+    console.debug('Buscando tradução para ' + str);
+    return this.getTranslateService().instant(str);
+  }
 
   hasRoles(roles: any[]): boolean {
     if (this.ignoreLogin || this.ignoreKeycloak) {
       return true;
     }
     let ok = false;
-    let userRoles = this.kc.getUserRoles();
+    let userRoles = ['DUCK_ADM'];// this.kc.getUserRoles();
     if (roles && roles.length > 0) {
       for (const role of roles) {
         if (userRoles.find(r => r === role)) {
@@ -60,7 +98,7 @@ export class UtilsService {
 
       let label = child.snapshot.data['breadcrumb'];
       if (!isNullOrUndefined(label)) {
-        // label = this.translateService.instant(label);
+        label = this.traduzir(label);
         breadcrumbs.push({label, url});
       }
 

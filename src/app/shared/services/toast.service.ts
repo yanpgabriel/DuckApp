@@ -1,6 +1,6 @@
-import {Injectable} from '@angular/core';
-import {MessageService} from 'primeng/api';
-import {TranslateService} from '@ngx-translate/core';
+import { Injectable } from '@angular/core';
+import { MessageService } from 'primeng/api';
+import { UtilsService } from "./utils.service";
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +10,7 @@ export class ToastService {
 
   constructor(
     private messageService: MessageService,
-    private translateService: TranslateService,
+    private utilsService: UtilsService,
   ) {
   }
 
@@ -27,7 +27,7 @@ export class ToastService {
   }
 
   private show(type: string, titulo: string, message: string) {
-    const messageFinal = this.translateService.instant(message);
+    const messageFinal = this.utilsService.traduzir(message);
     this.messageService.add({ key: 'principal', severity: type, summary: titulo, detail: messageFinal, life: 10000 });
   }
 

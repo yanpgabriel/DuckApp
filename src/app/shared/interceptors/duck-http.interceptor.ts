@@ -1,12 +1,12 @@
-import {Injectable} from '@angular/core';
-import {HttpEvent, HttpHandler, HttpInterceptor, HttpRequest} from '@angular/common/http';
-import {Observable} from 'rxjs';
-import {environment} from '../../../environments/environment';
-import {catchError, finalize} from 'rxjs/operators';
-import {NetworkService} from '../services/network.service';
-import {ToastService} from '../services/toast.service';
-import {LoadingService} from '../services/loading.service';
-import {AuthService} from '../services/auth.service';
+import { Injectable } from '@angular/core';
+import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { environment } from '../../../environments/environment';
+import { catchError, finalize } from 'rxjs/operators';
+import { NetworkService } from '../services/network.service';
+import { ToastService } from '../services/toast.service';
+import { LoadingService } from '../services/loading.service';
+import { AuthService } from '../services/auth.service';
 
 @Injectable()
 export class DuckHttpInterceptor implements HttpInterceptor  {
