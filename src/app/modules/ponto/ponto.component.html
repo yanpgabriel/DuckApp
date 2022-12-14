@@ -1,1 +1,24 @@
-<full-calendar [options]="options"></full-calendar>
+<!--<full-calendar [options]="options"></full-calendar>-->
+
+
+<div class="card">
+  <p-timeline [value]="eventos">
+    <ng-template pTemplate="marker" let-event>
+        <span class="shadow-2 custom-marker" [style.background-color]="event.color">
+          <i [ngClass]="event.icon"></i>
+        </span>
+    </ng-template>
+    <ng-template pTemplate="content" let-event>
+      <small class="p-text-secondary">{{event.date}}</small>
+    </ng-template>
+    <ng-template pTemplate="opposite" let-event>
+      {{event.status}}
+    </ng-template>
+  </p-timeline>
+</div>
+
+<div class="relogio">
+  <p-inputSwitch id="inputtext" [(ngModel)]="registrar" (onChange)="change($event)"></p-inputSwitch>
+  <p-calendar [(ngModel)]="hora" [disabled]="!registrar" [timeOnly]="true" [showSeconds]="true" inputId="time"></p-calendar>
+  <button pButton pRipple type="button" class="p-button-outlined p-button-rounded" icon="fa fa-fingerprint" (click)="salvar()"></button>
+</div>

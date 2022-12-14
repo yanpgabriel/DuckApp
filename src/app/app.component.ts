@@ -72,7 +72,7 @@ export class AppComponent implements OnInit {
       }, {
         label: 'system.menu.ponto',
         routerLink: '/ponto',
-        icon: 'fas fa-list-ul',
+        icon: 'fas fa-business-time',
         roles: ['DUCK_ADM', 'PONTO']
       }, {
         label: 'system.menu.tasks',
