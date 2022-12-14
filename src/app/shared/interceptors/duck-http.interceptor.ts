@@ -49,12 +49,15 @@ export class DuckHttpInterceptor implements HttpInterceptor  {
       );
   }
 
-  private async tratarErro(her: { status: any; error: { extras: any[]; }; }): Promise<void> {
+  private async tratarErro(her: { status: any; error: { extras: any[]; }; url: string; }): Promise<void> {
     switch (her.status) {
       case 0:
         if (this.networkService.isOnline) {
-          this.toastService.showDanger('avisos.NOT_CONNECTION');
-          console.log('Aplicação não conseguiu estabelecer conexão com o servidor');
+          if (her.url.includes(environment.api_host)) {
+            this.toastService.showDanger('avisos.NOT_CONNECTION');
+            this.authService.efetuarLogout();
+            console.log('Aplicação não conseguiu estabelecer conexão com o servidor');
+          }
         } else {
           console.log('Aplicação offiline');
         }
@@ -73,7 +76,7 @@ export class DuckHttpInterceptor implements HttpInterceptor  {
         // this.toastService.showDanger('FORBIDDEN');
         break;
     }
-    console.log(her.error);
+    // console.log(her.error);
     // if (await this.authService.usuarioEstaLogado()) {
     //   her.error?.extras?.forEach(extra => {
     //     this.toastService.showDanger(extra);
