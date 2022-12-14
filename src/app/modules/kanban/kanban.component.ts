@@ -1,11 +1,11 @@
-import {Component, OnInit} from '@angular/core';
-import {moveItemInArray, transferArrayItem} from '@angular/cdk/drag-drop';
-import {DemandaService} from '../../shared/services/demanda.service';
-import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {EstadoDemanda} from '../../shared/models/EstadoDemanda';
-import {UserService} from '../user/user.service';
-import {Demanda} from '../../shared/models/Demanda';
-import {Router} from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
+import { DemandaService } from '../../shared/services/demanda.service';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { EstadoDemanda } from '../../shared/models/EstadoDemanda';
+import { UserService } from '../user/user.service';
+import { Demanda } from '../../shared/models/Demanda';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'duck-kanban',
@@ -41,6 +41,7 @@ export class KanbanComponent implements OnInit {
   todosMembros: any[] = [];
 
   demandaForm = new FormGroup({
+    id: new FormControl(''),
     titulo: new FormControl('', [
       Validators.required,
     ]),
@@ -63,13 +64,14 @@ export class KanbanComponent implements OnInit {
 
   async ngOnInit(): Promise<void> {
     try {
-      const res = await this.userService.list().toPromise()
+      const res = await this.userService.list().toPromise();
       this.todosMembros = res.entity.map(r => {
         return {
           value: r.id,
           label: r.fullname
         }
       });
+      this.membros.push(...this.todosMembros);
       const promise = await this.demandaService.listEstados().toPromise();
       this.estados = promise.entity;
       this.listarDemandas();
@@ -132,9 +134,8 @@ export class KanbanComponent implements OnInit {
   }
 
   salvar(form: any) {
-    console.log(form.value);
-
     const valor: Demanda = {
+      id: form.value.id,
       idUser: form.value.membro.value,
       // @ts-ignore
       idEstado: this.idEstado,
@@ -142,7 +143,9 @@ export class KanbanComponent implements OnInit {
       desc: form.value.descricao,
       estimativa: form.value.estimativa.value,
     }
-    this.demandaService.salvar(valor).subscribe(res => {
+
+    const req = valor.id != null ? this.demandaService.atualizar(valor) : this.demandaService.salvar(valor);
+    req.subscribe(res => {
       this.listarDemandas();
       this.close();
     });
@@ -159,12 +162,12 @@ export class KanbanComponent implements OnInit {
   async editarDemanda(id) {
     const { entity } = await this.demandaService.get(id).toPromise();
     this.idEstado = entity.idEstado;
+    this.demandaForm.get('id')?.setValue(entity.id);
     this.demandaForm.get('titulo')?.setValue(entity.titulo);
     this.demandaForm.get('membro')?.setValue(this.membros.find(m => m.value == entity.idUser));
     this.demandaForm.get('descricao')?.setValue(entity.desc);
     this.demandaForm.get('estimativa')?.setValue(this.estimativas.find(e => e.value == entity.estimativa));
     this.open();
-    console.log('demanda', entity);
   }
 
   async deletarDemanda(id) {
