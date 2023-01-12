@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
-import { KeycloakProfile } from 'keycloak-js';
 import { MenuItem } from 'primeng/api/menuitem';
 import { NetworkService } from './shared/services/network.service';
 import { AuthService } from './shared/services/auth.service';
@@ -21,7 +20,7 @@ export class AppComponent implements OnInit {
   home = { icon: 'pi pi-home', routerLink: '/' };
   breadcrumb: MenuItem[] = [];
   picture: string = '/assets/img/duck.png';
-  profile: KeycloakProfile | any = {};
+  profile: any = {};
   private _isLoggedIn = false;
   get isLoggedIn(): boolean {
     return this._isLoggedIn;
