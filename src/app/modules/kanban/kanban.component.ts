@@ -6,6 +6,7 @@ import { EstadoDemanda } from '../../shared/models/EstadoDemanda';
 import { UserService } from '../user/user.service';
 import { Demanda } from '../../shared/models/Demanda';
 import { Router } from '@angular/router';
+import { isStringVaziaNullOrUndefined } from "../../shared/util";
 
 @Component({
   selector: 'duck-kanban',
@@ -130,7 +131,7 @@ export class KanbanComponent implements OnInit {
   }
 
   addEstado() {
-
+    // this.demandaService.salvarEstado()
   }
 
   salvar(form: any) {
@@ -144,6 +145,9 @@ export class KanbanComponent implements OnInit {
       estimativa: form.value.estimativa.value,
     }
 
+    if (isStringVaziaNullOrUndefined(valor.id)) {
+      valor.id = null;
+    }
     const req = valor.id != null ? this.demandaService.atualizar(valor) : this.demandaService.salvar(valor);
     req.subscribe(res => {
       this.listarDemandas();

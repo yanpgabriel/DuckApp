@@ -1,6 +1,6 @@
-import {Component, OnInit} from '@angular/core';
-import {AuthService} from '../../shared/services/auth.service';
-import {UserService} from '../user/user.service';
+import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../../shared/services/auth.service';
+import { UserService } from '../user/user.service';
 
 @Component({
   selector: 'duck-dashboard',
@@ -28,8 +28,8 @@ export class DashboardComponent implements OnInit {
     this.sistemas = [
       {
         nome: 'CasaOS',
-        icone: 'http://local.yanpgabriel.com/img/casa-white.2579f069.svg',
-        link: 'http://local.yanpgabriel.com/#/'
+        icone: 'http://local.yanpgabriel.com:89/img/casa-white.2579f069.svg',
+        link: 'http://local.yanpgabriel.com:89/#/'
       },
       {
         nome: 'Portainer',

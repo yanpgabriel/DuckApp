@@ -1,5 +1,5 @@
 export interface Demanda {
-  id: number;
+  id: number | string | null;
   idUser: number;
   idEstado: number;
   titulo: string;

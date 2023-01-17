@@ -1,8 +1,8 @@
-import {Injectable} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
-import {Observable} from 'rxjs';
-import {environment} from '../../../environments/environment';
-import {Demanda} from '../models/Demanda';
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { environment } from '../../../environments/environment';
+import { Demanda } from '../models/Demanda';
 
 @Injectable({
   providedIn: 'root'
@@ -35,5 +35,9 @@ export class DemandaService {
 
   listEstados(): Observable<any> {
     return this.httpClient.get<any>(`${environment.api_host}/estado-demanda`);
+  }
+
+  salvarEstado(novoEstado) {
+    return this.httpClient.post<any>(`${environment.api_host}/estado-demanda`, novoEstado);
   }
 }
