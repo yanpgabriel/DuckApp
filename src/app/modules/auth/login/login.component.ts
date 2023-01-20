@@ -10,19 +10,19 @@ import { ToastService } from '../../../shared/services/toast.service';
     <div class="d-flex flex-column align-items-center h-full duck-container">
       <div class="formgrid grid">
         <div class="field col">
-          <span class="p-float-label">
-              <input id="float-input" type="text" pInputText [(ngModel)]="email">
+          <span id="email" class="p-float-label">
+              <input id="float-input" type="email" pInputText [(ngModel)]="email">
               <label for="float-input">E-mail</label>
           </span>
         </div>
         <div class="field col">
-          <span class="p-float-label">
+          <span id="senha" class="p-float-label">
               <p-password id="float-input" styleClass="w-full" [(ngModel)]="password" [toggleMask]="true"></p-password>
               <label for="float-input">Senha</label>
           </span>
         </div>
         <div class="field col">
-            <button type="button" pButton class="p-button-outlined" (click)="login()">Enviar</button>
+            <button pButton type="button" id="enviar" class="p-button-outlined" (click)="login()">Enviar</button>
         </div>
       </div>
     </div>
