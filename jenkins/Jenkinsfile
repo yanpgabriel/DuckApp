@@ -18,6 +18,8 @@ pipeline {
         COMMITER_COMMENT = sh(script: 'git show -s --pretty=%B', returnStdout: true).trim()
 
         NAMESPACE = 'duck-namespace'
+
+        NODE_IMAGE = 'node:19.4-bullseye-slim'
     }
 
     options {
@@ -36,6 +38,7 @@ pipeline {
             }
         }
         stage('Build') {
+            agent { docker { image NODE_IMAGE; reuseNode true } }
             steps {
                 // Roda o maven
                 sh "npm install"
