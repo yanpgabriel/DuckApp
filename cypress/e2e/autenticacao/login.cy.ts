@@ -1,5 +1,9 @@
 describe('Tela de login', () => {
 
+  beforeEach(() => {
+    cy.viewport(1920, 1080)
+  })
+
   it('Deve sucesso ao abrir a tela de autenticação', () => {
     cy.visit('/')
     cy.url().should('include', '/auth')

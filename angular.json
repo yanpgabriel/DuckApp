@@ -43,7 +43,7 @@
             "scripts": [
               "./node_modules/quill/dist/quill.js"
             ],
-            "serviceWorker": true,
+            "serviceWorker": false,
             "ngswConfigPath": "ngsw-config.json"
           },
           "configurations": {

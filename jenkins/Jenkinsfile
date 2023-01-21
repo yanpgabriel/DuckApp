@@ -7,10 +7,6 @@ pipeline {
         type: 'GitParameterDefinition', useRepository: 'https://github.com/yanpgabriel/DuckApp.git')
     }
 
-    tools('Configurando Ferramentas') {
-        dockerTool 'Docker Jenkins'
-    }
-
     environment {
         GIT_HASH = sh(script: 'git rev-parse --short HEAD', returnStdout: true).trim()
         COMMITER_NAME = sh(script: 'git show -s --pretty=%an', returnStdout: true).trim()
@@ -18,8 +14,6 @@ pipeline {
         COMMITER_COMMENT = sh(script: 'git show -s --pretty=%B', returnStdout: true).trim()
 
         NAMESPACE = 'duck-namespace'
-
-        NODE_IMAGE = 'node:19.4-bullseye-slim'
     }
 
     options {
@@ -38,9 +32,13 @@ pipeline {
             }
         }
         stage('Build') {
-            agent { docker { image NODE_IMAGE; reuseNode true } }
+            agent {
+              docker {
+                image 'cypress/base:16.13.0',
+                reuseNode true
+              }
+            }
             steps {
-                // Roda o maven
                 sh "npm install"
             }
         }

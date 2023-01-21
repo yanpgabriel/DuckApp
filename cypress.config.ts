@@ -4,13 +4,21 @@ export default defineConfig({
 
   video: false,
   screenshotOnRunFailure: false,
+  pageLoadTimeout: 10000,
 
-  reporter: 'junit',
+  // reporter: 'junit',
+  // reporterOptions: {
+  //   mochaFile: 'cypress/reports/junit/resultados.xml',
+  //   toConsole: true
+  // },
+
+  reporter: 'mochawesome',
   reporterOptions: {
-    mochaFile: 'cypress/reports/junit/resultados.xml',
-    toConsole: true
+    reportDir: 'cypress/results',
+    overwrite: true,
+    html: true,
+    json: true,
   },
-
   e2e: {
     'baseUrl': 'http://localhost:4200',
     supportFile: false

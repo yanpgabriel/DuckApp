@@ -2,7 +2,7 @@
   --cor-bola: #c8c8c8;
 }
 
-.col >>> .p-card-content {
+.col > .p-card-content {
   gap: 0.5rem;
   display: flex;
   flex-direction: column;
@@ -12,7 +12,7 @@
   font-weight: bold;
 }
 
-.col >>> .p-card-content .icone {
+.col > .p-card-content .icone {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -24,7 +24,7 @@
   border-radius: 50%;
   background-color:  var(--cor-bola);
 }
-.col >>> .p-card-content .icone img {
+.col > .p-card-content .icone img {
   height: 100%;
   border-radius: 50%;
 }

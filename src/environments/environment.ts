@@ -8,7 +8,6 @@ export const environment = {
   api_host: 'http://localhost:8080/api',
   discord_bot_host: 'http://local.yanpgabriel.com:8069',
   ws_host: 'ws://localhost:8080',
-  ignorarKeycloak: true,
   configFile: 'assets/config/config.dev.json'
 };
 
