@@ -2,8 +2,8 @@ import { defineConfig } from 'cypress'
 
 export default defineConfig({
 
-  video: false,
-  screenshotOnRunFailure: false,
+  video: true,
+  screenshotOnRunFailure: true,
   pageLoadTimeout: 10000,
 
   // reporter: 'junit',
