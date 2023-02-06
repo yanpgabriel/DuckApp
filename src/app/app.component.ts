@@ -97,6 +97,10 @@ export class AppComponent implements OnInit {
         label: 'system.menu.kanban',
         routerLink: '/kanban',
         icon: 'fas fa-columns'
+      }, {
+        label: 'system.menu.finances',
+        routerLink: '/finances',
+        icon: 'fas fa-money-check-alt'
       }
     ];
   }

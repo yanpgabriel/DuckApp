@@ -58,7 +58,7 @@
   display: flex;
   margin-bottom: 0.25rem;
   padding: 0.5rem 10px;
-  font-size: 14px;
+  font-size: var(--tamanho-1rem);
   box-sizing: border-box;
   align-items: center;
   flex-direction: row;

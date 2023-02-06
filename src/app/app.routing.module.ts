@@ -32,6 +32,10 @@ const routes: Routes = [
     loadChildren: () => import('./modules/ponto/ponto.module').then(m => m.PontoModule)
   },
   {
+    path: 'finances',
+    loadChildren: () => import('./modules/finances/finances.module').then(m => m.FinancesModule)
+  },
+  {
     path: 'teste',
     loadChildren: () => import('./modules/teste/teste.module').then(m => m.TesteModule)
   },
