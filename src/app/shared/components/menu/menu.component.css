@@ -26,5 +26,6 @@ ol.duck-menu, ul.duck-menu li a:hover, ol.duck-menu, ul.duck-menu li a.active {
 }
 
 ol.duck-menu, ul.duck-menu li a em {
+  margin-left: 0.25rem;
   margin-right: 0.5rem;
 }
