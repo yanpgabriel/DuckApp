@@ -15,7 +15,7 @@
         <p-avatar [image]="this.picture" styleClass="mr-2" shape="circle"></p-avatar>
       </div>
       <div class="col p-0 text-left">
-        <strong>{{profile.firstName | translate}}</strong>
+        <strong>{{profile?.firstName | translate}}</strong>
       </div>
       <p-menu #mnmenu [popup]="true" [model]="minimenu"></p-menu>
     </div>
