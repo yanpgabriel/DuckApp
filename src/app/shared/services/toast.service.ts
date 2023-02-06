@@ -26,9 +26,9 @@ export class ToastService {
     this.show('error', 'Erro', message);
   }
 
-  private show(type: string, titulo: string, message: string) {
-    const messageFinal = this.utilsService.traduzir(message);
-    this.messageService.add({ key: 'principal', severity: type, summary: titulo, detail: messageFinal, life: 10000 });
+  private async show(type: string, titulo: string, message: string) {
+    const messageFinal = await this.utilsService.traduzir(message);
+    this.messageService.add({key: 'principal', severity: type, summary: titulo, detail: messageFinal, life: 10000});
   }
 
 }

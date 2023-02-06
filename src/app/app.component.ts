@@ -1,11 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { MenuItem } from 'primeng/api/menuitem';
 import { NetworkService } from './shared/services/network.service';
 import { AuthService } from './shared/services/auth.service';
-import { isNullOrUndefined } from './shared/util';
 import { filter } from "rxjs";
 import { UtilsService } from "./shared/services/utils.service";
+import { LoadingService } from "./shared/services/loading.service";
+import { Menu } from "primeng/menu";
+import { isNullOrUndefined } from "./shared/util";
 
 @Component({
   selector: 'duck-root',
@@ -13,6 +15,9 @@ import { UtilsService } from "./shared/services/utils.service";
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent implements OnInit {
+
+  private afterView = false;
+  @ViewChild('mnmenu') minimenuComponent: Menu | any = null;
 
   title = 'DuckApp';
   menu: any | MenuItem[] = [];
@@ -32,6 +37,7 @@ export class AppComponent implements OnInit {
     private networkService: NetworkService,
     public authService: AuthService,
     public utilsService: UtilsService,
+    private loadingService: LoadingService
   ) {
   }
 
@@ -41,7 +47,7 @@ export class AppComponent implements OnInit {
 
     // Trata idiomas
     if (isNullOrUndefined(this.utilsService.getLang())) {
-      this.utilsService.reloadLang(this.utilsService.getDefaultLang());
+      this.utilsService.reloadLang(this.utilsService.getBrowserLang());
     }
 
     // Trata breadcrumb
@@ -100,11 +106,7 @@ export class AppComponent implements OnInit {
   }
 
   toggleLanguage(): void {
-    if (this.utilsService.getDefaultLang() === 'pt') {
-      this.utilsService.setDefaultLang('en');
-    } else {
-      this.utilsService.setDefaultLang('pt');
-    }
+    this.utilsService.toogleLanguage();
     this.updateTranslate();
   }
 
@@ -126,8 +128,16 @@ export class AppComponent implements OnInit {
       }
     ];
     this.minimenu.forEach(async (item: any) => {
-      item.label = this.utilsService.traduzir(item.label);
+      item.label = await this.utilsService.traduzir(item.label);
     });
+  }
+
+  getName() {
+    return this.profile?.fullname || 'Usuário não Identificado';
+  }
+
+  getPicture() {
+    return this.picture || './assets/img/duck.png';
   }
 
   private listenNetworkConection() {

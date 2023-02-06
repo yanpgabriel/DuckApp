@@ -11,11 +11,11 @@
     <duck-menu [model]="menu" [logged]="isLoggedIn"></duck-menu>
     <hr>
     <div class="flex align-items-center mt-3 duck-border" ngbDropdown (click)="mnmenu.toggle($event)">
-      <div class="col p-0 text-right">
-        <p-avatar [image]="this.picture" styleClass="mr-2" shape="circle"></p-avatar>
+      <div class="col-3 p-0 text-right">
+        <p-avatar [image]="getPicture()" styleClass="mr-2" shape="circle"></p-avatar>
       </div>
-      <div class="col p-0 text-left">
-        <strong>{{profile?.firstName | translate}}</strong>
+      <div class="col-9 p-0 text-left">
+        <strong>{{getName() | translate}}</strong>
       </div>
       <p-menu #mnmenu [popup]="true" [model]="minimenu"></p-menu>
     </div>

@@ -1,7 +1,7 @@
 {
   "system": {
     "name": "Duck-App",
-    "toggleLanguage": "Idioma Ingles",
+    "toggleLanguage": "Inglês",
     "toggleDarkmode": "Modo Escuro",
     "profile": "Perfil",
     "leave": "Sair",
@@ -11,7 +11,8 @@
       "ponto": "Ponto",
       "tasks": "Tarefas",
       "bot": "Bot Discord",
-      "kanban": "Kanban"
+      "kanban": "Kanban",
+      "teste": "Teste"
     }
   },
   "avisos": {

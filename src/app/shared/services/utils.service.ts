@@ -3,13 +3,15 @@ import { ActivatedRoute } from '@angular/router';
 import { MenuItem } from 'primeng/api/menuitem';
 import { isNullOrUndefined } from '../util';
 import { TranslateService } from "@ngx-translate/core";
+import { firstValueFrom } from "rxjs";
 
 @Injectable({
   providedIn: 'root'
 })
 export class UtilsService {
 
-  private translateService;
+  private translateService: TranslateService | undefined;
+  private langKey = 'lang';
 
   _ignoreLogin = false;
   get ignoreLogin(): boolean {
@@ -21,7 +23,7 @@ export class UtilsService {
   ) {
   }
 
-  getTranslateService() {
+  getTranslateService(): TranslateService {
     if (this.translateService != null) {
       console.debug('Aproveitando o "TranslateService" já instanciado!');
       return this.translateService;
@@ -29,31 +31,48 @@ export class UtilsService {
     try {
       console.debug('Instanciado um novo "TranslateService"!');
       this.translateService = this.injector.get(TranslateService);
+      this.setLang(this.getLocalLang()||this.getBrowserLang())
     } catch (e) {
       console.error('Não foi possivel injetar o "TranslateService".');
     }
-    return this.translateService;
+    return <TranslateService>this.translateService;
+  }
+
+  toogleLanguage() {
+    if (this.getTranslateService().getDefaultLang() !== 'pt') {
+      this.setLang('pt');
+    } else {
+      this.setLang('en');
+    }
+  }
+
+  getLocalLang(): string | null {
+    return localStorage.getItem(this.langKey);
   }
 
   getLang(): string {
-    return this.getTranslateService().currentLang;
-  }
-
-  getDefaultLang(): string {
     return this.getTranslateService().defaultLang;
   }
 
-  setDefaultLang(str: string) {
+  setLang(str: string) {
+    console.debug('Setando idioma para "'+str+'"');
     this.getTranslateService().setDefaultLang(str);
+    localStorage.setItem(this.langKey, str);
+  }
+
+  getBrowserLang(): string {
+    return <string>this.getTranslateService().getBrowserLang();
   }
 
   reloadLang(str) {
     this.getTranslateService().reloadLang(str);
   }
 
-  traduzir(str: string) {
+  async traduzir(str: string): Promise<string> {
     console.debug('Buscando tradução para ' + str);
-    return this.getTranslateService().instant(str);
+    const result = firstValueFrom(this.getTranslateService().get(str));
+    console.debug('Tradução encontrada: ' + result);
+    return await result;
   }
 
   hasRoles(roles: any[]): boolean {

@@ -1,23 +1,27 @@
 {
   "system": {
     "name": "Duck-App",
-    "toggleLanguage": "Portuguese language",
+    "toggleLanguage": "Portuguese",
     "toggleDarkmode": "Dark Mode",
     "profile": "Profile",
     "leave": "Leave",
     "menu": {
       "dashboard": "Dashboard",
       "users": "Users",
-      "tasks": "Tarefas",
+      "ponto": "Ponto",
+      "tasks": "Tasks",
       "bot": "Bot Discord",
-      "kanban": "Kanban"
+      "kanban": "Kanban",
+      "teste": "Teste"
     }
   },
   "avisos": {
+    "NOT_CONNECTION": "Unable to connect to the server!",
+    "LOGIN_ERROR": "Unable to login!",
     "LOGIN": "Successfully Logged In,",
     "LOGOUT": "Successfully Logged Out.",
     "NOT_AUTHORIZED": "You are not logged in.",
     "FORBIDDEN": "You are not allowed to do this!",
     "GOOGLE_TOKEN_INVALID": "The token received is invalid!"
   }
-},
+}
