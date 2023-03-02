@@ -77,7 +77,7 @@ export class TokenService {
     }
     const exp = new Date(this.decodedToken.exp * 1000).getTime();
     const now = new Date().getTime();
-    const timeToNextToken = (exp - now) - 10000;
+    const timeToNextToken = (exp - now) - 30000;
     if (this.taskIdRefreshToken != null) {
       clearTimeout(this.taskIdRefreshToken);
     }

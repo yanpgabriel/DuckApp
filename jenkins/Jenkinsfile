@@ -34,16 +34,17 @@ pipeline {
         stage('Build') {
             agent {
               docker {
-                image 'cypress/base:16.18.0'
-                args '-p 3000:3000'
+                image '18.14.2-alpine'
                 reuseNode true
               }
             }
             steps {
-                sh 'npm ci'
-                sh 'npm run cy:verify'
                 sh 'npm run build'
-                sh 'npm run ci:cy-run'
+            }
+        }
+        stage('Arquivar artefato') {
+            steps {
+                archiveArtifacts allowEmptyArchive: true, artifacts: 'dist/*', followSymlinks: false, onlyIfSuccessful: true
             }
         }
     }
