@@ -1,0 +1,13 @@
+::ng-deep .p-card-header {
+  padding: 1rem;
+}
+
+::ng-deep .p-card-header img {
+  width: 2.3rem !important;
+  border-radius: 50%;
+}
+
+::ng-deep .p-card-header span {
+  margin-left: 1rem;
+  font-weight: 700;
+}
