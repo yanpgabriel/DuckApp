@@ -45,10 +45,9 @@ pipeline {
                 sh 'npm run build'
             }
         }
-        stage('Gerar zip') {
+        stage('Gerar arquivo compactado') {
             steps {
-                sh 'zip -r duckapp.zip dist/DuckApp'
-                sh 'npm run build'
+                sh 'tar czf duckapp.tar.gz dist/DuckApp'
             }
         }
         stage('Arquivar artefato') {
