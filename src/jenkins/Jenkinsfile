@@ -2,9 +2,11 @@ pipeline {
     agent any
 
     parameters{
-        gitParameter(name: 'BRANCH_TO_DEPLOY', branch: '', branchFilter: 'origin/(.*)', defaultValue: 'jenkins',
+        gitParameter(name: 'BRANCH_TO_DEPLOY', branch: '', branchFilter: 'origin/(.*)', defaultValue: 'develop',
         quickFilterEnabled: false, selectedValue: 'NONE', sortMode: 'NONE', tagFilter: '*',
         type: 'GitParameterDefinition', useRepository: 'https://github.com/yanpgabriel/DuckApp.git')
+
+        string(name: 'DOCKER_IMAGE', defaultValue: 'localhost:5000/duckapp:pi', trim: true)
     }
 
     environment {
@@ -43,9 +45,25 @@ pipeline {
                 sh 'npm run build'
             }
         }
+        stage('Gerar zip') {
+            steps {
+                sh 'zip -r duckapp.zip dist/DuckApp'
+                sh 'npm run build'
+            }
+        }
         stage('Arquivar artefato') {
             steps {
-                archiveArtifacts allowEmptyArchive: true, artifacts: 'dist/*', followSymlinks: false, onlyIfSuccessful: true
+                archiveArtifacts allowEmptyArchive: true, artifacts: 'duckapp.zip', followSymlinks: false, onlyIfSuccessful: true
+            }
+        }
+        stage('Gerar Imagem Docker') {
+            steps {
+                sh "docker build -f src/docker/Dockerfile -t ${DOCKER_IMAGE} ."
+            }
+        }
+        stage('Publicar Imagem Docker') {
+            steps {
+                sh "docker push ${DOCKER_IMAGE}"
             }
         }
     }
