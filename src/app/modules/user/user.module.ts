@@ -8,6 +8,7 @@ import { TableModule } from 'primeng/table';
 import { ButtonModule } from 'primeng/button';
 import { RippleModule } from 'primeng/ripple';
 import { UserComponent } from "./user.component";
+import { CardModule } from "primeng/card";
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { UserComponent } from "./user.component";
     FormsModule,
     TableModule,
     ButtonModule,
-    RippleModule
+    RippleModule,
+    CardModule
   ]
 })
 export class UserModule { }

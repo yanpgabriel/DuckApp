@@ -1,7 +1,6 @@
-import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
-import {UserService} from '../user.service';
-import {LoadingService} from '../../../shared/services/loading.service';
+import { Component, OnInit } from '@angular/core';
+import { UserService } from '../user.service';
+import { AuthService } from "../../../shared/services/auth.service";
 
 @Component({
   selector: 'duck-list-user',
@@ -10,18 +9,13 @@ import {LoadingService} from '../../../shared/services/loading.service';
 })
 export class ListUserComponent implements OnInit {
 
+  idUsuarioLogado = -1;
   cols: { field: string, header: string, pipe?: string }[] = [];
-  users: {
-    id: string,
-    fullname: string,
-    email: string
-  }[] | undefined | any;
-  action: string | undefined;
+  users: any;
 
   constructor(
     public userService: UserService,
-    public activatedRoute: ActivatedRoute,
-    public loadingService: LoadingService
+    public authService: AuthService,
   ) { }
 
   ngOnInit(): void {
@@ -34,30 +28,20 @@ export class ListUserComponent implements OnInit {
       { field: 'keycloackId', header: 'Keycloack ID' },
       { field: 'actions', header: 'Ações' },
     ];
-    // @ts-ignore
-    this.action = this.activatedRoute.snapshot.routeConfig.path || 'list';
     this.userService.list().subscribe(res => {
       this.users = res.entity;
     });
+    const obterProfile = this.authService.obterProfile();
+    if (obterProfile != null && obterProfile.id != undefined) {
+      this.idUsuarioLogado = obterProfile.id;
+    }
   }
 
-  // dtcreation: "2021-05-08 00:00:01"
-  // email: "tester@mail.com"
-  // fullname: "Tester"
-  // id: 0
-  // keycloackId: "00000000-0000-0000-0000-000000000000"
   editUser(usuario: any) {
 
   }
 
   deleteUser(usuario: any) {
 
-  }
-
-  toggleLoading() {
-    this.loadingService.toggleLoading();
-    // setTimeout(() => {
-    //   this.loadingService.toggleLoading();
-    // }, 10000)
   }
 }
