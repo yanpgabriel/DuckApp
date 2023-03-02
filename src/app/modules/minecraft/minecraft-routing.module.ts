@@ -7,7 +7,7 @@ const routes: Routes = [
   {
     path: '',
     component: MinecraftComponent,
-    data: { breadcrumb: 'Minecraft' },
+    data: { breadcrumb: 'Minecraft', breadcrumbUrl: 'minecraft' },
     children: [
       {
         path: 'papermc',

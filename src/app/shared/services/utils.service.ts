@@ -104,11 +104,13 @@ export class UtilsService {
 
     for (const child of children) {
       if (child.component != undefined) {
+        const breadcrumbUrl = child.snapshot.data['breadcrumbUrl'];
         const routeURL: string = child.snapshot.url.map(segment => segment.path).join('/');
         if (routeURL !== '') {
           url += `/${routeURL}`;
+        } else if (breadcrumbUrl) {
+          url += `/${breadcrumbUrl}`;
         }
-
         let label = child.snapshot.data['breadcrumb'];
         console.log(label, child);
         if (!isNullOrUndefined(label)) {
