@@ -5,7 +5,6 @@ import { NetworkService } from './shared/services/network.service';
 import { AuthService } from './shared/services/auth.service';
 import { filter } from "rxjs";
 import { UtilsService } from "./shared/services/utils.service";
-import { LoadingService } from "./shared/services/loading.service";
 import { Menu } from "primeng/menu";
 import { isNullOrUndefined } from "./shared/util";
 
@@ -37,7 +36,6 @@ export class AppComponent implements OnInit {
     private networkService: NetworkService,
     public authService: AuthService,
     public utilsService: UtilsService,
-    private loadingService: LoadingService
   ) {
   }
 
@@ -54,7 +52,7 @@ export class AppComponent implements OnInit {
     // Trata breadcrumb
     this.router.events
       .pipe(filter(event => event instanceof NavigationEnd))
-      .subscribe(() => this.breadcrumb = this.utilsService.createBreadcrumbs(this.activatedRoute.root));
+      .subscribe(async () => this.breadcrumb = await this.utilsService.createBreadcrumbs(this.activatedRoute.root));
 
     this.createMenu();
     this.updateTranslate();

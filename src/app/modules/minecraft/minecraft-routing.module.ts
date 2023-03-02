@@ -7,16 +7,16 @@ const routes: Routes = [
   {
     path: '',
     component: MinecraftComponent,
-    data: {
-      breadcrumb: 'Minecraft'
-    }
-  },
-  {
-    path: 'papermc',
-    component: PaperMcComponent,
-    data: {
-      breadcrumb: ['Minecraft', 'PaperMC']
-    }
+    data: { breadcrumb: 'Minecraft' },
+    children: [
+      {
+        path: 'papermc',
+        component: PaperMcComponent,
+        data: {
+          breadcrumb: 'PaperMC'
+        }
+      }
+    ]
   }
 ];
 

@@ -94,25 +94,28 @@ export class UtilsService {
   }
 
   // @ts-ignore
-  createBreadcrumbs(route: ActivatedRoute, url: string = '', breadcrumbs: MenuItem[] = []): MenuItem[]  {
+  async createBreadcrumbs(route: ActivatedRoute, url: string = '', breadcrumbs: MenuItem[] = []): Promise<MenuItem[]> {
     const children: ActivatedRoute[] = route.children;
 
     if (children.length === 0) {
+      console.log(breadcrumbs);
       return breadcrumbs;
     }
 
     for (const child of children) {
-      const routeURL: string = child.snapshot.url.map(segment => segment.path).join('/');
-      if (routeURL !== '') {
-        url += `/${routeURL}`;
-      }
+      if (child.component != undefined) {
+        const routeURL: string = child.snapshot.url.map(segment => segment.path).join('/');
+        if (routeURL !== '') {
+          url += `/${routeURL}`;
+        }
 
-      let label = child.snapshot.data['breadcrumb'];
-      if (!isNullOrUndefined(label)) {
-        label = this.traduzir(label);
-        breadcrumbs.push({label, url});
+        let label = child.snapshot.data['breadcrumb'];
+        console.log(label, child);
+        if (!isNullOrUndefined(label)) {
+          label = await this.traduzir(label);
+          breadcrumbs.push({label, url});
+        }
       }
-
       return this.createBreadcrumbs(child, url, breadcrumbs);
     }
   }
