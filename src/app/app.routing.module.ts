@@ -32,8 +32,12 @@ const routes: Routes = [
     loadChildren: () => import('./modules/ponto/ponto.module').then(m => m.PontoModule)
   },
   {
-    path: 'finances',
-    loadChildren: () => import('./modules/finances/finances.module').then(m => m.FinancesModule)
+    path: 'financas',
+    loadChildren: () => import('./modules/financas/financas.module').then(m => m.FinancasModule)
+  },
+  {
+    path: 'minecraft',
+    loadChildren: () => import('./modules/minecraft/minecraft.module').then(m => m.MinecraftModule)
   },
   {
     path: 'teste',

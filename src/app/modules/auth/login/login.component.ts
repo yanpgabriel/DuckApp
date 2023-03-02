@@ -46,8 +46,8 @@ export class LoginComponent implements OnInit {
   }
 
   async login(): Promise<void> {
-    const loged = await this.authService.login({ email: this.email, password: this.password });
-    if (loged) {
+    const logged = await this.authService.makeLogin({ email: this.email, password: this.password });
+    if (logged) {
       this.toastService.showSuccess('avisos.LOGIN');
       await this.router.navigate(['/']);
     } else {

@@ -1,0 +1,65 @@
+<div>
+  <div class="grid">
+    <div class="col-12">
+      <p-card>
+
+        <div class="flex w-full">
+          <div class="col-4">
+              <p-dropdown [(ngModel)]="version"
+                          [filter]="true"
+                          [options]="versions"
+                          [disabled]="versions.length <= 0"
+                          [showClear]="true"
+                          (onChange)="listPaperMcBuilds(version?.label)"
+                          optionLabel="label"
+                          filterBy="label"
+                          placeholder="Selecione a versão do Minecraft"
+                          emptyFilterMessage="Sem resultado"
+              >
+                <ng-template pTemplate="selectedItem">
+                  <div *ngIf="version">Minecraft {{ version.label }}</div>
+                </ng-template>
+                <ng-template let-versao pTemplate="item">
+                  <div> {{ versao?.label }} </div>
+                </ng-template>
+              </p-dropdown>
+          </div>
+          <div class="col-4">
+            <p-dropdown [(ngModel)]="build"
+                        [filter]="true"
+                        [options]="builds"
+                        [disabled]="builds.length <= 0"
+                        [showClear]="true"
+                        optionLabel="label"
+                        filterBy="label"
+                        placeholder="Selecione a Build do PaperMC"
+                        emptyFilterMessage="Sem resultado"
+            >
+              <ng-template pTemplate="selectedItem">
+                <div *ngIf="build">Build {{ build.label }}</div>
+              </ng-template>
+              <ng-template let-build pTemplate="item">
+                <div> {{ build?.label }} </div>
+              </ng-template>
+            </p-dropdown>
+          </div>
+          <div class="col-4">
+            <p-button label="Baixar papermc.jar" icon="fas fa-download" styleClass="duck-button"
+                      [disabled]="!version || !build" [loading]="!!version && !!build && !!downloadInfo && !downloadPronto()"
+                      (onClick)="downloadPaperMcFile()"></p-button>
+          </div>
+        </div>
+        <div class="flex w-full" *ngIf="!!version && !!build">
+          <div class="col-2">
+            Progresso de Download:
+          </div>
+          <div class="col-10">
+            <p-progressBar [value]="downloadInfo?.progress||0"></p-progressBar>
+          </div>
+        </div>
+      </p-card>
+    </div>
+  </div>
+</div>
+
+

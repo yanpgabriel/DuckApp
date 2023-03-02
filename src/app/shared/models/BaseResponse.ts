@@ -3,6 +3,7 @@ export interface BaseResponse {
   status: number;
   entity: any | any[];
   extras: string;
+  headers: {[key: string]: any};
 }
 
 enum TypeResponse {

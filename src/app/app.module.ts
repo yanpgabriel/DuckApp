@@ -1,5 +1,7 @@
-import { NgModule } from '@angular/core';
+import { DEFAULT_CURRENCY_CODE, LOCALE_ID, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { registerLocaleData } from "@angular/common";
+import localePt from '@angular/common/locales/pt';
 
 import { AppComponent } from './app.component';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
@@ -19,6 +21,8 @@ import { AvatarModule } from 'primeng/avatar';
 import { ToastModule } from 'primeng/toast';
 import { MessageService } from 'primeng/api';
 import { DuckHttpInterceptor } from './shared/interceptors/duck-http.interceptor';
+
+registerLocaleData(localePt, 'pt');
 
 export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -65,6 +69,14 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
     //   deps: [ConfigInitService, UtilsService],
     // },
     // { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+    {
+      provide: LOCALE_ID,
+      useValue: 'pt'
+    },
+    {
+      provide:  DEFAULT_CURRENCY_CODE,
+      useValue: 'BRL'
+    },
     { provide: HTTP_INTERCEPTORS, useClass: DuckHttpInterceptor, multi: true },
     MessageService
   ],

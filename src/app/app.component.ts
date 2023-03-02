@@ -42,6 +42,7 @@ export class AppComponent implements OnInit {
   }
 
   async ngOnInit(): Promise<void> {
+    this.listenNetworkConection();
     // this.authService.listenKeycloakEvents();
     this.listenLogin();
 
@@ -55,12 +56,12 @@ export class AppComponent implements OnInit {
       .pipe(filter(event => event instanceof NavigationEnd))
       .subscribe(() => this.breadcrumb = this.utilsService.createBreadcrumbs(this.activatedRoute.root));
 
-    this.profile = await this.authService.obterProfile();
-    this.picture = this.profile?.attributes?.picture_google;
-
     this.createMenu();
     this.updateTranslate();
-    this.listenNetworkConection();
+  }
+
+  signOut(): void {
+    this.authService.efetuarLogout();
   }
 
   createMenu(): void {
@@ -99,14 +100,14 @@ export class AppComponent implements OnInit {
         icon: 'fas fa-columns'
       }, {
         label: 'system.menu.finances',
-        routerLink: '/finances',
+        routerLink: '/financas',
         icon: 'fas fa-money-check-alt'
+      }, {
+        label: 'system.menu.minecraft',
+        routerLink: '/minecraft',
+        icon: 'fas fa-square-full'
       }
     ];
-  }
-
-  signOut(): void {
-    this.authService.efetuarLogout();
   }
 
   toggleLanguage(): void {
@@ -154,10 +155,17 @@ export class AppComponent implements OnInit {
     })
   }
 
-  private async listenLogin() {
-    this._isLoggedIn = await this.authService.usuarioEstaLogado();
-    this.authService.listenLoginEvents().subscribe(async () => {
-      this._isLoggedIn = await this.authService.usuarioEstaLogado();
+  private listenLogin() {
+    this.actionsLogin();
+    this.authService.listenLoginEvents().subscribe(() => {
+      this.actionsLogin();
     });
+  }
+
+  private actionsLogin() {
+    this._isLoggedIn = this.authService.usuarioEstaLogado();
+    if (this.isLoggedIn) {
+      this.profile = this.authService.obterProfile();
+    }
   }
 }

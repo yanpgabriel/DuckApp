@@ -1,7 +1,7 @@
-import {Injectable} from '@angular/core';
-import {ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree} from '@angular/router';
-import {UtilsService} from '../services/utils.service';
-import {AuthService} from '../services/auth.service';
+import { Injectable } from '@angular/core';
+import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
+import { UtilsService } from '../services/utils.service';
+import { AuthService } from '../services/auth.service';
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +18,7 @@ export class AuthGuard implements CanActivate{
     if (this.utilsService.ignoreLogin) {
       return true;
     }
-    if (!this.authService.getToken()) {
+    if (!this.authService.usuarioEstaLogado()) {
       await this.router.navigate(['/auth']);
       return false;
     }

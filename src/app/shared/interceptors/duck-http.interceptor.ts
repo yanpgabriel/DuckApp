@@ -7,12 +7,14 @@ import { NetworkService } from '../services/network.service';
 import { ToastService } from '../services/toast.service';
 import { LoadingService } from '../services/loading.service';
 import { AuthService } from '../services/auth.service';
+import { TokenService } from "../services/token.service";
 
 @Injectable()
 export class DuckHttpInterceptor implements HttpInterceptor  {
 
   constructor(
     public authService: AuthService,
+    public tokenService: TokenService,
     public toastService: ToastService,
     public networkService: NetworkService,
     public loadingService: LoadingService,
@@ -29,7 +31,7 @@ export class DuckHttpInterceptor implements HttpInterceptor  {
       });
       requisicao = next.handle(cloned);
     } else {
-      const token = 'Bearer ' + this.authService.getToken();
+      const token = 'Bearer ' + this.tokenService.getAccessTokenRaw();
       const cloned = req.clone({
         headers: req.headers.set('Authorization', token||'')
       });
