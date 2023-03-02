@@ -52,7 +52,7 @@ pipeline {
         }
         stage('Arquivar artefato') {
             steps {
-                archiveArtifacts allowEmptyArchive: true, artifacts: 'duckapp.zip', followSymlinks: false, onlyIfSuccessful: true
+                archiveArtifacts allowEmptyArchive: true, artifacts: 'duckapp.tar.gz', followSymlinks: false, onlyIfSuccessful: true
             }
         }
         stage('Gerar Imagem Docker') {

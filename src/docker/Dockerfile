@@ -1,2 +1,2 @@
 FROM nginx
-COPY ../../dist/DuckApp /usr/share/nginx/html
+COPY dist/DuckApp /usr/share/nginx/html
