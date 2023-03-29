@@ -15,7 +15,8 @@ const routes: Routes = [
         data: {
           breadcrumb: 'PaperMC'
         }
-      }
+      },
+      { path: '**', redirectTo: 'papermc', pathMatch: 'full' }
     ]
   }
 ];

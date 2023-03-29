@@ -51,7 +51,7 @@ export class DuckHttpInterceptor implements HttpInterceptor  {
       );
   }
 
-  private async tratarErro(her: { status: any; error: { extras: any[]; }; url: string; }): Promise<void> {
+  private async tratarErro(her: { status: any; error: { extras: string[]; }; url: string; }): Promise<void> {
     switch (her.status) {
       case 0:
         if (this.networkService.isOnline) {
@@ -76,6 +76,13 @@ export class DuckHttpInterceptor implements HttpInterceptor  {
         break;
       case 403:
         // this.toastService.showDanger('FORBIDDEN');
+        break;
+      case 300:
+        this.toastService.showMultipleInfo(her.error.extras);
+        break;
+      case 400:
+      case 500:
+        this.toastService.showMultipleDanger(her.error.extras);
         break;
     }
     // console.log(her.error);

@@ -1,15 +1,14 @@
-// This file can be replaced during build by using the `fileReplacements` array.
-// `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
-// The list of file replacements can be found in `angular.json`.
-
 export const environment = {
   production: false,
-  base_uri: 'http://localhost:4200',
-  api_host: 'http://localhost:8080/api',
+  api_host: 'http://192.168.0.3:8080/api',
   discord_bot_host: 'http://local.yanpgabriel.com:8069',
   ws_host: 'ws://localhost:8080',
   configFile: 'assets/config/config.dev.json'
 };
+
+// This file can be replaced during build by using the `fileReplacements` array.
+// `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
+// The list of file replacements can be found in `angular.json`.
 
 /*
  * For easier debugging in development mode, you can import the following file

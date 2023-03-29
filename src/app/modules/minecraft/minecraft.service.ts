@@ -57,7 +57,11 @@ export class MinecraftService {
   //   return this.httpClient.post(
   //     this.URL,
   //     body,
-  //     { headers }
+  //     {
+  //        headers,
+  //        observe: 'events',
+  //        reportProgress: true
+  //     }
   //   );
   // }
 }

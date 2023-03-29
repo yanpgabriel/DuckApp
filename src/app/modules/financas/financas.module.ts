@@ -4,18 +4,24 @@ import { CommonModule } from '@angular/common';
 import { FinancasRoutingModule } from './financas-routing.module';
 import { FinancasComponent } from "./financas.component";
 import { CardModule } from "primeng/card";
-import { ContasComponent } from './contas/contas.component';
+import { FinancasContasComponent } from './financas-contas/financas-contas.component';
+import { ButtonModule } from "primeng/button";
+import { FinancasDashboardComponent } from './financas-dashboard/financas-dashboard.component';
+import { SkeletonModule } from "primeng/skeleton";
 
 
 @NgModule({
   declarations: [
     FinancasComponent,
-    ContasComponent
+    FinancasContasComponent,
+    FinancasDashboardComponent
   ],
-  imports: [
-    CommonModule,
-    FinancasRoutingModule,
-    CardModule
-  ]
+    imports: [
+        CommonModule,
+        FinancasRoutingModule,
+        CardModule,
+        ButtonModule,
+        SkeletonModule
+    ]
 })
 export class FinancasModule { }

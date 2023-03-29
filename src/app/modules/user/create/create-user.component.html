@@ -1,7 +1,46 @@
-<div class="card w-75 bg-dark">
-  <div class="card-body">
-    <h5 class="card-title">Card title</h5>
-    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-    <a href="#" class="btn btn-primary">Button</a>
+<div>
+  <div class="grid">
+    <div class="col-3">
+      <p-button label="Criar" styleClass="duck-button" [routerLink]="['/users/create']"></p-button>
+    </div>
+    <div class="col-12">
+      <p-card styleClass="duck">
+
+        <form [formGroup]="formGroup" class="w-full">
+          <div class="w-full col mt-3">
+            <span class="p-float-label">
+              <input id="ipt-fullname" type="text" pInputText formControlName="fullname">
+              <label for="ipt-fullname">Nome Completo</label>
+            </span>
+          </div>
+          <div class="w-full col mt-3">
+            <span class="p-float-label">
+              <input id="ipt-email" type="email" pInputText formControlName="email">
+              <label for="ipt-email">E-mail</label>
+            </span>
+          </div>
+          <div class="w-full col mt-3">
+            <span class="p-float-label">
+              <p-password id="ipt-password"
+                          styleClass="w-full"
+                          formControlName="password"
+                          [feedback]="false"
+                          [toggleMask]="true"
+              ></p-password>
+              <label for="ipt-password">Senha</label>
+            </span>
+          </div>
+
+          <div class="w-full col mt-3">
+            <button pButton pRipple type="button" icon="pi pi-check" label="Salvar"
+                    class="p-button-outlined mr-2" (click)="salvar()"></button>
+            <button pButton pRipple type="button" icon="fas fa-times" label="Cancelar"
+                    class="p-button-outlined p-button-danger" (click)="cancelar()"></button>
+          </div>
+
+        </form>
+
+      </p-card>
+    </div>
   </div>
 </div>

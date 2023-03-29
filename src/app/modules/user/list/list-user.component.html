@@ -4,8 +4,11 @@
       <p-button label="Criar" styleClass="duck-button" [routerLink]="['/users/create']"></p-button>
     </div>
     <div class="col-12">
-      <p-card>
-        <p-table [columns]="cols" [value]="users" responsiveLayout="scroll">
+      <p-card styleClass="duck">
+        <div class="pb-3">
+          <h1>Lista de Usuarios</h1>
+        </div>
+        <p-table class="w-full" [columns]="cols" [value]="users" responsiveLayout="scroll">
           <ng-template pTemplate="header" let-columns>
             <tr>
               <th *ngFor="let col of columns">
@@ -31,7 +34,7 @@
                               icon="pi pi-trash"
                               class="p-button-rounded p-button-warning"
                               *ngIf="usuario.id != idUsuarioLogado"
-                              (click)="deleteUser(usuario)"></button>
+                              (click)="deleteUser(usuario.id)"></button>
                     </div>
                     {{usuario[col.field]}}
                     <!--<ngb-highlight [result]="usuario[col.field]" [term]="''"></ngb-highlight>-->

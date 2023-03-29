@@ -2,7 +2,7 @@ export interface BaseResponse {
   type: TypeResponse;
   status: number;
   entity: any | any[];
-  extras: string;
+  extras: string[];
   headers: {[key: string]: any};
 }
 

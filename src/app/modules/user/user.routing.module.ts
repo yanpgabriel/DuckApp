@@ -35,6 +35,15 @@ const routes: Routes = [
           breadcrumb: 'Listar'
         },
       },
+      {
+        path: 'edit/:idUser',
+        canActivate: [AuthGuard],
+        component: CreateUserComponent,
+        data: {
+          roles: ['DUCK_ADM', 'USER_CREATE'],
+          breadcrumb: 'Editar'
+        },
+      },
       { path: '**', redirectTo: 'list', pathMatch: 'full' }
     ]
   }

@@ -94,11 +94,11 @@ export class UtilsService {
   }
 
   // @ts-ignore
-  async createBreadcrumbs(route: ActivatedRoute, url: string = '', breadcrumbs: MenuItem[] = []): Promise<MenuItem[]> {
+  async createBreadcrumbs(route: ActivatedRoute, routerLink: string[] = [], breadcrumbs: MenuItem[] = [], idx = 0): Promise<MenuItem[]> {
+    const routerLinkInternal: string[] = [];
     const children: ActivatedRoute[] = route.children;
 
     if (children.length === 0) {
-      console.log(breadcrumbs);
       return breadcrumbs;
     }
 
@@ -107,18 +107,20 @@ export class UtilsService {
         const breadcrumbUrl = child.snapshot.data['breadcrumbUrl'];
         const routeURL: string = child.snapshot.url.map(segment => segment.path).join('/');
         if (routeURL !== '') {
-          url += `/${routeURL}`;
+          routerLink.push(`${routeURL}`);
         } else if (breadcrumbUrl) {
-          url += `/${breadcrumbUrl}`;
+          routerLink.push(`${breadcrumbUrl}`);
         }
         let label = child.snapshot.data['breadcrumb'];
-        console.log(label, child);
         if (!isNullOrUndefined(label)) {
           label = await this.traduzir(label);
-          breadcrumbs.push({label, url});
+          idx += 1;
+          console.log(label, routerLink, idx, child);
+          breadcrumbs.push({label, routerLink: routerLink});
         }
       }
-      return this.createBreadcrumbs(child, url, breadcrumbs);
+      routerLinkInternal.push(...routerLink);
+      return this.createBreadcrumbs(child, routerLinkInternal, breadcrumbs, idx);
     }
   }
 

@@ -8,6 +8,8 @@ import { DashboardService } from "./dashboard.service";
 })
 export class DashboardComponent implements OnInit {
 
+  host_url = window.location.origin;
+
   sistemas: {
     name: string,
     icon: string,

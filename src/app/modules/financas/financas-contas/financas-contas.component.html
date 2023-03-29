@@ -1,0 +1,68 @@
+<div class="financas-contas">
+  <div class="grid">
+    <div class="col-12 sm:col-12 md:col-6 lg:col-4 xl:col-4 xxl:col-2" *ngIf="contas.length <= 0">
+      <p-card>
+        <ng-template pTemplate="header">
+          <div class="flex align-items-center">
+            <p-skeleton shape="circle" size="2.3rem" styleClass="mr-2"></p-skeleton>
+            <p-skeleton [attr.class]="'w-full'" styleClass="mb-2"></p-skeleton>
+          </div>
+        </ng-template>
+        <ng-template pTemplate="content">
+          <div class="flex justify-content-between w-full">
+            <p-skeleton width="10rem" styleClass="mb-2"></p-skeleton>
+            <p-skeleton width="10rem" styleClass="mb-2"></p-skeleton>
+          </div>
+          <div class="flex justify-content-between w-full">
+            <p-skeleton width="10rem" styleClass="mb-2"></p-skeleton>
+            <p-skeleton width="10rem" styleClass="mb-2"></p-skeleton>
+          </div>
+          <div class="flex justify-content-between w-full">
+            <p-skeleton width="10rem" styleClass="mb-2"></p-skeleton>
+            <p-skeleton width="10rem" styleClass="mb-2"></p-skeleton>
+          </div>
+        </ng-template>
+      </p-card>
+    </div>
+    <div class="col-12 sm:col-12 md:col-6 lg:col-4 xl:col-4 xxl:col-2" *ngFor="let conta of contas">
+      <p-card>
+        <ng-template pTemplate="header">
+          <div class="flex align-items-center">
+            <img [src]="'https://portalvhdshl0fsz1rywfcp.blob.core.windows.net/instituicoes-bancarias-logo/' + conta.instituicao + '.png'">
+            <span>{{ conta.nome }}</span>
+          </div>
+        </ng-template>
+        <ng-template pTemplate="content">
+          <div class="flex justify-content-between w-full">
+            <span class="font-bold">Saldo Inicial:</span>
+            <span [className]="conta.saldoInicial >= 0 ? 'saldo-positivo' : 'saldo-negativo'">{{ conta.saldoInicial | currency:'BRL' }}</span>
+          </div>
+          <div class="flex justify-content-between w-full">
+            <span class="font-bold">Saldo Atual:</span>
+            <span [className]="conta.saldoAtual >= 0 ? 'saldo-positivo' : 'saldo-negativo'">{{ conta.saldoAtual | currency:'BRL' }}</span>
+          </div>
+          <div class="flex justify-content-between w-full">
+            <span class="font-bold">Somar na tela inicial:</span>
+            <span [className]="conta.somarNaTelaInicial ? 'saldo-positivo' : 'saldo-negativo'">{{ conta.somarNaTelaInicial ? 'Sim' : 'Não' }}</span>
+          </div>
+        </ng-template>
+<!--        <ng-template pTemplate="footer">-->
+<!--        </ng-template>-->
+      </p-card>
+    </div>
+    <div class="col-12 sm:col-12 md:col-6 lg:col-4 xl:col-4 xxl:col-2 duck-link-plus" (click)="addConta()">
+      <p-card>
+        <ng-template pTemplate="content">
+          <div class="w-full flex justify-content-center">
+            <em class="fas fa-plus fa-6x"></em>
+          </div>
+        </ng-template>
+        <ng-template pTemplate="footer">
+          <div class="w-full flex justify-content-center">
+            <span>Nova Conta</span>
+          </div>
+        </ng-template>
+      </p-card>
+    </div>
+  </div>
+</div>

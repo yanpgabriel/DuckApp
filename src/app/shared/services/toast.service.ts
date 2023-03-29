@@ -18,12 +18,30 @@ export class ToastService {
     this.show('success', 'Sucesso', message);
   }
 
-  showInfo(message: string ): void {
+  showMultipleSuccess(messages: string[]): void {
+    messages.forEach(message => {
+      this.showSuccess(message)
+    })
+  }
+
+  showInfo(message: string): void {
     this.show('info', 'Info', message);
+  }
+
+  showMultipleInfo(messages: string[]): void {
+    messages.forEach(message => {
+      this.showInfo(message)
+    })
   }
 
   showDanger(message: string): void {
     this.show('error', 'Erro', message);
+  }
+
+  showMultipleDanger(messages: string[]): void {
+    messages.forEach(message => {
+      this.showDanger(message)
+    })
   }
 
   private async show(type: string, titulo: string, message: string) {

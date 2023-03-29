@@ -1,0 +1,13 @@
+version: '3'
+
+services:
+  app:
+    image: nginx
+    volumes:
+      - ../../dist/DuckApp:/usr/share/nginx/html
+      - ./nginx/templates:/etc/nginx/templates
+    ports:
+      - "6000:80"
+    environment:
+      - NGINX_HOST=localhost
+      - NGINX_PORT=80

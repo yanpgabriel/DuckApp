@@ -3,14 +3,18 @@ import ProfileDTO from './ProfileDTO';
 export default class UserDTO {
 
   id?: number;
-  dtcreation: string | null = null;
-  password: string | null = null;
-  profile: ProfileDTO | null = null;
+  email: string | undefined = undefined;
+  fullname: string | undefined = undefined;
+  dtcreation: string | undefined = undefined;
+  password: string | undefined = undefined;
+  profile: ProfileDTO | undefined = undefined;
 
   constructor(
-    email: string,
-    fullname: string,
+    email?: string,
+    fullname?: string,
   ) {
+    this.email = email;
+    this.fullname = fullname;
   }
 
 }

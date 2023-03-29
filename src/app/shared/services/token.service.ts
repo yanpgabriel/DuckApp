@@ -77,14 +77,15 @@ export class TokenService {
     }
     const exp = new Date(this.decodedToken.exp * 1000).getTime();
     const now = new Date().getTime();
-    const timeToNextToken = (exp - now) - 30000;
+    const diff = exp - now;
+    const timeToNextToken = diff <= 30000 ? 1000 : diff - 30000;
     if (this.taskIdRefreshToken != null) {
       clearTimeout(this.taskIdRefreshToken);
     }
     this.taskIdRefreshToken = setTimeout(async () => {
       await this.refreshToken();
     }, timeToNextToken);
-    console.debug('Proximo agendamento do refresh token marcado para: ' + timeToNextToken + 's');
+    console.debug('Proximo agendamento do refresh token marcado para: ' + timeToNextToken/1000 + ` segundos.`);
   }
 
   private successCallback(res, resolve) {

@@ -52,7 +52,10 @@ export class AppComponent implements OnInit {
     // Trata breadcrumb
     this.router.events
       .pipe(filter(event => event instanceof NavigationEnd))
-      .subscribe(async () => this.breadcrumb = await this.utilsService.createBreadcrumbs(this.activatedRoute.root));
+      .subscribe(async () => {
+        this.breadcrumb = await this.utilsService.createBreadcrumbs(this.activatedRoute.root);
+        console.log(this.breadcrumb);
+      });
 
     this.createMenu();
     this.updateTranslate();
@@ -65,7 +68,7 @@ export class AppComponent implements OnInit {
   createMenu(): void {
     this.menu = [
       {
-        label: 'Dashboard',
+        label: 'system.menu.dashboard',
         routerLink: '/dashboard',
         icon: 'fas fa-dragon'
       }, {
@@ -73,6 +76,10 @@ export class AppComponent implements OnInit {
         routerLink: '/users',
         icon: 'fas fa-users',
         roles: ['DUCK_ADM', 'USER_LIST']
+      }, {
+        label: 'system.menu.finances',
+        routerLink: '/financas',
+        icon: 'fas fa-money-check-alt'
       }, {
         label: 'system.menu.ponto',
         routerLink: '/ponto',
@@ -96,10 +103,6 @@ export class AppComponent implements OnInit {
         label: 'system.menu.kanban',
         routerLink: '/kanban',
         icon: 'fas fa-columns'
-      }, {
-        label: 'system.menu.finances',
-        routerLink: '/financas',
-        icon: 'fas fa-money-check-alt'
       }, {
         label: 'system.menu.minecraft',
         routerLink: '/minecraft',

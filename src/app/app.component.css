@@ -57,3 +57,7 @@ main {
 ::-webkit-scrollbar-thumb:hover {
   background: #151515;
 }
+
+::ng-deep .duck.p-card .p-card-content {
+  padding: 0;
+}

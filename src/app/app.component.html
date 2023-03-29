@@ -21,7 +21,6 @@
     </div>
   </div>
   <main class="container-fluid p-4" [class.com-menu]="isLoggedIn" [class.sem-menu]="!isLoggedIn">
-    <!--{{breadcrumb|json}}-->
     <p-breadcrumb [home]="home" [model]="breadcrumb" [hidden]="!isLoggedIn"></p-breadcrumb>
     <router-outlet></router-outlet>
   </main>

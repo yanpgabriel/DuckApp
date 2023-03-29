@@ -57,7 +57,7 @@ main {
 }
 
 .duck-container .duck {
-  margin-bottom: -4px;
+  margin-bottom: -8px;
 }
 
 .duck-container .duck img {
@@ -75,6 +75,11 @@ main {
 
 .duck-link:hover {
   text-decoration: underline;
+}
+
+.duck-link-plus {
+  color: #eee;
+  cursor: pointer;
 }
 
 hr {
@@ -111,6 +116,69 @@ duck-input-dropdown, duck-input-editor, duck-input-keyfilter, duck-input-text {
 
 .grid [class*='col-'] .duck-button, .grid [class*='col-'] .duck-img {
   width: 100%;
+}
+
+@media screen and (min-width: 1850px) {
+  .xxl\:col-1 {
+    flex: 0 0 auto;
+    padding: 0.5rem;
+    width: 8.3333%;
+  }
+  .xxl\:col-2 {
+    flex: 0 0 auto;
+    padding: 0.5rem;
+    width: 16.6667%;
+  }
+  .xxl\:col-3 {
+    flex: 0 0 auto;
+    padding: 0.5rem;
+    width: 25%;
+  }
+  .xxl\:col-4 {
+    flex: 0 0 auto;
+    padding: 0.5rem;
+    width: 33.3333%;
+  }
+  .xxl\:col-5 {
+    flex: 0 0 auto;
+    padding: 0.5rem;
+    width: 41.6667%;
+  }
+  .xxl\:col-6 {
+    flex: 0 0 auto;
+    padding: 0.5rem;
+    width: 50%;
+  }
+  .xxl\:col-7 {
+    flex: 0 0 auto;
+    padding: 0.5rem;
+    width: 58.3333%;
+  }
+  .xxl\:col-8 {
+    flex: 0 0 auto;
+    padding: 0.5rem;
+    width: 66.6667%;
+  }
+  .xxl\:col-9 {
+    flex: 0 0 auto;
+    padding: 0.5rem;
+    width: 75%;
+  }
+  .xxl\:col-10 {
+    flex: 0 0 auto;
+    padding: 0.5rem;
+    width: 83.3333%;
+  }
+  .xxl\:col-11 {
+    flex: 0 0 auto;
+    padding: 0.5rem;
+    width: 91.6667%;
+  }
+  .xxl\:col-12 {
+    flex: 0 0 auto;
+    padding: 0.5rem;
+    width: 100%;
+  }
 }
 
 /* Fim PrimeNG */

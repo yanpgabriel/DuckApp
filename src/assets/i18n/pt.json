@@ -6,11 +6,11 @@
     "profile": "Perfil",
     "leave": "Sair",
     "menu": {
-      "dashboard": "Dashboard",
+      "dashboard": "Painel",
       "users": "Usuários",
       "ponto": "Ponto",
       "tasks": "Tarefas",
-      "bot": "Bot Discord",
+      "bot": "Robo Discord",
       "kanban": "Kanban",
       "teste": "Teste",
       "finances": "Finanças",

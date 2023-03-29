@@ -1,21 +1,33 @@
 import { Component, OnInit } from '@angular/core';
+import { FinancasService } from "../financas.service";
 
 @Component({
-  selector: 'duck-contas',
-  templateUrl: './contas.component.html',
-  styleUrls: ['./contas.component.css']
+  selector: 'duck-financas-contas',
+  templateUrl: './financas-contas.component.html',
+  styleUrls: ['./financas-contas.component.css']
 })
-export class ContasComponent implements OnInit {
+export class FinancasContasComponent implements OnInit {
 
   contas: any = [];
 
-  constructor() { }
+  constructor(
+    private contasService: FinancasService
+  ) { }
 
   ngOnInit(): void {
-    this.listarContas();
+    // this.mockContas();
+    this.listarContasComSaldos();
   }
 
-  listarContas() {
+  listarContasComSaldos() {
+    this.contasService.listarContasComSaldos().subscribe(res => this.contas = res.entity)
+  }
+
+  addConta() {
+    alert('não implementado');
+  }
+
+  mockContas() {
     this.contas = [
       {
         nome: 'Itaú',
