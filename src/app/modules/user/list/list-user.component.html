@@ -21,6 +21,9 @@
             <tr>
               <td *ngFor="let col of columns">
                 <ng-container [ngSwitch]="col.pipe">
+                  <span *ngSwitchCase="'object'">
+                    <b>Perfil:</b> {{ usuario[col.field].name }}
+                  </span>
                   <span *ngSwitchCase="'data'">{{usuario[col.field] | date:'dd/MM/yyyy'}}</span>
                   <ng-container *ngSwitchDefault>
                     <p-tableCheckbox *ngIf="col.field === 'check'" [value]="usuario"></p-tableCheckbox>
@@ -36,7 +39,7 @@
                               *ngIf="usuario.id != idUsuarioLogado"
                               (click)="deleteUser(usuario.id)"></button>
                     </div>
-                    {{usuario[col.field]}}
+                    {{ usuario[col.field] }}
                     <!--<ngb-highlight [result]="usuario[col.field]" [term]="''"></ngb-highlight>-->
                   </ng-container>
                 </ng-container>

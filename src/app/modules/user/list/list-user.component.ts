@@ -30,7 +30,7 @@ export class ListUserComponent implements OnInit {
       { field: 'email', header: 'E-mail' },
       { field: 'fullname', header: 'Nome Completo' },
       { field: 'dtcreation', header: 'Data Criação', pipe: 'data' },
-      { field: 'keycloackId', header: 'Keycloack ID' },
+      { field: 'profile', header: 'Perfil', pipe: 'object' },
       { field: 'actions', header: 'Ações' },
     ];
     this.atualizarLista();

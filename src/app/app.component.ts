@@ -96,10 +96,6 @@ export class AppComponent implements OnInit {
         icon: 'fas fa-user',
         roles: ['DUCK_ADM', 'BOT']
       }, {
-        label: 'system.menu.teste',
-        routerLink: '/teste',
-        icon: 'fas fa-user'
-      }, {
         label: 'system.menu.kanban',
         routerLink: '/kanban',
         icon: 'fas fa-columns'
@@ -107,6 +103,10 @@ export class AppComponent implements OnInit {
         label: 'system.menu.minecraft',
         routerLink: '/minecraft',
         icon: 'fas fa-square-full'
+      }, {
+        label: 'system.menu.teste',
+        routerLink: '/teste',
+        icon: 'fas fa-user'
       }
     ];
   }
@@ -120,7 +120,10 @@ export class AppComponent implements OnInit {
     this.minimenu = [
       {
         label: 'system.profile',
-        icon: 'fas fa-user'
+        icon: 'fas fa-user',
+        command: () => {
+          this.router.navigate(['users', 'edit', this.authService.obterProfile()?.id])
+        }
       },
       {
         label: 'system.toggleLanguage',

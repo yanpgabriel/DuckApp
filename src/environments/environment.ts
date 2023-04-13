@@ -1,9 +1,9 @@
 export const environment = {
   production: false,
-  api_host: 'http://192.168.0.3:8080/api',
-  discord_bot_host: 'http://local.yanpgabriel.com:8069',
-  ws_host: 'ws://localhost:8080',
-  configFile: 'assets/config/config.dev.json'
+  api_host: '',
+  discord_bot_host: '',
+  ws_host: '',
+  configFile: ''
 };
 
 // This file can be replaced during build by using the `fileReplacements` array.

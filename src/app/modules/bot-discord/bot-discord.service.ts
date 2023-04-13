@@ -17,22 +17,22 @@ export class BotDiscordService {
   }
 
   listServers(): Observable<any> {
-    return this.httpClient.get<any>(`${environment.discord_bot_host}/bot/servers`);
+    return this.httpClient.get<any>(`${environment.discord_bot_host}/bot/music/servers`);
   }
 
   queueFromServer(idServer: string): Observable<any> {
-    return this.httpClient.get<any>(`${environment.discord_bot_host}/bot/queue/${idServer}`);
+    return this.httpClient.get<any>(`${environment.discord_bot_host}/bot/music/queue/${idServer}`);
   }
 
   initBot() {
-    return this.httpClient.get<any>(`${environment.discord_bot_host}/bot/start`);
+    return this.httpClient.get<any>(`${environment.discord_bot_host}/bot/music/start`);
   }
 
   stopBot() {
-    return this.httpClient.get<any>(`${environment.discord_bot_host}/bot/stop`);
+    return this.httpClient.get<any>(`${environment.discord_bot_host}/bot/music/stop`);
   }
 
   async checkBot() {
-    return await this.httpClient.get<any>(`${environment.discord_bot_host}/bot/check`).toPromise();
+    return await this.httpClient.get<any>(`${environment.discord_bot_host}/bot/music/check`).toPromise();
   }
 }
