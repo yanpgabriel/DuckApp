@@ -49,3 +49,4 @@ Thumbs.db
 
 # Do projeto
 /src/assets/config/*.json
+/src/environments/environment.*.ts
