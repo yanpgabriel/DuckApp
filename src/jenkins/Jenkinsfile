@@ -41,8 +41,10 @@ pipeline {
               }
             }
             steps {
-                sh 'npm install'
-                sh 'npm run build'
+                configFileProvider([configFile(fileId: '21e1e978-2116-4060-bdc9-3e21e7782c37', targetLocation: './src/environments')]) {
+                    sh 'npm install'
+                    sh 'npm run build'
+                }
             }
         }
         stage('Gerar arquivo compactado') {
