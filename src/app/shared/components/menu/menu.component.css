@@ -3,8 +3,8 @@
 }
 
 ol.duck-menu, ul.duck-menu {
-  list-style:none;
-  margin-top: 1rem;
+  list-style: none;
+  margin-top: 1.6rem;
 }
 
 ol.duck-menu, ul.duck-menu li {
@@ -14,9 +14,9 @@ ol.duck-menu, ul.duck-menu li {
 ol.duck-menu, ul.duck-menu li a {
   width: 100%;
   color: var(--text-color);
-  padding: 0.5rem;
-  border-radius: 0.5rem;
-  margin-bottom: 0.5rem;
+  padding: 0.8rem;
+  border-radius: 0.8rem;
+  margin-bottom: 0.8rem;
   text-decoration: none;
 }
 
@@ -26,6 +26,6 @@ ol.duck-menu, ul.duck-menu li a:hover, ol.duck-menu, ul.duck-menu li a.active {
 }
 
 ol.duck-menu, ul.duck-menu li a em {
-  margin-left: 0.25rem;
-  margin-right: 0.5rem;
+  margin-left: 0.4rem;
+  margin-right: 0.8rem;
 }

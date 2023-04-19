@@ -10,7 +10,7 @@
   justify-content: center;
 
   font-weight: bold;
-  font-size: var(--tamanho-1rem);
+  font-size: 1.6rem;
 }
 
 ::ng-deep [class*=col] .p-card-content  .icone {

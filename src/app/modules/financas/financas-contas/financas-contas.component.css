@@ -1,16 +1,16 @@
 ::ng-deep .p-card-header {
-  padding: 1rem;
+  padding: 1.6rem;
 }
 
 ::ng-deep .p-card-header img {
-  width: 3rem !important;
+  width: 4rem !important;
   border-radius: 50%;
 }
 
 ::ng-deep .p-card-header span {
-  margin-left: 1rem;
+  margin-left: 1.6rem;
   font-weight: 700;
-  font-size: 1.5rem;
+  font-size: 2.4rem;
 }
 
 ::ng-deep .p-card-footer span {
@@ -20,7 +20,7 @@
 
 ::ng-deep .financas-contas .p-card {
   color: inherit;
-  min-height: 234px;
+  min-height: 18rem;
 }
 
 .saldo-positivo {

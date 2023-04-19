@@ -20,7 +20,7 @@ import { ToastService } from '../../../shared/services/toast.service';
                 </div>
                 <div class="field col">
                   <span id="senha" class="p-float-label">
-                      <p-password id="float-input" styleClass="w-full" [(ngModel)]="password" [toggleMask]="true"></p-password>
+                      <p-password id="float-input" styleClass="w-full p-password p-component p-inputwrapper p-input-icon-right" [(ngModel)]="password" [toggleMask]="true"></p-password>
                       <label for="float-input">Senha</label>
                   </span>
                 </div>

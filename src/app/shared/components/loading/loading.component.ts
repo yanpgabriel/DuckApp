@@ -1,6 +1,6 @@
-import {Component, OnInit} from '@angular/core';
-import {LoadingService} from '../../services/loading.service';
-import {delay} from 'rxjs/operators';
+import { Component, OnInit } from '@angular/core';
+import { LoadingService } from '../../services/loading.service';
+import { delay } from 'rxjs/operators';
 
 @Component({
   selector: 'duck-loading',
@@ -34,7 +34,7 @@ import {delay} from 'rxjs/operators';
         box-shadow: none;
       }
       .duck-loading > div {
-        box-shadow: 0 0 10px 2px #cccccc;
+        box-shadow: 0 0 1.0rem 0.2rem var(--surface-b);
       }
     `
   ]

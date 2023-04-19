@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'duck-teste',
@@ -10,6 +10,10 @@ export class TesteComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  printTamanho() {
+    alert(`Largura: ${window.innerWidth} Altura: ${window.innerHeight}`)
   }
 
 }

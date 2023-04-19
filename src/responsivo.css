@@ -1,0 +1,123 @@
+html {
+  /* a cada 1rem será considera 10px */
+  font-size: 62.5%;
+}
+body {
+  font-size: 1.6rem;
+}
+
+.p-component, .pi {
+  font-size: 1.6rem;
+}
+.p-float-label label, .p-input-icon-left > i, .p-input-icon-right > i {
+  margin-top: -0.8rem;
+}
+
+.grid > .col, .grid > [class*=col] {
+  padding: 0.8rem;
+}
+
+.duck-link-plus .fas {
+  font-size: 10.5rem;
+}
+
+@media screen and (max-width: 375px) {
+  html {
+    font-size: 35%;
+  }
+}
+@media screen and (min-width: 376px) and (max-width: 425px) {
+  html {
+    font-size: 40%;
+  }
+}
+@media screen and (min-width: 426px) and (max-width: 768px) {
+  html {
+    font-size: 45%;
+  }
+}
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+  html {
+    font-size: 50%;
+  }
+}
+@media screen and (min-width: 1025px) and (max-width: 1440px) {
+  html {
+    font-size: 55%;
+  }
+}
+@media screen and (min-width: 1441px) and (max-width: 1920px) {
+  /* Padrão */
+}
+
+@media screen and (min-width: 1921px) {
+  html {
+    font-size: 80%;
+  }
+}
+
+
+
+
+@media screen and (min-width: 1850px) {
+  .xxl\:col-1 {
+    flex: 0 0 auto;
+    padding: 0.5rem;
+    width: 8.3333%;
+  }
+  .xxl\:col-2 {
+    flex: 0 0 auto;
+    padding: 0.5rem;
+    width: 16.6667%;
+  }
+  .xxl\:col-3 {
+    flex: 0 0 auto;
+    padding: 0.5rem;
+    width: 25%;
+  }
+  .xxl\:col-4 {
+    flex: 0 0 auto;
+    padding: 0.5rem;
+    width: 33.3333%;
+  }
+  .xxl\:col-5 {
+    flex: 0 0 auto;
+    padding: 0.5rem;
+    width: 41.6667%;
+  }
+  .xxl\:col-6 {
+    flex: 0 0 auto;
+    padding: 0.5rem;
+    width: 50%;
+  }
+  .xxl\:col-7 {
+    flex: 0 0 auto;
+    padding: 0.5rem;
+    width: 58.3333%;
+  }
+  .xxl\:col-8 {
+    flex: 0 0 auto;
+    padding: 0.5rem;
+    width: 66.6667%;
+  }
+  .xxl\:col-9 {
+    flex: 0 0 auto;
+    padding: 0.5rem;
+    width: 75%;
+  }
+  .xxl\:col-10 {
+    flex: 0 0 auto;
+    padding: 0.5rem;
+    width: 83.3333%;
+  }
+  .xxl\:col-11 {
+    flex: 0 0 auto;
+    padding: 0.5rem;
+    width: 91.6667%;
+  }
+  .xxl\:col-12 {
+    flex: 0 0 auto;
+    padding: 0.5rem;
+    width: 100%;
+  }
+}
