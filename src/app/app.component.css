@@ -28,7 +28,11 @@ main {
 }
 
 .close .side-menu {
-  width: 5rem;
+  width: 6.5rem;
+}
+
+.close div.logo {
+  justify-content: center;
 }
 
 ::ng-deep .close .side-menu .p-avatar.p-avatar-xl {

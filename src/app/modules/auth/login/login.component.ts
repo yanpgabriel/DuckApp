@@ -25,7 +25,7 @@ import { ToastService } from '../../../shared/services/toast.service';
                   </span>
                 </div>
                 <div class="field col">
-                    <button pButton type="button" id="enviar" class="p-button-outlined" (click)="login()">Enviar</button>
+                    <button pButton type="button" id="enviar" class="p-button-outlined" [disabled]="!btnAtivo" (click)="login()">Enviar</button>
                 </div>
             </div>
         </div>
@@ -37,6 +37,7 @@ export class LoginComponent implements OnInit {
 
   email = 'testeradmin@mail.com';
   password = 'teste';
+  btnAtivo = true;
 
   constructor(
     private router: Router,
@@ -46,6 +47,12 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    document.addEventListener('keypress',  (event) => {
+      if (event.key == "Enter") {
+        this.btnAtivo = false;
+        this.login();
+      }
+    })
   }
 
   async login(): Promise<void> {
@@ -54,6 +61,7 @@ export class LoginComponent implements OnInit {
       this.toastService.showSuccess('avisos.LOGIN');
       await this.router.navigate(['/']);
     } else {
+      this.btnAtivo = true;
       this.toastService.showDanger('avisos.LOGIN_ERROR');
     }
   }

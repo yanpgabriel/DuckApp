@@ -32,7 +32,16 @@
             ],
             "styles": [
               "./node_modules/primeicons/primeicons.css",
-              "./node_modules/primeng/resources/themes/bootstrap4-dark-purple/theme.css",
+              {
+                "input": "src/theme-light.css",
+                "bundleName": "light",
+                "inject": false
+              },
+              {
+                "input": "src/theme-dark.css",
+                "bundleName": "dark",
+                "inject": false
+              },
               "./node_modules/primeng/resources/primeng.min.css",
               "./node_modules/@fortawesome/fontawesome-free/css/all.css",
               "./node_modules/primeflex/primeflex.css",
@@ -44,7 +53,7 @@
             "scripts": [
               "./node_modules/quill/dist/quill.js"
             ],
-            "serviceWorker": false,
+            "serviceWorker": true,
             "ngswConfigPath": "ngsw-config.json"
           },
           "configurations": {

@@ -44,7 +44,7 @@ body {
 }
 
 .duck-link {
-  color: black;
+  color: var(--text-color);
   cursor: pointer;
   text-decoration: none;
 }
@@ -61,6 +61,14 @@ body {
 hr {
   border-top: 1px solid #EEEEEE;
 }
+
+.saldo-positivo {
+  color: #00ff00;
+}
+.saldo-negativo {
+  color: #ff0000;
+}
+
 
 /* PrimeNG */
 .flex > div, .box {
@@ -88,6 +96,7 @@ duck-input-dropdown, duck-input-editor, duck-input-keyfilter, duck-input-text {
 
 .p-autocomplete, .p-dropdown, .p-inputtext {
   width: 100%;
+  font-size: 1.6rem;
 }
 
 .grid [class*='col-'] .duck-button, .grid [class*='col-'] .duck-img {

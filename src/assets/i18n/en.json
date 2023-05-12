@@ -18,6 +18,8 @@
     }
   },
   "avisos": {
+    "NETWORK": "Internet connection reestablished!",
+    "NOT_NETWORK": "It looks like you have no internet access!",
     "NOT_CONNECTION": "Unable to connect to the server!",
     "LOGIN_ERROR": "Unable to login!",
     "LOGIN": "Successfully Logged In,",

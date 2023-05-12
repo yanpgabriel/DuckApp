@@ -6,17 +6,17 @@ import { delay } from 'rxjs/operators';
   selector: 'duck-loading',
   template: `
     <div *ngIf="loading" class="flex flex-column align-items-center h-full w-full duck-container duck-loading">
-      <div>
-        <div class="text-center align-self-center w-15rem duck">
+      <div class="w-20rem">
+        <h2>{{ 'system.name' | translate }}</h2>
+        <div class="text-center align-self-center duck">
           <img alt="DuckApp" src="/assets/img/duck.png"/>
-          <h2>{{ 'system.name' | translate }}</h2>
         </div>
-        <div class="text-center align-self-center w-15rem">
+        <div class="text-center align-self-center w-full">
           <!--      <div class="spinner-border" style="margin-top: 1rem; width: 5rem; height: 5rem;" role="status">-->
           <!--        <span class="sr-only">Loading...</span>-->
           <!--      </div>-->
           <!--<mat-progress-bar mode="indeterminate" style="width: 16%; margin-left: 42%;"></mat-progress-bar>-->
-          <p-progressBar mode="indeterminate" [style]="{'height': '0.5rem'}"></p-progressBar>
+          <p-progressBar mode="indeterminate" [style]="{'height': '1rem'}"></p-progressBar>
         </div>
       </div>
     </div>
@@ -29,6 +29,9 @@ import { delay } from 'rxjs/operators';
         /*background-color: #ffffffd4;*/
         /*background-color: #000000e0;*/
         z-index: 1;
+      }
+      .duck-loading h2 {
+        margin-bottom: -2rem;
       }
       .duck-loading div {
         box-shadow: none;

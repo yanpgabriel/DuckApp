@@ -4,6 +4,7 @@ import { FinancasComponent } from "./financas.component";
 import { AuthGuard } from "../../shared/guards/auth.guard";
 import { FinancasContasComponent } from "./financas-contas/financas-contas.component";
 import { FinancasDashboardComponent } from "./financas-dashboard/financas-dashboard.component";
+import { FinancasTransacoesComponent } from "./financas-transacoes/financas-transacoes.component";
 
 const routes: Routes = [
   {
@@ -16,7 +17,7 @@ const routes: Routes = [
         path: 'dashboard',
         component: FinancasDashboardComponent,
         data: {
-          roles: ['DUCK_ADM', 'USER_CREATE'],
+          roles: ['DUCK_ADM'],
           breadcrumb: 'Dashboard',
         },
       },
@@ -24,8 +25,16 @@ const routes: Routes = [
         path: 'contas',
         component: FinancasContasComponent,
         data: {
-          roles: ['DUCK_ADM', 'USER_CREATE'],
+          roles: ['DUCK_ADM'],
           breadcrumb: 'Contas'
+        },
+      },
+      {
+        path: 'transacoes',
+        component: FinancasTransacoesComponent,
+        data: {
+          roles: ['DUCK_ADM'],
+          breadcrumb: 'Transações'
         },
       },
       { path: '**', redirectTo: 'dashboard', pathMatch: 'full' }

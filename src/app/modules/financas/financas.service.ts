@@ -22,4 +22,12 @@ export class FinancasService {
   obterSaldoTotal(): Observable<BaseResponse> {
     return this.http.get<BaseResponse>(`${this.BASE_URL}/conta/saldo-total`);
   }
+
+  obterTransacoes(): Observable<BaseResponse> {
+    return this.http.get<BaseResponse>(`${this.BASE_URL}/transacao`);
+  }
+
+  obterCategoriasTransacao(): Observable<BaseResponse> {
+    return this.http.get<BaseResponse>(`${this.BASE_URL}/categoria/transacao`);
+  }
 }

@@ -8,20 +8,28 @@ import { FinancasContasComponent } from './financas-contas/financas-contas.compo
 import { ButtonModule } from "primeng/button";
 import { FinancasDashboardComponent } from './financas-dashboard/financas-dashboard.component';
 import { SkeletonModule } from "primeng/skeleton";
+import { FinancasTransacoesComponent } from './financas-transacoes/financas-transacoes.component';
+import { RippleModule } from "primeng/ripple";
+import { TableModule } from "primeng/table";
+import { ChipModule } from "primeng/chip";
 
 
 @NgModule({
   declarations: [
     FinancasComponent,
     FinancasContasComponent,
-    FinancasDashboardComponent
+    FinancasDashboardComponent,
+    FinancasTransacoesComponent
   ],
-    imports: [
-        CommonModule,
-        FinancasRoutingModule,
-        CardModule,
-        ButtonModule,
-        SkeletonModule
-    ]
+  imports: [
+    CommonModule,
+    FinancasRoutingModule,
+    CardModule,
+    ButtonModule,
+    SkeletonModule,
+    RippleModule,
+    TableModule,
+    ChipModule
+  ]
 })
 export class FinancasModule { }

@@ -22,10 +22,3 @@
   color: inherit;
   min-height: 18rem;
 }
-
-.saldo-positivo {
-  color: #00ff00;
-}
-.saldo-negativo {
-  color: #ff0000;
-}

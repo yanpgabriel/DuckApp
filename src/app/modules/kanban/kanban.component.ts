@@ -108,10 +108,12 @@ export class KanbanComponent implements OnInit {
         event.currentIndex,
       );
     }
-    const demanda = event.container.data[event.currentIndex];
-    demanda.idEstado = +event.container.id;
-    this.demandaService.atualizar(demanda).subscribe(d => {
-      console.log(d);
+    event.container.data.forEach((demanda, idx) => {
+      demanda.idEstado = +event.container.id;
+      demanda.ordem = idx;
+      this.demandaService.atualizar(demanda).subscribe(d => {
+        console.log(d);
+      });
     });
   }
 
@@ -143,6 +145,7 @@ export class KanbanComponent implements OnInit {
       titulo: form.value.titulo,
       desc: form.value.descricao,
       estimativa: form.value.estimativa.value,
+      ordem: 0,
     }
 
     if (isStringVaziaNullOrUndefined(valor.id)) {

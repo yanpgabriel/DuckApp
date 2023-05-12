@@ -1,10 +1,10 @@
 .kanban {
-  padding: 0.5rem;
+  padding: 0.8rem;
   justify-content: space-between;
 }
 
 .kanban div {
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.8rem;
 }
 
 .kanban-container {
@@ -56,9 +56,9 @@
 
 .kanban-card {
   display: flex;
-  margin-bottom: 0.25rem;
-  padding: 0.5rem 10px;
-  font-size: 1rem;
+  margin-bottom: 0.4rem;
+  padding: 0.5rem 1rem;
+  font-size: 1.6rem;
   box-sizing: border-box;
   align-items: center;
   flex-direction: row;
@@ -67,8 +67,8 @@
 
 .kanban-card.add {
   width: 100%;
-  margin: 0;
-  padding: 0.5rem;
+  margin: 0 !important;
+  padding: 0.8rem;
   display: block;
   text-align: left;
 }

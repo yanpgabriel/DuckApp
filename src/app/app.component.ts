@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
+import { ActivatedRoute, NavigationEnd, RouteConfigLoadEnd, RouteConfigLoadStart, Router } from '@angular/router';
 import { MenuItem } from 'primeng/api/menuitem';
 import { NetworkService } from './shared/services/network.service';
 import { AuthService } from './shared/services/auth.service';
@@ -7,6 +7,9 @@ import { filter } from "rxjs";
 import { UtilsService } from "./shared/services/utils.service";
 import { Menu } from "primeng/menu";
 import { isNullOrUndefined } from "./shared/util";
+import { LoadingService } from "./shared/services/loading.service";
+import { TemaService } from "./shared/services/tema.service";
+import { ToastService } from "./shared/services/toast.service";
 
 @Component({
   selector: 'duck-root',
@@ -34,6 +37,9 @@ export class AppComponent implements OnInit {
     private router: Router,
     private activatedRoute: ActivatedRoute,
     private networkService: NetworkService,
+    private loadingService: LoadingService,
+    private temaService: TemaService,
+    private toastService: ToastService,
     public authService: AuthService,
     public utilsService: UtilsService,
   ) {
@@ -49,6 +55,13 @@ export class AppComponent implements OnInit {
       this.utilsService.reloadLang(this.utilsService.getBrowserLang());
     }
 
+    // Trata LazyLoading
+    this.router.events
+      .pipe(filter(event => event instanceof RouteConfigLoadStart || event instanceof RouteConfigLoadEnd))
+      .subscribe(async (event) => {
+        this.loadingService.toggleLoading();
+      });
+
     // Trata breadcrumb
     this.router.events
       .pipe(filter(event => event instanceof NavigationEnd))
@@ -61,11 +74,11 @@ export class AppComponent implements OnInit {
     this.updateTranslate();
   }
 
-  signOut(): void {
+  private signOut(): void {
     this.authService.efetuarLogout();
   }
 
-  createMenu(): void {
+  private createMenu(): void {
     this.menu = [
       {
         label: 'system.menu.dashboard',
@@ -111,12 +124,16 @@ export class AppComponent implements OnInit {
     ];
   }
 
-  toggleLanguage(): void {
+  private toggleLanguage(): void {
     this.utilsService.toogleLanguage();
     this.updateTranslate();
   }
 
-  updateTranslate() {
+  private toggleTheme(): void {
+    this.temaService.toggleTheme();
+  }
+
+  private updateTranslate() {
     this.minimenu = [
       {
         label: 'system.profile',
@@ -131,6 +148,11 @@ export class AppComponent implements OnInit {
         command: () => this.toggleLanguage()
       },
       {
+        label: 'system.toggleTheme',
+        icon: 'fas fa-language',
+        command: () => this.toggleTheme()
+      },
+      {
         label: 'system.leave',
         icon: 'fas fa-door-open',
         command: () => this.signOut()
@@ -141,20 +163,14 @@ export class AppComponent implements OnInit {
     });
   }
 
-  getName() {
-    return this.profile?.fullname || 'Usuário não Identificado';
-  }
-
-  getPicture() {
-    return this.picture || './assets/img/duck.png';
-  }
-
   private listenNetworkConection() {
     this.networkService.statusConexao.subscribe(online => {
       if (online) {
-        console.log('Aplicação online, salvando tudo usando a API.');
+        console.debug('Aplicação online, salvando tudo usando a API.');
+        this.toastService.showInfo('avisos.NETWORK');
       } else {
-        console.log('Aplicação offiline, salvando tudo no banco local.');
+        console.debug('Aplicação offiline, salvando tudo no banco local.');
+        this.toastService.showDanger('avisos.NOT_NETWORK');
       }
     })
   }
@@ -171,5 +187,13 @@ export class AppComponent implements OnInit {
     if (this.isLoggedIn) {
       this.profile = this.authService.obterProfile();
     }
+  }
+
+  getName() {
+    return this.profile?.fullname || 'Usuário não Identificado';
+  }
+
+  getPicture() {
+    return this.picture || './assets/img/duck.png';
   }
 }

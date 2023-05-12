@@ -18,6 +18,8 @@
     }
   },
   "avisos": {
+    "NETWORK": "Conexão com a internet restabelecida!",
+    "NOT_NETWORK": "Parece que você esta sem acesso a internet!",
     "NOT_CONNECTION": "Não foi possivel estabelecer conexão com o servidor!",
     "LOGIN_ERROR": "Não foi possivel fazer login!",
     "LOGIN": "Logado com Sucesso.",

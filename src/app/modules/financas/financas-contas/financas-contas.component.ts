@@ -11,7 +11,7 @@ export class FinancasContasComponent implements OnInit {
   contas: any = [];
 
   constructor(
-    private contasService: FinancasService
+    private financasService: FinancasService
   ) { }
 
   ngOnInit(): void {
@@ -20,7 +20,7 @@ export class FinancasContasComponent implements OnInit {
   }
 
   listarContasComSaldos() {
-    this.contasService.listarContasComSaldos().subscribe(res => this.contas = res.entity)
+    this.financasService.listarContasComSaldos().subscribe(res => this.contas = res.entity)
   }
 
   addConta() {
