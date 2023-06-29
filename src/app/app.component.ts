@@ -139,7 +139,7 @@ export class AppComponent implements OnInit {
         label: 'system.profile',
         icon: 'fas fa-user',
         command: () => {
-          this.router.navigate(['users', 'edit', this.authService.obterProfile()?.id])
+          this.router.navigate(['users', 'edit', this.authService.obterUsuario()?.id])
         }
       },
       {
@@ -185,7 +185,7 @@ export class AppComponent implements OnInit {
   private actionsLogin() {
     this._isLoggedIn = this.authService.usuarioEstaLogado();
     if (this.isLoggedIn) {
-      this.profile = this.authService.obterProfile();
+      this.profile = this.authService.obterUsuario();
     }
   }
 

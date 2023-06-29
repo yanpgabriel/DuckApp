@@ -9,6 +9,8 @@
     "menu": {
       "dashboard": "Dashboard",
       "users": "Users",
+      "profiles": "Profiles",
+      "roles": "Roles",
       "ponto": "Point",
       "tasks": "Tasks",
       "bot": "Bot Discord",

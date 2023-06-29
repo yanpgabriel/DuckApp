@@ -1,0 +1,16 @@
+<div>
+  <div class="grid">
+    <div class="col-3">
+      <p-button label="Usuários" styleClass="duck-button" [routerLink]="['/users']"></p-button>
+    </div>
+    <div class="col-3">
+      <p-button label="Perfis" styleClass="duck-button" [routerLink]="['/users/profiles']"></p-button>
+    </div>
+    <div class="col-3">
+      <p-button label="Permissões" styleClass="duck-button" [routerLink]="['/users/profiles/roles']"></p-button>
+    </div>
+    <div class="col-12">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>

@@ -144,7 +144,7 @@ export class KanbanComponent implements OnInit {
       idEstado: this.idEstado,
       titulo: form.value.titulo,
       desc: form.value.descricao,
-      estimativa: form.value.estimativa.value,
+      estimativa: form.value.estimativa,
       ordem: 0,
     }
 

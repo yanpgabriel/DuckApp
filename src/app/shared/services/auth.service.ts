@@ -30,10 +30,10 @@ export class AuthService {
     // if (this.utilsService.ignoreLogin) {
     //   return false;
     // }
-    return this.tokenService.getDecodedToken() != null;
+    return this.obterUsuario() != null;
   }
 
-  obterProfile(): UserDTO | null {
+  obterUsuario(): UserDTO | null {
     // if (this.utilsService.ignoreLogin) {
     //   return new UserDTO(0, 'yanpgabriel@gmail.com', 'Yan');
     // } else

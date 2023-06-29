@@ -1,0 +1,33 @@
+<p-card styleClass="duck">
+  <div class="pb-3">
+    <h1>Lista de Permissões</h1>
+  </div>
+  <p-table class="w-full" [columns]="cols" [value]="roles" responsiveLayout="scroll">
+    <ng-template pTemplate="header" let-columns>
+      <tr>
+        <th *ngFor="let col of columns">
+          <p-tableHeaderCheckbox *ngIf="col.field === 'check'"></p-tableHeaderCheckbox>
+          {{col.header}}
+        </th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-usuario let-columns="columns">
+      <tr>
+        <td *ngFor="let col of columns">
+          <ng-container [ngSwitch]="col.pipe">
+                  <span *ngSwitchCase="'object'">
+                    {{ usuario[col.field] ? usuario[col.field].name : 'Nenhum' }}
+                  </span>
+            <span *ngSwitchCase="'data'">{{usuario[col.field] | date:'dd/MM/yyyy'}}</span>
+            <ng-container *ngSwitchDefault>
+              <p-tableCheckbox *ngIf="col.field === 'check'" [value]="usuario"></p-tableCheckbox>
+              <div *ngIf="col.field === 'actions'">
+              </div>
+              {{ usuario[col.field] }}
+            </ng-container>
+          </ng-container>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+</p-card>

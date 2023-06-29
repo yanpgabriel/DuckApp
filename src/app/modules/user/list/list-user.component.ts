@@ -34,7 +34,7 @@ export class ListUserComponent implements OnInit {
       { field: 'actions', header: 'Ações' },
     ];
     this.atualizarLista();
-    const obterProfile = this.authService.obterProfile();
+    const obterProfile = this.authService.obterUsuario();
     if (obterProfile != null && obterProfile.id != undefined) {
       this.idUsuarioLogado = obterProfile.id;
     }

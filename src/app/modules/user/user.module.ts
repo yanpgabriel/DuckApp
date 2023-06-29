@@ -11,6 +11,8 @@ import { UserComponent } from "./user.component";
 import { CardModule } from "primeng/card";
 import { InputTextModule } from "primeng/inputtext";
 import { PasswordModule } from "primeng/password";
+import { DropdownModule } from "primeng/dropdown";
+import { SharedModule } from "../../shared/shared.module";
 
 @NgModule({
   declarations: [
@@ -28,7 +30,9 @@ import { PasswordModule } from "primeng/password";
     RippleModule,
     CardModule,
     InputTextModule,
-    PasswordModule
+    PasswordModule,
+    DropdownModule,
+    SharedModule
   ]
 })
 export class UserModule { }

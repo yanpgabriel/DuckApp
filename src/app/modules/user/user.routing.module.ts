@@ -44,6 +44,10 @@ const routes: Routes = [
           breadcrumb: 'Editar'
         },
       },
+      {
+        path: 'profiles',
+        loadChildren: () => import('./profile/profile.module').then(m => m.ProfileModule)
+      },
       { path: '**', redirectTo: 'list', pathMatch: 'full' }
     ]
   }

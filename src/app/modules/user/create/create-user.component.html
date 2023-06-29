@@ -30,6 +30,14 @@
               <label for="ipt-password">Senha</label>
             </span>
           </div>
+          <div class="w-full col mt-3">
+            <duck-input-dropdown id="profile"
+                                 label=""
+                                 formControlName="profile"
+                                 placeholder="Selecione um Perfil para o Usuário"
+                                 [options]="profiles"
+            ></duck-input-dropdown>
+          </div>
 
           <div class="w-full col mt-3">
             <button pButton pRipple type="button" icon="pi pi-check" label="Salvar"

@@ -9,6 +9,8 @@
     "menu": {
       "dashboard": "Painel",
       "users": "Usuários",
+      "profiles": "Perfis",
+      "roles": "Permissões",
       "ponto": "Ponto",
       "tasks": "Tarefas",
       "bot": "Robo Discord",

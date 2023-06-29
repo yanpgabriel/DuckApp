@@ -6,6 +6,7 @@ import { ActivatedRoute, Router } from "@angular/router";
 import { firstValueFrom } from "rxjs";
 import { ToastService } from "../../../shared/services/toast.service";
 import { isStringVaziaNullOrUndefined } from "../../../shared/util";
+import { ProfileService } from "../profile/profile.service";
 
 @Component({
   selector: 'duck-create-user',
@@ -16,33 +17,43 @@ export class CreateUserComponent implements OnInit {
 
   formGroup: FormGroup | any;
   user: UserDTO | undefined;
+  profiles : { label: string, value: any }[] = [];
 
   constructor(
     private fb: FormBuilder,
     private userService: UserService,
+    private profileService: ProfileService,
     private toastService: ToastService,
     private router: Router,
     private activatedRoute: ActivatedRoute,
   ) { }
 
-  ngOnInit(): void {
+  async ngOnInit(): Promise<void> {
+    this.criarFormulario();
+    await this.atualizarListaDePermissoes();
     const params = this.activatedRoute.snapshot.params;
     const idUser = params['idUser'];
     if (idUser) {
-      firstValueFrom(this.userService.obterPorId(idUser))
-        .then(res => {
-          this.user = res.entity;
-          const {id, email, fullname, password} = this.user != undefined ? this.user : new UserDTO();
-          this.formGroup.setValue({id, email, fullname, password});
-        });
+      const response = await firstValueFrom(this.userService.obterPorId(idUser));
+      this.user = response.entity;
+      const {id, email, fullname, password, profile} = this.user != undefined ? this.user : new UserDTO();
+      this.formGroup.setValue({id, email, fullname, password, profile});
     }
+  }
 
+  criarFormulario() {
     this.formGroup = this.fb.group({
       'id': this.fb.control('', null),
       'email': this.fb.control('', null),
       'fullname': this.fb.control('', null),
       'password': this.fb.control(null, null),
+      'profile': this.fb.control(null, null),
     });
+  }
+
+  async atualizarListaDePermissoes() {
+    const response = await firstValueFrom(this.profileService.list());
+    this.profiles = response.entity.map(p => ({ label: p.name, value: p }))
   }
 
   cancelar() {
@@ -50,12 +61,12 @@ export class CreateUserComponent implements OnInit {
   }
 
   salvar() {
-    const { id, email, fullname, password } = this.formGroup.value;
+    const { id, email, fullname, password, profile } = this.formGroup.value;
     const user = new UserDTO(email, fullname);
     user.id = id;
     user.password = password;
+    user.profile = profile;
 
-    console.log('aqui id', id)
     const request = isStringVaziaNullOrUndefined(id) ? this.userService.salvar(user) : this.userService.atualizar(user);
 
     request.subscribe(res => {

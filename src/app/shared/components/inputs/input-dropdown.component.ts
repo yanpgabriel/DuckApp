@@ -1,5 +1,5 @@
-import {Component, Input} from '@angular/core';
-import {AbstractControl, ControlValueAccessor, NG_VALIDATORS, NG_VALUE_ACCESSOR, Validator} from '@angular/forms';
+import { Component, Input } from '@angular/core';
+import { AbstractControl, ControlValueAccessor, NG_VALIDATORS, NG_VALUE_ACCESSOR, Validator } from '@angular/forms';
 
 @Component({
   selector: 'duck-input-dropdown',
@@ -8,25 +8,22 @@ import {AbstractControl, ControlValueAccessor, NG_VALIDATORS, NG_VALUE_ACCESSOR,
       <label for="input-dropdown-{{id}}" class="block">{{label}}</label>
       <p-dropdown optionLabel="label"
                   [placeholder]="placeholder" [options]="options" [showClear]="true" [ngModel]="_value"
-                  (ngModelChange)="onChange($event)"
+                  (ngModelChange)="_onChange($event ? $event.value : undefined)"
       ></p-dropdown>
       <small *ngIf="helpTxt" id="input-dropdown-help-{{id}}" class="block">{{helpTxt}}</small>
     </div>
   `,
-  styles: [
-    `
-    `
-  ],
+  styles: [``],
   providers: [
     { provide: NG_VALUE_ACCESSOR, multi: true, useExisting: InputDropdownComponent },
     { provide: NG_VALIDATORS, multi: true, useExisting: InputDropdownComponent }
-  ]
+  ],
 })
 export class InputDropdownComponent implements Validator, ControlValueAccessor {
 
   _value: any;
-  onChange = (newValue) => {};
-  onTouch = (newValue) => {};
+  _onChange = (newValue) => {};
+  _onTouch = (newValue) => {};
 
   @Input() id: string | number = 0;
   @Input() label: string = '';
@@ -48,18 +45,18 @@ export class InputDropdownComponent implements Validator, ControlValueAccessor {
 
   set value(val){
     this._value = val;
-    this.onChange(val);
-    this.onTouch(val);
+    this._onChange(val);
+    this._onTouch(val);
   }
 
   writeValue(obj: any): void {
     this.value = obj;
   }
   registerOnChange(fn: any): void {
-    this.onChange = fn;
+    this._onChange = fn;
   }
   registerOnTouched(fn: any): void {
-    this.onTouch = fn;
+    this._onTouch = fn;
   }
 
 }
