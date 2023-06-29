@@ -3,6 +3,7 @@
     "name": "Duck-App",
     "toggleLanguage": "Portuguese",
     "toggleDarkmode": "Dark Mode",
+    "toggleTheme": "Change Theme",
     "profile": "Profile",
     "leave": "Leave",
     "menu": {

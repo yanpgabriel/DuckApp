@@ -103,4 +103,8 @@ duck-input-dropdown, duck-input-editor, duck-input-keyfilter, duck-input-text {
   width: 100%;
 }
 
+.p-menu {
+  width: auto;
+}
+
 /* Fim PrimeNG */

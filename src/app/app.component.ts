@@ -149,7 +149,7 @@ export class AppComponent implements OnInit {
       },
       {
         label: 'system.toggleTheme',
-        icon: 'fas fa-language',
+        icon: 'fas fa-moon',
         command: () => this.toggleTheme()
       },
       {
