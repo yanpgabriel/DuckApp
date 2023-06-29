@@ -22,7 +22,7 @@
               <td *ngFor="let col of columns">
                 <ng-container [ngSwitch]="col.pipe">
                   <span *ngSwitchCase="'object'">
-                    <b>Perfil:</b> {{ usuario[col.field].name }}
+                    {{ usuario[col.field] ? usuario[col.field].name : 'Nenhum' }}
                   </span>
                   <span *ngSwitchCase="'data'">{{usuario[col.field] | date:'dd/MM/yyyy'}}</span>
                   <ng-container *ngSwitchDefault>
