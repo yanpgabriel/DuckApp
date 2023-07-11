@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from "@angular/forms";
+import { UntypedFormBuilder, UntypedFormGroup } from "@angular/forms";
 import { UserService } from "../user.service";
 import UserDTO from "../../../shared/models/UserDTO";
 import { ActivatedRoute, Router } from "@angular/router";
@@ -15,12 +15,12 @@ import { ProfileService } from "../profile/profile.service";
 })
 export class CreateUserComponent implements OnInit {
 
-  formGroup: FormGroup | any;
+  formGroup: UntypedFormGroup | any;
   user: UserDTO | undefined;
   profiles : { label: string, value: any }[] = [];
 
   constructor(
-    private fb: FormBuilder,
+    private fb: UntypedFormBuilder,
     private userService: UserService,
     private profileService: ProfileService,
     private toastService: ToastService,

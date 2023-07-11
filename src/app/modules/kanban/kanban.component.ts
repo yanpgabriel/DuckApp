@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 import { DemandaService } from '../../shared/services/demanda.service';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { EstadoDemanda } from '../../shared/models/EstadoDemanda';
 import { UserService } from '../user/user.service';
 import { Demanda } from '../../shared/models/Demanda';
@@ -41,18 +41,18 @@ export class KanbanComponent implements OnInit {
   membros: any[] = [];
   todosMembros: any[] = [];
 
-  demandaForm = new FormGroup({
-    id: new FormControl(''),
-    titulo: new FormControl('', [
+  demandaForm = new UntypedFormGroup({
+    id: new UntypedFormControl(''),
+    titulo: new UntypedFormControl('', [
       Validators.required,
     ]),
-    estimativa: new FormControl('', [
+    estimativa: new UntypedFormControl('', [
       Validators.required,
     ]),
-    descricao: new FormControl('', [
+    descricao: new UntypedFormControl('', [
       Validators.required,
     ]),
-    membro: new FormControl('', [
+    membro: new UntypedFormControl('', [
       Validators.required,
     ]),
   });
