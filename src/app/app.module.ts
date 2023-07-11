@@ -12,7 +12,7 @@ import { AppRoutingModule } from './app.routing.module';
 import { NotFoundComponent } from './modules/notfound/not-found.component';
 import { SharedModule } from './shared/shared.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { MatLegacyProgressBarModule as MatProgressBarModule } from '@angular/material/legacy-progress-bar';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { MenuModule } from 'primeng/menu';
 import { BreadcrumbModule } from 'primeng/breadcrumb';

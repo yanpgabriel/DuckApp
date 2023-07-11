@@ -19,7 +19,7 @@ import { InputAutocompleteComponent } from './components/inputs/input-autocomple
 import { AutoCompleteModule } from 'primeng/autocomplete';
 import { TerminalComponent } from './components/terminal/terminal.component';
 import { LoadingComponent } from './components/loading/loading.component';
-import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { MatLegacyProgressBarModule as MatProgressBarModule } from '@angular/material/legacy-progress-bar';
 import { ProgressBarModule } from 'primeng/progressbar';
 
 @NgModule({

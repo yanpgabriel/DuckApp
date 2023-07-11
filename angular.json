@@ -31,7 +31,6 @@
               "src/manifest.webmanifest"
             ],
             "styles": [
-              "./node_modules/primeicons/primeicons.css",
               {
                 "input": "src/theme-light.css",
                 "bundleName": "light",

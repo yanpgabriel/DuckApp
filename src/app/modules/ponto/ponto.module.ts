@@ -4,8 +4,6 @@ import { PontoComponent } from './ponto.component';
 import { RouterModule, Routes } from "@angular/router";
 import { FullCalendarModule } from "@fullcalendar/angular";
 
-import dayGridPlugin from '@fullcalendar/daygrid'; // a plugin!
-import interactionPlugin from '@fullcalendar/interaction';
 import { CalendarModule } from "primeng/calendar";
 import { FormsModule } from "@angular/forms";
 import { TimelineModule } from "primeng/timeline";
@@ -21,11 +19,6 @@ const routes: Routes = [
     }
   }
 ];
-
-FullCalendarModule.registerPlugins([ // register FullCalendar plugins
-  dayGridPlugin,
-  interactionPlugin
-]);
 
 @NgModule({
   declarations: [
