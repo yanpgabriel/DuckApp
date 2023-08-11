@@ -6,6 +6,8 @@ pipeline {
         quickFilterEnabled: false, selectedValue: 'NONE', sortMode: 'NONE', tagFilter: '*',
         type: 'GitParameterDefinition', useRepository: 'https://github.com/yanpgabriel/DuckApp.git')
 
+        string(name: 'NODE_IMAGE', defaultValue: 'node:18.14.2-alpine', trim: true)
+        string(name: 'DOCKER_HOST', defaultValue: '192.168.0.69:2375', trim: true)
         string(name: 'DOCKER_IMAGE', defaultValue: 'localhost:5000/duckapp:pi', trim: true)
     }
 
@@ -37,7 +39,8 @@ pipeline {
         stage('Build') {
             agent {
               docker {
-                image 'node:18.14.2-alpine'
+                args '-H tcp://${DOCKER_HOST}'
+                image '${NODE_IMAGE}'
                 reuseNode true
               }
             }
@@ -60,12 +63,12 @@ pipeline {
         }
         stage('Gerar Imagem Docker') {
             steps {
-                sh "docker build -f src/docker/Dockerfile -t ${DOCKER_IMAGE} ."
+                sh "docker -H tcp://${DOCKER_HOST} build -f src/docker/Dockerfile -t ${DOCKER_IMAGE} ."
             }
         }
         stage('Publicar Imagem Docker') {
             steps {
-                sh "docker push ${DOCKER_IMAGE}"
+                sh "docker -H tcp://${DOCKER_HOST} push ${DOCKER_IMAGE}"
             }
         }
     }
