@@ -6,7 +6,6 @@ pipeline {
         quickFilterEnabled: false, selectedValue: 'NONE', sortMode: 'NONE', tagFilter: '*',
         type: 'GitParameterDefinition', useRepository: 'https://github.com/yanpgabriel/DuckApp.git')
 
-        string(name: 'NODE_IMAGE', defaultValue: 'node:18.14.2-alpine', trim: true)
         string(name: 'DOCKER_HOST', defaultValue: '192.168.0.69:2375', trim: true)
         string(name: 'DOCKER_IMAGE', defaultValue: 'localhost:5000/duckapp:pi', trim: true)
     }
@@ -39,8 +38,7 @@ pipeline {
         stage('Build') {
             agent {
               docker {
-                args '-H tcp://${DOCKER_HOST}'
-                image '${NODE_IMAGE}'
+                image 'node:18.14.2-alpine'
                 reuseNode true
               }
             }
