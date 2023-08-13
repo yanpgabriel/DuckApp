@@ -21,6 +21,8 @@ import { TerminalComponent } from './components/terminal/terminal.component';
 import { LoadingComponent } from './components/loading/loading.component';
 import { MatLegacyProgressBarModule as MatProgressBarModule } from '@angular/material/legacy-progress-bar';
 import { ProgressBarModule } from 'primeng/progressbar';
+import { InputTextPassComponent } from "./components/inputs/input-text-pass.component";
+import { PasswordModule } from "primeng/password";
 
 @NgModule({
   declarations: [
@@ -30,6 +32,7 @@ import { ProgressBarModule } from 'primeng/progressbar';
     InputEditorComponent,
     InputKeyFilterComponent,
     InputTextComponent,
+    InputTextPassComponent,
     TerminalComponent,
     LoadingComponent,
   ],
@@ -40,6 +43,7 @@ import { ProgressBarModule } from 'primeng/progressbar';
     InputEditorComponent,
     InputKeyFilterComponent,
     InputTextComponent,
+    InputTextPassComponent,
     TerminalComponent,
     LoadingComponent,
   ],
@@ -58,7 +62,8 @@ import { ProgressBarModule } from 'primeng/progressbar';
     DropdownModule,
     AutoCompleteModule,
     MatProgressBarModule,
-    ProgressBarModule
+    ProgressBarModule,
+    PasswordModule
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

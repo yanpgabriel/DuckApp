@@ -2,14 +2,18 @@ import { Component, Input, OnInit } from '@angular/core';
 import { AbstractControl, ControlValueAccessor, NG_VALIDATORS, NG_VALUE_ACCESSOR, Validator } from '@angular/forms';
 
 @Component({
-  selector: 'duck-input-text',
+  selector: 'duck-input-text-pass',
   template: `
     <div class="duck-field {{styleClass}}">
-      <label for="input-text-{{id}}" class="block">{{label}}</label>
-      <input id="input-text-{{id}}" type="username" [attr.aria-describedby]="'input-text-help-' + id"
-             [value]="value" (change)="change($event)"
-             pInputText />
-             <!--[ngModel]="value" (ngModelChange)="valueChange.emit($event)"/>-->
+      <label for="input-text-pass-{{id}}" class="block">{{label}}</label>
+      <p-password id="input-text-pass-{{id}}"
+                  styleClass="w-full p-password p-component p-inputwrapper p-input-icon-right"
+                  [value]="value"
+                  (change)="change($event)"
+                  [attr.aria-describedby]="'input-text-help-' + id"
+                  [feedback]="feedback"
+                  [toggleMask]="toggleMask"
+      ></p-password>
       <small *ngIf="helpTxt" id="input-text-help-{{id}}" class="block">{{helpTxt}}</small>
     </div>
   `,
@@ -18,11 +22,11 @@ import { AbstractControl, ControlValueAccessor, NG_VALIDATORS, NG_VALUE_ACCESSOR
     `
   ],
   providers: [
-    { provide: NG_VALUE_ACCESSOR, multi: true, useExisting: InputTextComponent },
-    { provide: NG_VALIDATORS, multi: true, useExisting: InputTextComponent }
+    { provide: NG_VALUE_ACCESSOR, multi: true, useExisting: InputTextPassComponent },
+    { provide: NG_VALIDATORS, multi: true, useExisting: InputTextPassComponent }
   ]
 })
-export class InputTextComponent implements OnInit, ControlValueAccessor, Validator {
+export class InputTextPassComponent implements OnInit, ControlValueAccessor, Validator {
 
   value: string = '';
 
@@ -30,6 +34,8 @@ export class InputTextComponent implements OnInit, ControlValueAccessor, Validat
   @Input() helpTxt: string = '';
   @Input() label: string = '';
   @Input() styleClass: string = '';
+  @Input() feedback: boolean = false;
+  @Input() toggleMask: boolean = false;
 
   onChange = (value) => {};
   onTouched = () => {};

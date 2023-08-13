@@ -4,7 +4,7 @@ import { AbstractControl, ControlValueAccessor, NG_VALIDATORS, NG_VALUE_ACCESSOR
 @Component({
   selector: 'duck-input-dropdown',
   template: `
-    <div class="field {{styleClass}}">
+    <div class="duck-field {{styleClass}}">
       <label for="input-dropdown-{{id}}" class="block">{{label}}</label>
       <p-dropdown optionLabel="label"
                   [placeholder]="placeholder" [options]="options" [showClear]="true" [ngModel]="_value"

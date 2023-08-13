@@ -56,9 +56,6 @@ body {
   }
 }
 
-
-
-
 @media screen and (min-width: 1850px) {
   .xxl\:col-1 {
     flex: 0 0 auto;

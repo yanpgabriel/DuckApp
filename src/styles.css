@@ -94,10 +94,10 @@ duck-input-dropdown, duck-input-editor, duck-input-keyfilter, duck-input-text {
   width: 100%;
 }
 
-.p-autocomplete, .p-dropdown, .p-inputtext {
-  width: 100%;
-  font-size: 1.6rem;
-}
+/*.p-autocomplete, .p-dropdown, .p-inputtext {*/
+/*  width: 100%;*/
+/*  font-size: 1.6rem;*/
+/*}*/
 
 .grid [class*='col-'] .duck-button, .grid [class*='col-'] .duck-img {
   width: 100%;
@@ -108,3 +108,17 @@ duck-input-dropdown, duck-input-editor, duck-input-keyfilter, duck-input-text {
 }
 
 /* Fim PrimeNG */
+
+/* Definições Gerais */
+
+/* Inputs / Labels */
+.duck-field {
+  text-align: left;
+}
+.duck-field label {
+  font-size: 1.6rem;
+}
+.p-autocomplete, .p-dropdown, .p-inputtext {
+  width: 100%;
+  font-size: 1.6rem;
+}
