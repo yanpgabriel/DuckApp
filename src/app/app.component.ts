@@ -24,7 +24,7 @@ export class AppComponent implements OnInit {
   title = 'DuckApp';
   menu: any | MenuItem[] = [];
   minimenu: any | MenuItem[] = [];
-  home = { icon: 'pi pi-home', routerLink: '/' };
+  home = { icon: 'fas fa-home', routerLink: '/' };
   breadcrumb: MenuItem[] = [];
   picture: string = '/assets/img/duck.png';
   profile: any = {};

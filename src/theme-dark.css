@@ -1,1 +1,5 @@
 @import url("primeng/resources/themes/bootstrap4-dark-blue/theme.css");
+
+.p-breadcrumb .p-breadcrumb-chevron:before {
+  content: "";
+}
