@@ -7,8 +7,9 @@ import { ListProfileComponent } from "./list/list-profile.component";
 import { ButtonModule } from "primeng/button";
 import { CardModule } from "primeng/card";
 import { RippleModule } from "primeng/ripple";
-import { SharedModule } from "primeng/api";
 import { TableModule } from "primeng/table";
+import { SharedModule } from "../../../shared/shared.module";
+import { TooltipModule } from "primeng/tooltip";
 
 
 @NgModule({
@@ -16,14 +17,15 @@ import { TableModule } from "primeng/table";
     ProfileComponent,
     ListProfileComponent,
   ],
-  imports: [
-    CommonModule,
-    ProfileRoutingModule,
-    ButtonModule,
-    CardModule,
-    RippleModule,
-    SharedModule,
-    TableModule
-  ]
+    imports: [
+        CommonModule,
+        ProfileRoutingModule,
+        ButtonModule,
+        CardModule,
+        RippleModule,
+        TableModule,
+        SharedModule,
+        TooltipModule
+    ]
 })
 export class ProfileModule { }
