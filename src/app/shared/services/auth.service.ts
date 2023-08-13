@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
 import { TokenService } from "./token.service";
 import UserDTO from '../models/UserDTO';
+import { isNullOrUndefined } from "../util";
 
 @Injectable({
   providedIn: 'root'
@@ -42,5 +43,23 @@ export class AuthService {
 
   listenLoginEvents() {
     return this.loginEvents;
+  }
+
+  usuarioPossuiPermissoes(requiredRoles): boolean {
+    // Caso não passe nenhuma permissão ignora
+    if (!(requiredRoles instanceof Array) || requiredRoles.length === 0) {
+      return true;
+    }
+
+    // Se não encontrar o usuario ou o perfil ignora
+    const usuario = this.obterUsuario();
+
+    if (isNullOrUndefined(usuario) || isNullOrUndefined(usuario.profile)) {
+      return false;
+    }
+    const perfil = usuario.profile;
+
+    // Caso tenha permissões necessarias e tenha perfil, verifica se o usuario possui alguma
+    return perfil.roles.map(roleDTO => roleDTO.name).some((role) => requiredRoles.includes(role));
   }
 }

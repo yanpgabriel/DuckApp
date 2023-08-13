@@ -19,7 +19,7 @@ import { BreadcrumbModule } from 'primeng/breadcrumb';
 import { SplitButtonModule } from 'primeng/splitbutton';
 import { AvatarModule } from 'primeng/avatar';
 import { ToastModule } from 'primeng/toast';
-import { MessageService } from 'primeng/api';
+import { ConfirmationService, MessageService } from 'primeng/api';
 import { DuckHttpInterceptor } from './shared/interceptors/duck-http.interceptor';
 
 registerLocaleData(localePt, 'pt');
@@ -78,7 +78,8 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
       useValue: 'BRL'
     },
     { provide: HTTP_INTERCEPTORS, useClass: DuckHttpInterceptor, multi: true },
-    MessageService
+    MessageService,
+    ConfirmationService
   ],
   bootstrap: [AppComponent]
 })

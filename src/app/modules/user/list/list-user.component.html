@@ -1,59 +1,59 @@
-<!--<div>-->
-<!--  <div class="grid">-->
-<!--    <div class="col-3">-->
-<!--      <p-button label="Criar" styleClass="duck-button" [routerLink]="['/users/create']"></p-button>-->
-<!--    </div>-->
-<!--    <div class="col-3">-->
-<!--      <p-button label="Perfis" styleClass="duck-button" [routerLink]="['/users/profiles']"></p-button>-->
-<!--    </div>-->
-<!--    <div class="col-3">-->
-<!--      <p-button label="Permissões" styleClass="duck-button" [routerLink]="['/users/profiles/roles']"></p-button>-->
-<!--    </div>-->
-<!--    <div class="col-12">-->
-      <p-card styleClass="duck">
-        <div class="pb-3">
-          <h1>Lista de Usuarios</h1>
-        </div>
-        <p-table class="w-full" [columns]="cols" [value]="users" responsiveLayout="scroll">
-          <ng-template pTemplate="header" let-columns>
-            <tr>
-              <th *ngFor="let col of columns">
-                <p-tableHeaderCheckbox *ngIf="col.field === 'check'"></p-tableHeaderCheckbox>
-                {{col.header}}
-              </th>
-            </tr>
-          </ng-template>
-          <ng-template pTemplate="body" let-usuario let-columns="columns">
-            <tr>
-              <td *ngFor="let col of columns">
-                <ng-container [ngSwitch]="col.pipe">
-                  <span *ngSwitchCase="'object'">
-                    {{ usuario[col.field] ? usuario[col.field].name : 'Nenhum' }}
-                  </span>
-                  <span *ngSwitchCase="'data'">{{usuario[col.field] | date:'dd/MM/yyyy'}}</span>
-                  <ng-container *ngSwitchDefault>
-                    <p-tableCheckbox *ngIf="col.field === 'check'" [value]="usuario"></p-tableCheckbox>
-                    <div *ngIf="col.field === 'actions'">
-                      <button pButton
-                              pRipple
-                              icon="pi pi-pencil" class="p-button-rounded p-button-success mr-2"
-                              (click)="editUser(usuario)"></button>
-                      <button pButton
-                              pRipple
-                              icon="pi pi-trash"
-                              class="p-button-rounded p-button-warning"
-                              *ngIf="usuario.id != idUsuarioLogado"
-                              (click)="deleteUser(usuario.id)"></button>
-                    </div>
-                    {{ usuario[col.field] }}
-                    <!--<ngb-highlight [result]="usuario[col.field]" [term]="''"></ngb-highlight>-->
-                  </ng-container>
-                </ng-container>
-              </td>
-            </tr>
-          </ng-template>
-        </p-table>
-      </p-card>
-    <!--</div>-->
-<!--  </div>-->
-<!--</div>-->
+<p-confirmDialog position="top" rejectButtonStyleClass="p-button-outlined" [style]="{width: '50vw'}"></p-confirmDialog>
+<p-card styleClass="duck">
+  <p-table class="duck-table w-full" [columns]="cols" [value]="users" responsiveLayout="scroll">
+    <ng-template pTemplate="header" let-columns>
+      <tr>
+        <th *ngFor="let col of columns">
+          <p-tableHeaderCheckbox *ngIf="col.field === 'check'"></p-tableHeaderCheckbox>
+          {{col.header}}
+        </th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-usuario let-columns="columns">
+      <tr>
+        <td *ngFor="let col of columns">
+          <ng-container [ngSwitch]="col.pipe">
+
+            <span *ngSwitchCase="'object'">
+              {{ usuario[col.field] ? usuario[col.field].name : 'Nenhum' }}
+            </span>
+
+            <span *ngSwitchCase="'data'">{{usuario[col.field] | date:'dd/MM/yyyy'}}</span>
+
+            <ng-container *ngSwitchDefault>
+              <ng-container [ngSwitch]="col.field">
+                <p-tableCheckbox *ngSwitchCase="'check'" [value]="usuario"></p-tableCheckbox>
+
+                <div *ngSwitchCase="'actions'">
+                  <a [routerLink]="['/users', 'edit', usuario.id]">
+                    <button pButton
+                            pRipple
+                            icon="fas fa-edit"
+                            class="p-button-rounded mr-2"
+                    ></button>
+                  </a>
+                  <button pButton
+                          pRipple
+                          icon="fas fa-trash"
+                          class="p-button-rounded"
+                          *ngIf="usuario.id != idUsuarioLogado"
+                          (click)="deleteUser(usuario.id)"></button>
+                </div>
+
+                <span *ngSwitchDefault>
+                  {{ usuario[col.field] }}
+                </span>
+              </ng-container>
+            </ng-container>
+          </ng-container>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+</p-card>
+
+<div class="duck-floating">
+  <duck-float-button *ngIf="usuarioPodeCriarNovo" pTooltip="Novo Usuário" tooltipPosition="top" [routerLink]="['/users/create']">
+    <i class="fas fa-user-plus fa-3x"></i>
+  </duck-float-button>
+</div>

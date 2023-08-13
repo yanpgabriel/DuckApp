@@ -58,6 +58,18 @@ body {
   cursor: pointer;
 }
 
+.duck-floating {
+  /*background-color: green;*/
+  display: flex;
+  gap: 2rem;
+  flex-direction: row-reverse;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  margin-right: 4rem;
+  margin-bottom: 4rem;
+}
+
 hr {
   border-top: 1px solid #EEEEEE;
 }
@@ -121,4 +133,15 @@ duck-input-dropdown, duck-input-editor, duck-input-keyfilter, duck-input-text {
 .p-autocomplete, .p-dropdown, .p-inputtext {
   width: 100%;
   font-size: 1.6rem;
+}
+
+
+/* Tabela */
+.duck-table .fas {
+  font-size: 16px;
+}
+
+.duck-table button {
+  width: 50px !important;
+  height: 50px !important;
 }

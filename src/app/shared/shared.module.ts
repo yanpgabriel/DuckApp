@@ -23,6 +23,7 @@ import { MatLegacyProgressBarModule as MatProgressBarModule } from '@angular/mat
 import { ProgressBarModule } from 'primeng/progressbar';
 import { InputTextPassComponent } from "./components/inputs/input-text-pass.component";
 import { PasswordModule } from "primeng/password";
+import { FloatButtonComponent } from "./components/button/float-button.component";
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { PasswordModule } from "primeng/password";
     InputKeyFilterComponent,
     InputTextComponent,
     InputTextPassComponent,
+    FloatButtonComponent,
     TerminalComponent,
     LoadingComponent,
   ],
@@ -44,6 +46,7 @@ import { PasswordModule } from "primeng/password";
     InputKeyFilterComponent,
     InputTextComponent,
     InputTextPassComponent,
+    FloatButtonComponent,
     TerminalComponent,
     LoadingComponent,
   ],

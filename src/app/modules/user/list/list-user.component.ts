@@ -4,6 +4,7 @@ import { AuthService } from "../../../shared/services/auth.service";
 import { Router } from "@angular/router";
 import UserDTO from "../../../shared/models/UserDTO";
 import { ToastService } from "../../../shared/services/toast.service";
+import { ConfirmationService } from "primeng/api";
 
 @Component({
   selector: 'duck-list-user',
@@ -21,6 +22,7 @@ export class ListUserComponent implements OnInit {
     public authService: AuthService,
     public toastService: ToastService,
     public router: Router,
+    public confirmationService: ConfirmationService
   ) { }
 
   ngOnInit(): void {
@@ -51,10 +53,29 @@ export class ListUserComponent implements OnInit {
   }
 
   deleteUser(idUsuario: number) {
-    this.userService.delete(idUsuario).subscribe(res => {
-      this.toastService.showMultipleSuccess(res.extras);
-    }, () => {}, () => {
-      this.atualizarLista();
-    })
+    this.confirmationService.confirm({
+      header: 'Confirmação',
+      message: 'Deseja confirmar a exclusão desse registro?',
+      acceptLabel: 'Confirmar',
+      rejectLabel: 'Cancelar',
+      accept: () => {
+        this.userService.delete(idUsuario).subscribe(res => {
+          this.toastService.showMultipleSuccess(res.extras);
+        }, () => {}, () => {
+          this.atualizarLista();
+        })
+      },
+      reject: () => {
+        this.toastService.showInfo("Operação cancelada")
+      }
+    });
+  }
+
+  usuarioPodeCriarNovo(): boolean {
+    return this.authService.usuarioPossuiPermissoes('DUCK_ADM');
+  }
+
+  criarNovoUsuario() {
+    this.router.navigate(['users', "create"])
   }
 }

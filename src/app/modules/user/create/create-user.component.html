@@ -1,49 +1,53 @@
 <div>
   <div class="grid">
-    <div class="col-3">
-      <p-button label="Criar" styleClass="duck-button" [routerLink]="['/users/create']"></p-button>
-    </div>
+    <!--<div class="col-3">-->
+    <!--  <p-button label="Criar" styleClass="duck-button" [routerLink]="['/users/create']"></p-button>-->
+    <!--</div>-->
     <div class="col-12">
       <p-card styleClass="duck">
 
-        <form [formGroup]="formGroup" class="w-full">
-          <div class="w-full col mt-3">
-            <span class="p-float-label">
-              <input id="ipt-fullname" type="text" pInputText formControlName="fullname">
-              <label for="ipt-fullname">Nome Completo</label>
-            </span>
+        <form [formGroup]="formGroup" class="grid w-full">
+          <div class="col md:col-6 lg:col-3 mt-3">
+            <duck-input-text id="fullname"
+                             label="Nome Completo:"
+                             formControlName="fullname"
+            ></duck-input-text>
           </div>
-          <div class="w-full col mt-3">
-            <span class="p-float-label">
-              <input id="ipt-email" type="email" pInputText formControlName="email">
-              <label for="ipt-email">E-mail</label>
-            </span>
+          <div class="col md:col-6 lg:col-3 mt-3">
+            <duck-input-text id="email"
+                             label="E-mail:"
+                             formControlName="email"
+            ></duck-input-text>
           </div>
-          <div class="w-full col mt-3">
-            <span class="p-float-label">
-              <p-password id="ipt-password"
-                          styleClass="w-full p-password p-component p-inputwrapper p-input-icon-right"
-                          formControlName="password"
-                          [feedback]="false"
-                          [toggleMask]="true"
-              ></p-password>
-              <label for="ipt-password">Senha</label>
-            </span>
+          <div class="col md:col-6 lg:col-3 mt-3">
+            <duck-input-text-pass id="senha"
+                                  label="Senha:"
+                                  formControlName="password"
+                                  [toggleMask]="true"
+            ></duck-input-text-pass>
           </div>
-          <div class="w-full col mt-3">
+          <div class="col md:col-6 lg:col-3 mt-3">
             <duck-input-dropdown id="profile"
-                                 label=""
+                                 label="Perfil"
                                  formControlName="profile"
-                                 placeholder="Selecione um Perfil para o Usuário"
+                                 placeholder="Selecione"
                                  [options]="profiles"
             ></duck-input-dropdown>
           </div>
 
-          <div class="w-full col mt-3">
-            <button pButton pRipple type="button" icon="pi pi-check" label="Salvar"
-                    class="p-button-outlined mr-2" (click)="salvar()"></button>
-            <button pButton pRipple type="button" icon="fas fa-times" label="Cancelar"
-                    class="p-button-outlined p-button-danger" (click)="cancelar()"></button>
+          <div class="col col-offset-9 mt-3 flex justify-content-between">
+            <button pButton pRipple type="button"
+                    icon="fas fa-save"
+                    label="Salvar"
+                    class="p-button-outlined mr-2 w-6"
+                    (click)="salvar()"
+            ></button>
+            <button pButton pRipple type="button"
+                    icon="fas fa-times"
+                    label="Cancelar"
+                    class="p-button-outlined p-button-danger w-6"
+                    (click)="cancelar()"
+            ></button>
           </div>
 
         </form>

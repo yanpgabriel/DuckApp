@@ -13,6 +13,8 @@ import { InputTextModule } from "primeng/inputtext";
 import { PasswordModule } from "primeng/password";
 import { DropdownModule } from "primeng/dropdown";
 import { SharedModule } from "../../shared/shared.module";
+import { ConfirmDialogModule } from "primeng/confirmdialog";
+import { TooltipModule } from "primeng/tooltip";
 
 @NgModule({
   declarations: [
@@ -24,7 +26,7 @@ import { SharedModule } from "../../shared/shared.module";
     CommonModule,
     UserRoutingModule,
     ReactiveFormsModule,
-    // FormsModule,
+    ConfirmDialogModule,
     TableModule,
     ButtonModule,
     RippleModule,
@@ -32,7 +34,8 @@ import { SharedModule } from "../../shared/shared.module";
     InputTextModule,
     PasswordModule,
     DropdownModule,
-    SharedModule
+    SharedModule,
+    TooltipModule
   ]
 })
 export class UserModule { }

@@ -58,16 +58,15 @@ export class AppComponent implements OnInit {
     // Trata LazyLoading
     this.router.events
       .pipe(filter(event => event instanceof RouteConfigLoadStart || event instanceof RouteConfigLoadEnd))
-      .subscribe(async (event) => {
+      .subscribe((event) => {
         this.loadingService.toggleLoading();
       });
 
     // Trata breadcrumb
     this.router.events
       .pipe(filter(event => event instanceof NavigationEnd))
-      .subscribe(async () => {
-        this.breadcrumb = await this.utilsService.createBreadcrumbs(this.activatedRoute.root);
-        console.log(this.breadcrumb);
+      .subscribe( () => {
+        this.updateBreadcrumb()
       });
 
     this.createMenu();
@@ -161,6 +160,11 @@ export class AppComponent implements OnInit {
     this.minimenu.forEach(async (item: any) => {
       item.label = await this.utilsService.traduzir(item.label);
     });
+  }
+
+  private updateBreadcrumb() {
+    this.utilsService.createBreadcrumbs(this.activatedRoute.root).then(res => this.breadcrumb = res);
+    console.debug('Novo Breadcrumb', this.breadcrumb);
   }
 
   private listenNetworkConection() {

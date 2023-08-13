@@ -20,6 +20,10 @@ ol.duck-menu, ul.duck-menu li a {
   text-decoration: none;
 }
 
+.close ul.duck-menu li a {
+  text-align: center;
+}
+
 ol.duck-menu, ul.duck-menu li a:hover, ol.duck-menu, ul.duck-menu li a.active {
   color: var(--text-color);
   background-color: var(--surface-c);

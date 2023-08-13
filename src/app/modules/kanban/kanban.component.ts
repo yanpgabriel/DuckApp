@@ -148,7 +148,7 @@ export class KanbanComponent implements OnInit {
       ordem: 0,
     }
 
-    if (isStringVaziaNullOrUndefined(valor.id)) {
+    if (isStringVaziaNullOrUndefined(String(valor.id))) {
       valor.id = null;
     }
     const req = valor.id != null ? this.demandaService.atualizar(valor) : this.demandaService.salvar(valor);
