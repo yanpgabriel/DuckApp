@@ -20,9 +20,7 @@ import { Component, Input, OnInit } from '@angular/core';
         color: var(--primary-color-text);
         cursor: pointer;
         text-decoration: none;
-      }
-      .duck-float-button i {
-        font-size: 2rem;
+        font-size: 2.5rem;
       }
     `
   ]
