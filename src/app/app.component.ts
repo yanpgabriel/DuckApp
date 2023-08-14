@@ -59,7 +59,11 @@ export class AppComponent implements OnInit {
     this.router.events
       .pipe(filter(event => event instanceof RouteConfigLoadStart || event instanceof RouteConfigLoadEnd))
       .subscribe((event) => {
-        this.loadingService.toggleLoading();
+        if (event instanceof RouteConfigLoadStart) {
+          this.loadingService.setLoading(true, 'NOVA_ROTA')
+        } else if (event instanceof RouteConfigLoadEnd) {
+          this.loadingService.setLoading(false, 'NOVA_ROTA')
+        }
       });
 
     // Trata breadcrumb

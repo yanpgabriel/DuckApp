@@ -11,8 +11,8 @@ import { Component, Input, OnInit } from '@angular/core';
     `
       .duck-float-button {
         display: flex;
-        width: 100px;
-        height: 100px;
+        width: 8rem;
+        height: 8rem;
         border-radius: 50%;
         justify-content: center;
         align-items: center;
@@ -20,6 +20,9 @@ import { Component, Input, OnInit } from '@angular/core';
         color: var(--primary-color-text);
         cursor: pointer;
         text-decoration: none;
+      }
+      .duck-float-button i {
+        font-size: 2rem;
       }
     `
   ]

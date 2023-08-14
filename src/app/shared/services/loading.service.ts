@@ -1,5 +1,5 @@
-import {Injectable} from '@angular/core';
-import {BehaviorSubject} from 'rxjs';
+import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -16,11 +16,14 @@ export class LoadingService {
     if (loading) {
       this.loadingMap.set(url, loading);
       this.loadingSub.next(loading);
+      console.debug(`[LOADING] Url '${url} setado para ${loading}`)
     } else if (!loading && this.loadingMap.has(url)) {
       this.loadingMap.delete(url);
+      console.debug(`[LOADING] Removendo Url '${url}`)
     }
     if (this.loadingMap.size === 0) {
       this.loadingSub.next(false);
+      console.debug(`[LOADING] Parando o carregamento`)
     }
   }
 
