@@ -28,5 +28,17 @@
         ]
       }
     }
+  ],
+  "dataGroups": [
+    {
+      "name": "duck-api",
+      "urls": ["/api/user/*"],
+      "cacheConfig": {
+        "maxSize": 10,
+        "maxAge": "1m",
+        "timeout": "500u",
+        "strategy": "freshness"
+      }
+    }
   ]
 }
