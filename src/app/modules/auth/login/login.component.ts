@@ -13,16 +13,17 @@ import { ToastService } from '../../../shared/services/toast.service';
                   <img alt="DuckApp" src="/assets/img/duck.png"/>
                 </div>
                 <div class="field col pb-4">
-                  <span id="email" class="p-float-label">
-                      <input id="float-input" type="email" pInputText [(ngModel)]="email">
-                      <label for="float-input">E-mail</label>
-                  </span>
+                  <duck-input-text id="email"
+                                   label="E-mail:"
+                                   [(ngModel)]="email"
+                  ></duck-input-text>
                 </div>
                 <div class="field col">
-                  <span id="senha" class="p-float-label">
-                      <p-password id="float-input" styleClass="w-full p-password p-component p-inputwrapper p-input-icon-right" [(ngModel)]="password" [toggleMask]="true"></p-password>
-                      <label for="float-input">Senha</label>
-                  </span>
+                  <duck-input-text-pass id="senha"
+                                        label="Senha:"
+                                        [toggleMask]="true"
+                                        [(ngModel)]="password"
+                  ></duck-input-text-pass>
                 </div>
                 <div class="field col">
                     <button pButton type="button" id="enviar" class="p-button-outlined" [disabled]="!btnAtivo" (click)="login()">Enviar</button>
@@ -42,7 +43,7 @@ export class LoginComponent implements OnInit {
   constructor(
     private router: Router,
     private authService: AuthService,
-    private toastService: ToastService,
+    private toastService: ToastService
   ) {
   }
 
@@ -65,7 +66,5 @@ export class LoginComponent implements OnInit {
       this.toastService.showDanger('avisos.LOGIN_ERROR');
     }
   }
-
-
 
 }

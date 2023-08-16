@@ -32,7 +32,11 @@
   "dataGroups": [
     {
       "name": "duck-api",
-      "urls": ["/api/*"],
+      "urls": [
+        "/api/*",
+        "!/api/auth/*",
+        "!/api/**/file"
+      ],
       "cacheConfig": {
         "maxSize": 10,
         "maxAge": "1m",

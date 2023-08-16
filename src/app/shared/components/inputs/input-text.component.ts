@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, } from '@angular/core';
 import { AbstractControl, ControlValueAccessor, NG_VALIDATORS, NG_VALUE_ACCESSOR, Validator } from '@angular/forms';
 
 @Component({
@@ -7,9 +7,8 @@ import { AbstractControl, ControlValueAccessor, NG_VALIDATORS, NG_VALUE_ACCESSOR
     <div class="duck-field {{styleClass}}">
       <label for="input-text-{{id}}" class="block">{{label}}</label>
       <input id="input-text-{{id}}" type="username" [attr.aria-describedby]="'input-text-help-' + id"
-             [value]="value" (change)="change($event)"
+             [(ngModel)]="value" (input)="input($event)"
              pInputText />
-             <!--[ngModel]="value" (ngModelChange)="valueChange.emit($event)"/>-->
       <small *ngIf="helpTxt" id="input-text-help-{{id}}" class="block">{{helpTxt}}</small>
     </div>
   `,
@@ -42,11 +41,7 @@ export class InputTextComponent implements OnInit, ControlValueAccessor, Validat
   ngOnInit(): void {
   }
 
-  log(obj) {
-    console.log(obj.target.value);
-  }
-
-  change(event) {
+  input(event) {
     this.onChange(event.target.value);
   }
 

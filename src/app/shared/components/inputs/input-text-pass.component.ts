@@ -8,8 +8,7 @@ import { AbstractControl, ControlValueAccessor, NG_VALIDATORS, NG_VALUE_ACCESSOR
       <label for="input-text-pass-{{id}}" class="block">{{label}}</label>
       <p-password id="input-text-pass-{{id}}"
                   styleClass="w-full p-password p-component p-inputwrapper p-input-icon-right"
-                  [value]="value"
-                  (change)="change($event)"
+                  [(ngModel)]="value" (input)="input($event)"
                   [attr.aria-describedby]="'input-text-help-' + id"
                   [feedback]="feedback"
                   [toggleMask]="toggleMask"
@@ -48,11 +47,7 @@ export class InputTextPassComponent implements OnInit, ControlValueAccessor, Val
   ngOnInit(): void {
   }
 
-  log(obj) {
-    console.log(obj.target.value);
-  }
-
-  change(event) {
+  input(event) {
     this.onChange(event.target.value);
   }
 
