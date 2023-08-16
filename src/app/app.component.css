@@ -22,13 +22,16 @@ main {
   width: 24rem;
   height: 100%;
   position: fixed;
-  border-right: 1px solid #eee;
+  border-right: 1px solid var(--surface-b);
+  background-color: var(--surface-a);;
+  transition: all 1s ease;
 
   z-index: 10;
 }
 
 .close .side-menu {
   width: 6.5rem;
+  transition: all 1s ease;
 }
 
 .close div.logo {
@@ -47,7 +50,12 @@ main {
 main {
   height: 100%;
   background-color: var(--surface-b);
-  /*background-color: var(--primary-color);*/
+  transition: all 1s ease;
+}
+
+.close main {
+  filter: none;
+  transition: all 1s ease;
 }
 
 .com-menu {
@@ -56,8 +64,8 @@ main {
 }
 
 .close .com-menu {
-  max-width: calc(100vw - 8rem) !important;
-  margin-left: 8rem !important;
+  max-width: calc(100vw - 6.5rem) !important;
+  margin-left: 6.5rem !important;
 }
 
 .sem-menu {

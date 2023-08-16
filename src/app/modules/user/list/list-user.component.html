@@ -24,20 +24,20 @@
               <ng-container [ngSwitch]="col.field">
                 <p-tableCheckbox *ngSwitchCase="'check'" [value]="usuario"></p-tableCheckbox>
 
-                <div *ngSwitchCase="'actions'">
-                  <a [routerLink]="['/users', 'edit', usuario.id]">
+                <div *ngSwitchCase="'actions'" class="p-buttonset">
+                  <a class="duck-action" [routerLink]="['/users', 'edit', usuario.id]">
                     <button pButton
                             pRipple
-                            icon="fas fa-edit"
-                            class="p-button-rounded mr-2"
+                            icon="fas fa-user-edit"
                     ></button>
                   </a>
-                  <button pButton
-                          pRipple
-                          icon="fas fa-trash"
-                          class="p-button-rounded"
-                          *ngIf="usuario.id != idUsuarioLogado"
-                          (click)="deleteUser(usuario.id)"></button>
+                  <a *ngIf="usuario.id != idUsuarioLogado" class="duck-action" (click)="deleteUser(usuario.id)">
+                    <button pButton
+                            pRipple
+                            icon="fas fa-trash"
+                            class="p-button-danger"
+                    ></button>
+                  </a>
                 </div>
 
                 <span *ngSwitchDefault>

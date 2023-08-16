@@ -71,7 +71,8 @@ body {
 }
 
 hr {
-  border-top: 1px solid #EEEEEE;
+  border: none;
+  border-top: 1px solid var(--surface-b);
 }
 
 .saldo-positivo {
@@ -95,7 +96,7 @@ hr {
 }
 
 .duck-border {
-  border: 1px solid #eeeeee;
+  border: 1px solid var(--surface-b);
 }
 
 .duck-border-radius {
@@ -106,17 +107,46 @@ duck-input-dropdown, duck-input-editor, duck-input-keyfilter, duck-input-text {
   width: 100%;
 }
 
-/*.p-autocomplete, .p-dropdown, .p-inputtext {*/
-/*  width: 100%;*/
-/*  font-size: 1.6rem;*/
-/*}*/
-
 .grid [class*='col-'] .duck-button, .grid [class*='col-'] .duck-img {
   width: 100%;
 }
 
 .p-menu {
   width: auto;
+}
+
+.p-buttonset .duck-action {
+  display: inline-flex;
+  border-radius: 6px;
+  text-decoration: none;
+}
+
+.p-buttonset .duck-action:first-of-type:not(:last-child) {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.p-buttonset .duck-action:last-of-type:not(:first-child) {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.p-buttonset .duck-action:not(:first-child):not(:last-child) {
+  border-radius: 0;
+}
+.p-buttonset .duck-action:not(:last-child) {
+  border-right: 1px solid var(--surface-b);
+}
+
+.p-buttonset .duck-action button {
+  width: 100%;
+  height: 100%;
+  border-radius: inherit !important;
+  padding: 1rem;
+}
+
+.p-buttonset .duck-action button span:not(:first-child):last-child {
+  margin-left: 0.5rem
 }
 
 /* Fim PrimeNG */
@@ -138,10 +168,5 @@ duck-input-dropdown, duck-input-editor, duck-input-keyfilter, duck-input-text {
 
 /* Tabela */
 .duck-table .fas {
-  font-size: 16px;
-}
-
-.duck-table button {
-  width: 50px !important;
-  height: 50px !important;
+  font-size: 120%;
 }

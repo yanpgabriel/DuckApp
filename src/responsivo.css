@@ -26,27 +26,33 @@ body {
     font-size: 35%;
   }
 }
-@media screen and (min-width: 376px) and (max-width: 425px) {
+@media screen and (min-width: 376px) {
   html {
     font-size: 62.5%;
   }
+  main {
+    filter: brightness(0.1);
+  }
 }
-@media screen and (min-width: 426px) and (max-width: 768px) {
+@media screen and (min-width: 426px) {
   html {
     font-size: 45%;
   }
+  main {
+    filter: none;
+  }
 }
-@media screen and (min-width: 769px) and (max-width: 1024px) {
+@media screen and (min-width: 769px) {
   html {
     font-size: 50%;
   }
 }
-@media screen and (min-width: 1025px) and (max-width: 1440px) {
+@media screen and (min-width: 1025px) {
   html {
     font-size: 55%;
   }
 }
-@media screen and (min-width: 1441px) and (max-width: 1920px) {
+@media screen and (min-width: 1441px) {
   /* Padrão */
 }
 
