@@ -21,7 +21,7 @@ body {
   font-size: 10.5rem;
 }
 
-@media screen and (max-width: 375px) {
+@media screen and (min-width: 1px) {
   html {
     font-size: 62.5%;
   }
@@ -30,27 +30,25 @@ body {
   }
 }
 @media screen and (min-width: 376px) {
-  html {
-    font-size: 62.5%;
-  }
+  /* Pega o de cima */
 }
 @media screen and (min-width: 426px) {
   html {
-    font-size: 45%;
+    font-size: 70%;
+  }
+}
+@media screen and (min-width: 769px) {
+  html {
+    font-size: 75%;
   }
   main {
     filter: none;
   }
 }
-@media screen and (min-width: 769px) {
-  html {
-    font-size: 50%;
-  }
-}
 @media screen and (min-width: 1025px) {
-  html {
-    font-size: 55%;
-  }
+  /*html {*/
+  /*  font-size: 55%;*/
+  /*}*/
 }
 @media screen and (min-width: 1441px) {
   /* Padrão */

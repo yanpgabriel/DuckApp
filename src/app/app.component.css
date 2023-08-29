@@ -24,14 +24,14 @@ main {
   position: fixed;
   border-right: 1px solid var(--surface-b);
   background-color: var(--surface-a);;
-  transition: all 1s ease;
+  transition: all 0.2s ease;
 
   z-index: 10;
 }
 
 .close .side-menu {
   width: 6.5rem;
-  transition: all 1s ease;
+  transition: all 0.2s ease;
 }
 
 .close div.logo {
@@ -50,12 +50,12 @@ main {
 main {
   height: 100%;
   background-color: var(--surface-b);
-  transition: all 1s ease;
+  transition: all 0.2s ease;
 }
 
 .close main {
   filter: none;
-  transition: all 1s ease;
+  transition: all 0.2s ease;
 }
 
 .com-menu {

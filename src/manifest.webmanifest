@@ -1,8 +1,8 @@
 {
   "name": "DuckApp",
   "short_name": "DuckApp",
-  "theme_color": "#ffffff",
-  "background_color": "#fafafa",
+  "theme_color": "#000000",
+  "background_color": "#000000",
   "display": "standalone",
   "scope": "./",
   "start_url": "./",
