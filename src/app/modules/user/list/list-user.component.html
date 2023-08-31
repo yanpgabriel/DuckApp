@@ -12,10 +12,10 @@
     </ng-template>
     <ng-template pTemplate="header" let-columns>
       <tr>
-        <th *ngFor="let col of columns" [pSortableColumn]="col.field">
+        <th *ngFor="let col of columns" [pSortableColumn]="col.isSorteble ? col.field : ''">
           <p-tableHeaderCheckbox *ngIf="col.field === 'check'"></p-tableHeaderCheckbox>
           {{col.header}}
-          <p-sortIcon [field]="col.field"></p-sortIcon>
+          <p-sortIcon *ngIf="col.isSorteble" [field]="col.field"></p-sortIcon>
         </th>
       </tr>
     </ng-template>
