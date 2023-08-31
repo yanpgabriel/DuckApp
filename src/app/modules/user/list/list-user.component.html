@@ -1,17 +1,28 @@
 <p-confirmDialog position="top" rejectButtonStyleClass="p-button-outlined" [style]="{width: '50vw'}"></p-confirmDialog>
 <p-card styleClass="duck">
-  <p-table class="duck-table w-full" [columns]="cols" [value]="users" responsiveLayout="scroll">
+  <p-table #dt class="duck-table w-full" [columns]="cols" [value]="users" breakpoint="1270px" responsiveLayout="stack">
+    <ng-template pTemplate="caption">
+      <div class="flex align-items-center justify-content-between">
+        <h5 class="m-0">Gerenciar Usuarios</h5>
+        <span class="p-input-icon-left">
+            <i class="pi pi-search"></i>
+            <input pInputText type="text" (input)="$event.target ? dt.filterGlobal($event.target['value'], 'contains') : ''" placeholder="Pesquisa..." />
+        </span>
+      </div>
+    </ng-template>
     <ng-template pTemplate="header" let-columns>
       <tr>
-        <th *ngFor="let col of columns">
+        <th *ngFor="let col of columns" [pSortableColumn]="col.field">
           <p-tableHeaderCheckbox *ngIf="col.field === 'check'"></p-tableHeaderCheckbox>
           {{col.header}}
+          <p-sortIcon [field]="col.field"></p-sortIcon>
         </th>
       </tr>
     </ng-template>
     <ng-template pTemplate="body" let-usuario let-columns="columns">
       <tr>
         <td *ngFor="let col of columns">
+          <span class="p-column-title">{{col.header}}</span>
           <ng-container [ngSwitch]="col.pipe">
 
             <span *ngSwitchCase="'object'">

@@ -14,7 +14,7 @@ import { ConfirmationService } from "primeng/api";
 export class ListUserComponent implements OnInit {
 
   idUsuarioLogado = -1;
-  cols: { field: string, header: string, pipe?: string }[] = [];
+  cols: { field: string, header: string, isSorteble?: boolean, pipe?: string }[] = [];
   users: any;
 
   constructor(
@@ -27,19 +27,24 @@ export class ListUserComponent implements OnInit {
 
   ngOnInit(): void {
     this.cols = [
-      { field: 'check', header: '' },
-      { field: 'id', header: 'ID' },
-      { field: 'email', header: 'E-mail' },
-      { field: 'fullname', header: 'Nome Completo' },
-      { field: 'dtcreation', header: 'Data Criação', pipe: 'data' },
+      // { field: 'check', header: '' },
+      { field: 'id', header: 'ID', isSorteble: true },
+      { field: 'email', header: 'E-mail', isSorteble: true },
+      { field: 'fullname', header: 'Nome Completo', isSorteble: true },
+      { field: 'dtcreation', header: 'Data Criação', isSorteble: true, pipe: 'data' },
       { field: 'profile', header: 'Perfil', pipe: 'object' },
-      { field: 'actions', header: 'Ações' },
+      { field: 'actions', header: 'Ações', pipe: 'actions' },
     ];
     this.atualizarLista();
     const obterProfile = this.authService.obterUsuario();
     if (obterProfile != null && obterProfile.id != undefined) {
       this.idUsuarioLogado = obterProfile.id;
     }
+  }
+
+  teste(event) {
+    // dt.filterGlobal($event.target.value, 'contains')
+    console.log(event)
   }
 
   atualizarLista() {
