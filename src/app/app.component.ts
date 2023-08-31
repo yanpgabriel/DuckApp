@@ -204,4 +204,18 @@ export class AppComponent implements OnInit {
   getPicture() {
     return this.picture || './assets/img/duck.png';
   }
+
+  toggleMenu(divPrincipal) {
+    if (divPrincipal.classList.contains('close')) {
+      divPrincipal.classList.remove('close');
+    } else {
+      divPrincipal.classList.add('close');
+    }
+  }
+
+  fechaMenuSeAberto(divPrincipal) {
+    if (!divPrincipal.classList.contains('close') && divPrincipal.clientWidth <= 768) {
+      this.toggleMenu(divPrincipal);
+    }
+  }
 }

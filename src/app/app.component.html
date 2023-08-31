@@ -3,7 +3,7 @@
 
 <div class="h-full" #principal >
   <div *ngIf="isLoggedIn" class="flex flex-column p-3 side-menu">
-    <div class="flex align-items-center p-0 mb-3 mb-md-0 logo" (click)="principal.classList.contains('close') ? principal.classList.remove('close') : principal.classList.add('close')">
+    <div class="flex align-items-center p-0 mb-3 mb-md-0 logo" (click)="toggleMenu(principal)">
       <p-avatar image="/assets/img/duck.png" styleClass="mr-2" size="xlarge"></p-avatar>
       <span class="duck-hide-closed" [translate]="'system.name'"></span>
     </div>
@@ -20,7 +20,7 @@
       <p-menu #mnmenu [popup]="true" [model]="minimenu"></p-menu>
     </div>
   </div>
-  <main class="container-fluid p-4" [class.com-menu]="isLoggedIn" [class.sem-menu]="!isLoggedIn">
+  <main class="container-fluid p-4" [class.com-menu]="isLoggedIn" [class.sem-menu]="!isLoggedIn" (click)="fechaMenuSeAberto(principal)">
     <p-breadcrumb [home]="home" [model]="breadcrumb" [hidden]="!isLoggedIn"></p-breadcrumb>
     <router-outlet></router-outlet>
   </main>
