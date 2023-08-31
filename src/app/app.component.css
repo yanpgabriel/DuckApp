@@ -1,11 +1,3 @@
-main {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-
-  overflow-y: auto;
-}
-
 .bg-transparent {
   background-color: transparent;
 }
@@ -18,80 +10,6 @@ main {
   width: 20rem;
   margin: 0 auto;
 }
-.side-menu {
-  width: 24rem;
-  height: 100%;
-  position: fixed;
-  border-right: 1px solid var(--surface-b);
-  background-color: var(--surface-a);;
-  transition: all 0.2s ease;
-
-  z-index: 10;
-}
-
-.close .side-menu {
-  width: 6.5rem;
-  transition: all 0.2s ease;
-}
-
-.close div.logo {
-  justify-content: center;
-}
-
-::ng-deep .close .side-menu .p-avatar.p-avatar-xl {
-  width: 3rem;
-  height: 3rem;
-}
-
-::ng-deep .close .side-menu .duck-hide-closed {
-  display: none;
-}
-
-main {
-  height: 100%;
-  background-color: var(--surface-b);
-  transition: all 0.2s ease;
-}
-
-.close main {
-  filter: none;
-  transition: all 0.2s ease;
-}
-
-.com-menu {
-  max-width: calc(100vw - 24rem) !important;
-  margin-left: 24rem !important;
-}
-
-.close .com-menu {
-  max-width: calc(100vw - 6.5rem) !important;
-  margin-left: 6.5rem !important;
-}
-
-.sem-menu {
-  max-width: 100vw !important;
-  filter: none;
-}
-
-
-::-webkit-scrollbar {
-  width: 8px;
-}
-
-::-webkit-scrollbar-track {
-  background: #121212;
-  border-radius: 4px;
-}
-
-::-webkit-scrollbar-thumb {
-  background: #282828;
-  border-radius: 4px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: #151515;
-}
-
 ::ng-deep .duck.p-card .p-card-content {
   padding: 0;
 }

@@ -1,10 +1,10 @@
-import {Injectable} from '@angular/core';
-import {Subject} from 'rxjs';
+import { Injectable } from '@angular/core';
+import { Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
-export class TerminalService {
+export class DuckTerminalService {
 
   private commandSource = new Subject<string>();
   private responseSource = new Subject<string>();

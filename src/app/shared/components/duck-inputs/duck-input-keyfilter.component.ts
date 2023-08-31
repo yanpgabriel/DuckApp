@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'duck-input-keyfilter',
@@ -17,7 +17,7 @@ import {Component, Input, OnInit} from '@angular/core';
     `
   ]
 })
-export class InputKeyFilterComponent implements OnInit {
+export class DuckInputKeyFilterComponent implements OnInit {
 
   @Input() id: string | number = 0;
   @Input() helpTxt: string = '';

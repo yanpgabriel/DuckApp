@@ -1,8 +1,8 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
-import {BotDiscordService} from './bot-discord.service';
-import {BotDiscordSocketService} from './bot-discord.socket.service';
-import {TerminalComponent} from '../../shared/components/terminal/terminal.component';
-import {TerminalService} from '../../shared/components/terminal/terminal.service';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { BotDiscordService } from './bot-discord.service';
+import { BotDiscordSocketService } from './bot-discord.socket.service';
+import { DuckTerminalComponent } from "../../shared/components/duck-terminal/duck-terminal.component";
+import { DuckTerminalService } from "../../shared/components/duck-terminal/duck-terminal.service";
 
 @Component({
   selector: 'bot-discord',
@@ -15,7 +15,7 @@ export class BotDiscordComponent implements OnInit {
   queue: any = {};
   loading = false;
   botUp: boolean = false;
-  @ViewChild('terminal') terminal: TerminalComponent | any = null;
+  @ViewChild('terminal') terminal: DuckTerminalComponent | any = null;
 
 
   set selectedServer(server) {
@@ -28,7 +28,7 @@ export class BotDiscordComponent implements OnInit {
   constructor(
     private botService: BotDiscordService,
     private botWsService: BotDiscordSocketService,
-    private terminalService: TerminalService
+    private terminalService: DuckTerminalService
   ) { }
 
   ngOnInit(): void {

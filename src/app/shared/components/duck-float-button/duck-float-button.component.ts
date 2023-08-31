@@ -25,7 +25,7 @@ import { Component, Input, OnInit } from '@angular/core';
     `
   ]
 })
-export class FloatButtonComponent implements OnInit {
+export class DuckFloatButtonComponent implements OnInit {
 
   @Input() routerLink: any[] | string | null | undefined
 

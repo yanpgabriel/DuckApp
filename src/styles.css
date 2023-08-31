@@ -152,6 +152,28 @@ duck-input-dropdown, duck-input-editor, duck-input-keyfilter, duck-input-text {
 /* Fim PrimeNG */
 
 /* Definições Gerais */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #121212;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #282828;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #151515;
+}
+
+.caixa .p-card, .caixa .p-card .p-card-body, .caixa .p-card .p-card-content {
+  height: 100%;
+}
+
 
 /* Inputs / Labels */
 .duck-field {

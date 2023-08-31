@@ -1,5 +1,5 @@
-import {Component, Input} from '@angular/core';
-import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
+import { Component, Input } from '@angular/core';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
   selector: 'duck-input-editor',
@@ -16,10 +16,10 @@ import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
     `
   ],
   providers: [
-    { provide: NG_VALUE_ACCESSOR, multi: true, useExisting: InputEditorComponent },
+    { provide: NG_VALUE_ACCESSOR, multi: true, useExisting: DuckInputEditorComponent },
   ]
 })
-export class InputEditorComponent implements ControlValueAccessor {
+export class DuckInputEditorComponent implements ControlValueAccessor {
 
   @Input() id: string | number = 0;
   @Input() helpTxt: string = '';

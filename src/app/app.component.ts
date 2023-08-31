@@ -8,7 +8,6 @@ import { UtilsService } from "./shared/services/utils.service";
 import { Menu } from "primeng/menu";
 import { isNullOrUndefined } from "./shared/util";
 import { LoadingService } from "./shared/services/loading.service";
-import { TemaService } from "./shared/services/tema.service";
 import { ToastService } from "./shared/services/toast.service";
 
 @Component({
@@ -23,7 +22,6 @@ export class AppComponent implements OnInit {
 
   title = 'DuckApp';
   menu: any | MenuItem[] = [];
-  minimenu: any | MenuItem[] = [];
   home = { icon: 'fas fa-home', routerLink: '/' };
   breadcrumb: MenuItem[] = [];
   picture: string = '/assets/img/duck.png';
@@ -38,7 +36,6 @@ export class AppComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private networkService: NetworkService,
     private loadingService: LoadingService,
-    private temaService: TemaService,
     private toastService: ToastService,
     public authService: AuthService,
     public utilsService: UtilsService,
@@ -74,11 +71,6 @@ export class AppComponent implements OnInit {
       });
 
     this.createMenu();
-    this.updateTranslate();
-  }
-
-  private signOut(): void {
-    this.authService.efetuarLogout();
   }
 
   private createMenu(): void {
@@ -127,45 +119,6 @@ export class AppComponent implements OnInit {
     ];
   }
 
-  private toggleLanguage(): void {
-    this.utilsService.toogleLanguage();
-    this.updateTranslate();
-  }
-
-  private toggleTheme(): void {
-    this.temaService.toggleTheme();
-  }
-
-  private updateTranslate() {
-    this.minimenu = [
-      {
-        label: 'system.profile',
-        icon: 'fas fa-user',
-        command: () => {
-          this.router.navigate(['users', 'edit', this.authService.obterUsuario()?.id])
-        }
-      },
-      {
-        label: 'system.toggleLanguage',
-        icon: 'fas fa-language',
-        command: () => this.toggleLanguage()
-      },
-      {
-        label: 'system.toggleTheme',
-        icon: 'fas fa-moon',
-        command: () => this.toggleTheme()
-      },
-      {
-        label: 'system.leave',
-        icon: 'fas fa-door-open',
-        command: () => this.signOut()
-      }
-    ];
-    this.minimenu.forEach(async (item: any) => {
-      item.label = await this.utilsService.traduzir(item.label);
-    });
-  }
-
   private updateBreadcrumb() {
     this.utilsService.createBreadcrumbs(this.activatedRoute.root).then(res => this.breadcrumb = res);
     console.debug('Novo Breadcrumb', this.breadcrumb);
@@ -205,17 +158,4 @@ export class AppComponent implements OnInit {
     return this.picture || './assets/img/duck.png';
   }
 
-  toggleMenu(divPrincipal) {
-    if (divPrincipal.classList.contains('close')) {
-      divPrincipal.classList.remove('close');
-    } else {
-      divPrincipal.classList.add('close');
-    }
-  }
-
-  fechaMenuSeAberto(divPrincipal) {
-    if (!divPrincipal.classList.contains('close') && divPrincipal.clientWidth <= 768) {
-      this.toggleMenu(divPrincipal);
-    }
-  }
 }

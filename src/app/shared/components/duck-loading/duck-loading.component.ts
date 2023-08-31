@@ -42,7 +42,7 @@ import { delay } from 'rxjs/operators';
     `
   ]
 })
-export class LoadingComponent implements OnInit {
+export class DuckLoadingComponent implements OnInit {
 
   loading = false;
 

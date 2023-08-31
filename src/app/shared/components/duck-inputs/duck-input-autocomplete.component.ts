@@ -1,5 +1,5 @@
-import {Component, EventEmitter, Input, Output, TemplateRef} from '@angular/core';
-import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
+import { Component, EventEmitter, Input, Output, TemplateRef } from '@angular/core';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
   selector: 'duck-input-autocomplete',
@@ -25,10 +25,10 @@ import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
     `
   ],
   providers: [
-    { provide: NG_VALUE_ACCESSOR, multi: true, useExisting: InputAutocompleteComponent },
+    { provide: NG_VALUE_ACCESSOR, multi: true, useExisting: DuckInputAutocompleteComponent },
   ]
 })
-export class InputAutocompleteComponent implements ControlValueAccessor {
+export class DuckInputAutocompleteComponent implements ControlValueAccessor {
 
   @Input() id: string | number = 0;
   @Input() label: string = '';

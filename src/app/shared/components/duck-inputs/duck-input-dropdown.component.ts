@@ -15,11 +15,11 @@ import { AbstractControl, ControlValueAccessor, NG_VALIDATORS, NG_VALUE_ACCESSOR
   `,
   styles: [``],
   providers: [
-    { provide: NG_VALUE_ACCESSOR, multi: true, useExisting: InputDropdownComponent },
-    { provide: NG_VALIDATORS, multi: true, useExisting: InputDropdownComponent }
+    { provide: NG_VALUE_ACCESSOR, multi: true, useExisting: DuckInputDropdownComponent },
+    { provide: NG_VALIDATORS, multi: true, useExisting: DuckInputDropdownComponent }
   ],
 })
-export class InputDropdownComponent implements Validator, ControlValueAccessor {
+export class DuckInputDropdownComponent implements Validator, ControlValueAccessor {
 
   _value: any;
   _onChange = (newValue) => {};

@@ -17,11 +17,11 @@ import { AbstractControl, ControlValueAccessor, NG_VALIDATORS, NG_VALUE_ACCESSOR
     `
   ],
   providers: [
-    { provide: NG_VALUE_ACCESSOR, multi: true, useExisting: InputTextComponent },
-    { provide: NG_VALIDATORS, multi: true, useExisting: InputTextComponent }
+    { provide: NG_VALUE_ACCESSOR, multi: true, useExisting: DuckInputTextComponent },
+    { provide: NG_VALIDATORS, multi: true, useExisting: DuckInputTextComponent }
   ]
 })
-export class InputTextComponent implements OnInit, ControlValueAccessor, Validator {
+export class DuckInputTextComponent implements OnInit, ControlValueAccessor, Validator {
 
   value: string = '';
 

@@ -8,17 +8,17 @@ import {
   Input,
   OnDestroy
 } from '@angular/core';
-import {Subscription} from 'rxjs';
-import {DomHandler} from 'primeng/dom';
-import {TerminalService} from './terminal.service';
+import { Subscription } from 'rxjs';
+import { DomHandler } from 'primeng/dom';
+import { DuckTerminalService } from './duck-terminal.service';
 
 @Component({
   selector: 'duck-terminal',
-  templateUrl: './terminal.component.html',
-  styleUrls: ['./terminal.component.css'],
+  templateUrl: './duck-terminal.component.html',
+  styleUrls: ['./duck-terminal.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TerminalComponent implements AfterViewInit, AfterViewChecked, OnDestroy {
+export class DuckTerminalComponent implements AfterViewInit, AfterViewChecked, OnDestroy {
 
   @Input() welcomeMessage: string = '';
 
@@ -40,7 +40,7 @@ export class TerminalComponent implements AfterViewInit, AfterViewChecked, OnDes
 
   constructor(
     public el: ElementRef,
-    public terminalService: TerminalService,
+    public terminalService: DuckTerminalService,
     public cd: ChangeDetectorRef) {
     this.subscription = terminalService.responseHandler.subscribe(response => {
       this.commands[this.commands.length - 1].response = response.split('\n');

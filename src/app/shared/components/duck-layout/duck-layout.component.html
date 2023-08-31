@@ -1,0 +1,12 @@
+<div #layout class="h-full" [class.close]="colapsarMenu">
+  <div *ngIf="mostrarSidebar" class="side-menu">
+    <ng-content select="[sidebar]"></ng-content>
+  </div>
+  <main class="container-fluid p-4"
+        [class.com-menu]="mostrarSidebar"
+        [class.sem-menu]="!mostrarSidebar"
+        (click)="fechaMenuSeAberto(layout)">
+  <!-- Router outlet -->
+    <ng-content select="[main]"></ng-content>
+  </main>
+</div>

@@ -1,27 +1,12 @@
 <p-toast key="principal"></p-toast>
 <duck-loading></duck-loading>
 
-<div class="h-full" #principal >
-  <div *ngIf="isLoggedIn" class="flex flex-column p-3 side-menu">
-    <div class="flex align-items-center p-0 mb-3 mb-md-0 logo" (click)="toggleMenu(principal)">
-      <p-avatar image="/assets/img/duck.png" styleClass="mr-2" size="xlarge"></p-avatar>
-      <span class="duck-hide-closed" [translate]="'system.name'"></span>
-    </div>
-    <hr>
-    <duck-menu [model]="menu" [logged]="isLoggedIn"></duck-menu>
-    <hr>
-    <div class="flex align-items-center mt-3 duck-border p-2" ngbDropdown (click)="mnmenu.toggle($event)">
-      <div class="col p-0 text-right">
-        <p-avatar [image]="getPicture()" styleClass="mr-2" shape="circle"></p-avatar>
-      </div>
-      <div class="col-9 p-0 text-left duck-hide-closed">
-        <strong>{{getName() | translate}}</strong>
-      </div>
-      <p-menu #mnmenu [popup]="true" [model]="minimenu"></p-menu>
-    </div>
-  </div>
-  <main class="container-fluid p-4" [class.com-menu]="isLoggedIn" [class.sem-menu]="!isLoggedIn" (click)="fechaMenuSeAberto(principal)">
+<duck-layout #layout [mostrarSidebar]="isLoggedIn">
+  <ng-container sidebar>
+    <duck-menu [logged]="isLoggedIn" [menuList]="menu" [picture]="getPicture()" [username]="getName()"></duck-menu>
+  </ng-container>
+  <ng-container main>
     <p-breadcrumb [home]="home" [model]="breadcrumb" [hidden]="!isLoggedIn"></p-breadcrumb>
     <router-outlet></router-outlet>
-  </main>
-</div>
+  </ng-container>
+</duck-layout>
