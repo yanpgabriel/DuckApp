@@ -13,9 +13,9 @@ body {
   margin-top: -0.8rem;
 }
 
-.grid > .col, .grid > [class*=col] {
-  padding: 0.8rem;
-}
+/*.grid > .col, .grid > [class*=col] {*/
+/*  padding: 0.8rem;*/
+/*}*/
 
 .duck-link-plus .fas {
   font-size: 10.5rem;
@@ -25,8 +25,9 @@ body {
   html {
     font-size: 62.5%;
   }
-  main {
-    filter: brightness(0.1);
+  .duck-overlay {
+    width: 100%;
+    opacity: 1;
   }
 }
 @media screen and (min-width: 376px) {
@@ -41,8 +42,9 @@ body {
   html {
     font-size: 75%;
   }
-  main {
-    filter: none;
+  .duck-overlay {
+    opacity: 0;
+    width: 0;
   }
 }
 @media screen and (min-width: 1025px) {

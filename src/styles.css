@@ -66,8 +66,8 @@ body {
   position: absolute;
   bottom: 0;
   right: 0;
-  margin-right: 4rem;
-  margin-bottom: 4rem;
+  margin-right: 2rem;
+  margin-bottom: 6rem;
 }
 
 hr {
@@ -191,4 +191,20 @@ duck-input-dropdown, duck-input-editor, duck-input-keyfilter, duck-input-text {
 /* Tabela */
 .duck-table .fas {
   font-size: 120%;
+}
+
+/* Overlay */
+.duck-overlay {
+  position: fixed;
+  height: 100%;
+  width: 0;
+  z-index: 9;
+  top: 0;
+  left: 0;
+  background-color: rgba(0,0,0, 0.9);
+  overflow-y: hidden;
+  overflow-x: hidden;
+  text-align: center;
+  opacity: 0;
+  transition: opacity 1s;
 }

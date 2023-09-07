@@ -2,11 +2,14 @@
   <div *ngIf="mostrarSidebar" class="side-menu">
     <ng-content select="[sidebar]"></ng-content>
   </div>
+  <div *ngIf="!colapsarMenu" class="duck-overlay" (click)="fechaMenuSeAberto(layout)"></div>
   <main class="container-fluid p-4"
         [class.com-menu]="mostrarSidebar"
-        [class.sem-menu]="!mostrarSidebar"
-        (click)="fechaMenuSeAberto(layout)">
-  <!-- Router outlet -->
-    <ng-content select="[main]"></ng-content>
+        [class.sem-menu]="!mostrarSidebar">
+
+    <div class="main_content">
+      <ng-content select="[main]"></ng-content>
+    </div>
+    <div class="footer">Developed by Yan P. Gabriel ©️ 2023 Duck</div>
   </main>
 </div>
