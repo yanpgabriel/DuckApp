@@ -17,7 +17,6 @@ pipeline {
         COMMITER_COMMENT = sh(script: 'git show -s --pretty=%B', returnStdout: true).trim()
 
         NODE_IMAGE = 'node:18.14.2'
-        NPM_CONFIG_CACHE = "${WORKSPACE}/.npm"
 
         NAMESPACE = 'duck-namespace'
     }
@@ -38,6 +37,20 @@ pipeline {
                 git branch: "${BRANCH_TO_DEPLOY}", url: 'https://github.com/yanpgabriel/DuckApp.git'
             }
         }
+        stage('Analise SonarQube') {
+            agent {
+              docker {
+                image NODE_IMAGE
+                reuseNode true
+              }
+            }
+            steps {
+                def scannerHome = tool 'SonarScannerJenkins';
+                withSonarQubeEnv(installationName: 'RaspSonar') {
+                    sh "${scannerHome}/bin/sonar-scanner"
+                }
+            }
+        }
         stage('Instalando dependencias') {
             agent {
               docker {
@@ -47,19 +60,6 @@ pipeline {
             }
             steps {
                 sh 'npm install --verbose'
-            }
-        }
-        stage('Analise SonarQube') {
-            agent {
-              docker {
-                image NODE_IMAGE
-                reuseNode true
-              }
-            }
-            steps {
-                withSonarQubeEnv(installationName: 'RaspSonar') {
-                    sh 'npm run sonar'
-                }
             }
         }
         stage('Build') {
