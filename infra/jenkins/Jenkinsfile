@@ -45,6 +45,7 @@ pipeline {
               }
             }
             steps {
+                sh 'echo Passo ignorado'
                 // sh 'npm install --verbose'
             }
         }
