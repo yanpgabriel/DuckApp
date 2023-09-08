@@ -46,8 +46,7 @@ pipeline {
               }
             }
             steps {
-                sh 'echo Passo ignorado'
-                // sh 'npm install --verbose'
+                sh 'npm install --verbose'
             }
         }
         stage('Analise SonarQube') {
@@ -58,7 +57,6 @@ pipeline {
               }
             }
             steps {
-                sh 'npm install -g sonarqube-scanner'
                 withSonarQubeEnv(installationName: 'RaspSonar') {
                     sh 'sonar-scanner'
                 }
@@ -73,7 +71,6 @@ pipeline {
             }
             steps {
                 configFileProvider([configFile(fileId: '21e1e978-2116-4060-bdc9-3e21e7782c37', targetLocation: './src/environments')]) {
-                    sh 'npm install --verbose'
                     sh 'npm run build'
                 }
             }
