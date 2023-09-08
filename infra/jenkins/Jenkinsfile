@@ -58,7 +58,7 @@ pipeline {
             }
             steps {
                 withSonarQubeEnv(installationName: 'RaspSonar') {
-                    sh 'sonar-scanner'
+                    sh 'npm run sonar'
                 }
             }
         }
