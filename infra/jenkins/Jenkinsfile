@@ -41,7 +41,7 @@ pipeline {
         stage('Analise SonarQube') {
             agent {
               docker {
-                image NODE_IMAGE
+                image 'openjdk:17'
                 reuseNode true
               }
             }
