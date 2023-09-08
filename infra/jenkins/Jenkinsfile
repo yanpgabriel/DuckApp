@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     parameters{
-        gitParameter(name: 'BRANCH_TO_DEPLOY', branch: '', branchFilter: 'origin/(.*)', defaultValue: 'develop',
+        gitParameter(name: 'BRANCH_TO_DEPLOY', branch: '', branchFilter: 'origin/(.*)', defaultValue: 'main',
         quickFilterEnabled: false, selectedValue: 'NONE', sortMode: 'NONE', tagFilter: '*',
         type: 'GitParameterDefinition', useRepository: 'https://github.com/yanpgabriel/DuckApp.git')
 
@@ -37,6 +37,17 @@ pipeline {
                 git branch: "${BRANCH_TO_DEPLOY}", url: 'https://github.com/yanpgabriel/DuckApp.git'
             }
         }
+        stage('Instalando dependencias') {
+            agent {
+              docker {
+                image NODE_IMAGE
+                reuseNode true
+              }
+            }
+            steps {
+                sh 'npm install --verbose'
+            }
+        }
         stage('Analise SonarQube') {
             agent {
               docker {
@@ -59,7 +70,6 @@ pipeline {
             }
             steps {
                 configFileProvider([configFile(fileId: '21e1e978-2116-4060-bdc9-3e21e7782c37', targetLocation: './src/environments')]) {
-                    sh 'npm install --verbose'
                     sh 'npm run build'
                 }
             }
