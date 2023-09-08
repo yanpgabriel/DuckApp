@@ -59,7 +59,7 @@ pipeline {
             }
             steps {
                 withSonarQubeEnv(installationName: 'RaspSonar') {
-                    sh 'npm install -g sonarqube-scanner'
+                    sh 'sudo npm install -g sonarqube-scanner --unsafe-perm=true --allow-root'
                     sh 'sonar-scanner'
                 }
             }
