@@ -16,6 +16,8 @@ pipeline {
         COMMITER_EMAIL = sh(script: 'git show -s --format=%ae', returnStdout: true).trim()
         COMMITER_COMMENT = sh(script: 'git show -s --pretty=%B', returnStdout: true).trim()
 
+        NODE_IMAGE = 'node:18.14.2-alpine'
+
         NAMESPACE = 'duck-namespace'
     }
 
@@ -35,10 +37,23 @@ pipeline {
                 git branch: "${BRANCH_TO_DEPLOY}", url: 'https://github.com/yanpgabriel/DuckApp.git'
             }
         }
+        stage('Analise SonarQube') {
+            agent {
+              docker {
+                image NODE_IMAGE
+                reuseNode true
+              }
+            }
+            steps {
+                withSonarQubeEnv(installationName: 'RaspSonar') {
+                    sh 'npm run sonar'
+                }
+            }
+        }
         stage('Build') {
             agent {
               docker {
-                image 'node:18.14.2-alpine'
+                image NODE_IMAGE
                 reuseNode true
               }
             }
@@ -61,7 +76,7 @@ pipeline {
         }
         stage('Gerar Imagem Docker') {
             steps {
-                sh "docker -H tcp://${DOCKER_HOST} build -f src/docker/Dockerfile -t ${DOCKER_IMAGE} ."
+                sh "docker -H tcp://${DOCKER_HOST} build -f infra/docker/Dockerfile -t ${DOCKER_IMAGE} ."
             }
         }
         stage('Publicar Imagem Docker') {
