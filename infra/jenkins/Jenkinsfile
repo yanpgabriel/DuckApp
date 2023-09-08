@@ -16,7 +16,7 @@ pipeline {
         COMMITER_EMAIL = sh(script: 'git show -s --format=%ae', returnStdout: true).trim()
         COMMITER_COMMENT = sh(script: 'git show -s --pretty=%B', returnStdout: true).trim()
 
-        NODE_IMAGE = 'node:18.14.2-alpine'
+        NODE_IMAGE = 'node:18.14.2'
 
         NAMESPACE = 'duck-namespace'
     }
