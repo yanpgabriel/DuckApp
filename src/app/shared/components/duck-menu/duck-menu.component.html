@@ -1,8 +1,8 @@
 <div class="flex flex-column p-3 h-full">
 
-  <div class="flex align-items-center p-0 mb-3 mb-md-0 logo" (click)="colapsarMenu()">
-    <p-avatar image="/assets/img/duck.png" styleClass="mr-2" size="xlarge"></p-avatar>
-    <span class="duck-hide-closed" [translate]="'system.name'"></span>
+  <div class="flex align-items-center mb-2 mb-md-0 logo" (click)="colapsarMenu()">
+    <p-avatar image="/assets/img/duck.png" size="xlarge"></p-avatar>
+    <span class="duck-hide-closed ml-2" [translate]="'system.name'"></span>
   </div>
 
   <hr>
@@ -10,10 +10,10 @@
   <hr>
 
   <div class="flex align-items-center mt-3 duck-border p-2" ngbDropdown (click)="mnmenu.toggle($event)">
-    <div class="col p-0 text-right">
-      <p-avatar [image]="picture" styleClass="mr-2" shape="circle"></p-avatar>
+    <div class="col p-0 text-right duck-user-picture">
+      <p-avatar [image]="picture" shape="circle"></p-avatar>
     </div>
-    <div class="col-9 p-0 text-left duck-hide-closed">
+    <div class="col-10 ml-3 p-0 text-left duck-hide-closed">
       <strong>{{username | translate}}</strong>
     </div>
     <p-menu #mnmenu [popup]="true" [model]="minimenu"></p-menu>

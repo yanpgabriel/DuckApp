@@ -152,23 +152,40 @@ duck-input-dropdown, duck-input-editor, duck-input-keyfilter, duck-input-text {
 /* Fim PrimeNG */
 
 /* Definições Gerais */
-::-webkit-scrollbar {
-  width: 8px;
-}
 
-::-webkit-scrollbar-track {
-  background: #121212;
-  border-radius: 4px;
+:root {
+  --tamanhoScroll: 10px;
+  --tamanhoVisivelScroll: 4px;
+  --borderRadiusScroll: 5px;
+  --corTrilhoScroll: var(--primary-color);
+  --corTrilhoHoverScroll: var(--primary-color);
+  --corSelecaoScroll: var(--primary-color-text);
+  --corSelecaoHoverScroll: var(--primary-color-text);
 }
+/* TODO Refazer esse scroll */
+/*::-webkit-scrollbar {*/
+/*  width: var(--tamanhoScroll);*/
+/*}*/
 
-::-webkit-scrollbar-thumb {
-  background: #282828;
-  border-radius: 4px;
-}
+/*::-webkit-scrollbar-track {*/
+/*  border-radius: var(--borderRadiusScroll);*/
+/*  border: solid var(--tamanhoVisivelScroll) transparent;*/
+/*  box-shadow: inset 0 0 var(--tamanhoScroll) var(--tamanhoScroll) var(--corTrilhoScroll);*/
+/*}*/
 
-::-webkit-scrollbar-thumb:hover {
-  background: #151515;
-}
+/*::-webkit-scrollbar-track:hover {*/
+/*  box-shadow: inset 0 0 var(--tamanhoScroll) var(--tamanhoScroll) var(--corTrilhoHoverScroll);*/
+/*}*/
+
+/*::-webkit-scrollbar-thumb {*/
+/*  border-radius: var(--borderRadiusScroll);*/
+/*  border: solid var(--tamanhoVisivelScroll) transparent;*/
+/*  box-shadow: inset 0 0 var(--tamanhoScroll) var(--tamanhoScroll) var(--corSelecaoScroll);*/
+/*}*/
+
+/*::-webkit-scrollbar-thumb:hover {*/
+/*  box-shadow: inset 0 0 var(--tamanhoScroll) var(--tamanhoScroll) var(--corSelecaoHoverScroll);*/
+/*}*/
 
 .caixa .p-card, .caixa .p-card .p-card-body, .caixa .p-card .p-card-content {
   height: 100%;

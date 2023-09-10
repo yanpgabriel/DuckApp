@@ -1,0 +1,13 @@
+::ng-deep .close div.logo {
+  justify-content: center;
+}
+
+div.logo span {
+  font-size: 2rem;
+  align-self: end;
+  font-weight: bold;
+}
+
+::ng-deep .close .duck-user-picture {
+  text-align: center !important;
+}

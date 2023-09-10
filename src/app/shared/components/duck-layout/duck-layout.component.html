@@ -6,10 +6,9 @@
   <main class="container-fluid p-4"
         [class.com-menu]="mostrarSidebar"
         [class.sem-menu]="!mostrarSidebar">
-
     <div class="main_content">
       <ng-content select="[main]"></ng-content>
+      <div *ngIf="mostrarFooter" class="footer">Developed by Yan P. Gabriel ©️ 2023 Duck</div>
     </div>
-    <div class="footer">Developed by Yan P. Gabriel ©️ 2023 Duck</div>
   </main>
 </div>

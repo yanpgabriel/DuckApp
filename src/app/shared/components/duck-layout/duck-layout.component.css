@@ -22,10 +22,6 @@ main {
   transition: all 0.2s ease;
 }
 
-.close div.logo {
-  justify-content: center;
-}
-
 ::ng-deep .close .side-menu .p-avatar.p-avatar-xl {
   width: 3rem;
   height: 3rem;

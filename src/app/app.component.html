@@ -1,7 +1,7 @@
 <p-toast key="principal"></p-toast>
 <duck-loading></duck-loading>
 
-<duck-layout #layout [mostrarSidebar]="isLoggedIn">
+<duck-layout #layout [mostrarSidebar]="isLoggedIn" [mostrarFooter]="isLoggedIn">
   <ng-container sidebar>
     <duck-menu [logged]="isLoggedIn" [menuList]="menu" [picture]="getPicture()" [username]="getName()"></duck-menu>
   </ng-container>

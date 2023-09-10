@@ -1,4 +1,4 @@
-<ul class="duck-menu flex-column mb-auto">
+<ul class="duck-list flex-column">
   <ng-container *ngFor="let item of model">
     <li *ngIf="!item.roles || (logged && utilsService.hasRoles(item.roles))" [attr.title]="item.label | translate">
       <a routerLinkActive="active" [routerLink]="[item.routerLink]">

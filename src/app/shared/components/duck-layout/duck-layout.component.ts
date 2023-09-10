@@ -9,6 +9,7 @@ export class DuckLayoutComponent {
 
   @Input() colapsarMenu = false;
   @Input() mostrarSidebar = false;
+  @Input() mostrarFooter = false;
 
   fechaMenuSeAberto(divLayout) {
     if (!this.colapsarMenu && divLayout.clientWidth <= 768) {

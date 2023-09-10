@@ -1,35 +1,52 @@
 :host {
   height: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  margin: 1rem 0;
 }
 
-ol.duck-menu, ul.duck-menu {
+ol.duck-list,
+ul.duck-list {
+  position: relative;
   list-style: none;
-  margin-top: 1.6rem;
 }
 
-ol.duck-menu, ul.duck-menu li {
+ol.duck-list li,
+ul.duck-list li {
   display: flex;
 }
 
-ol.duck-menu, ul.duck-menu li a {
+ol.duck-list li a,
+ul.duck-list li a {
   width: 100%;
+  display: flex;
   color: var(--text-color);
   padding: 0.8rem;
   border-radius: 0.8rem;
   margin-bottom: 0.8rem;
   text-decoration: none;
+  align-items: center;
 }
 
-.close ul.duck-menu li a {
-  text-align: center;
+::ng-deep .close ol.duck-list li a,
+::ng-deep .close ul.duck-list li a {
+  justify-content: center;
 }
 
-ol.duck-menu, ul.duck-menu li a:hover, ul.duck-menu li a.active {
+ol.duck-list li:last-child a,
+ul.duck-list li:last-child a {
+  margin-bottom: 0;
+}
+
+ol.duck-list li a:hover,
+ol.duck-list li a.active,
+ul.duck-list li a:hover,
+ul.duck-list li a.active {
   color: var(--text-color);
   background-color: var(--surface-c);
 }
 
-ol.duck-menu, ul.duck-menu li a em {
-  margin-left: 0.4rem;
-  margin-right: 0.8rem;
+ol.duck-list li a span,
+ul.duck-list li a span {
+  margin-left: 1.2rem;
 }
