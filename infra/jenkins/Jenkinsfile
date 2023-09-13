@@ -56,10 +56,12 @@ pipeline {
               docker {
                 image NODE_IMAGE
                 reuseNode true
+                label 'node-agent'
               }
             }
             steps {
-                sh 'npm install --verbose'
+                sh 'npm install -g pnpm'
+                sh 'pnpm install --verbose'
             }
         }
         stage('Build') {
@@ -67,11 +69,12 @@ pipeline {
               docker {
                 image NODE_IMAGE
                 reuseNode true
+                label 'node-agent'
               }
             }
             steps {
                 configFileProvider([configFile(fileId: '21e1e978-2116-4060-bdc9-3e21e7782c37', targetLocation: './src/environments')]) {
-                    sh 'npm run build'
+                    sh 'pnpm run build'
                 }
             }
         }
