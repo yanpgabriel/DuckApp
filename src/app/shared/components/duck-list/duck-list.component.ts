@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
-import { MenuItem } from 'primeng/api';
 import { UtilsService } from '../../services/utils.service';
+import { DuckMenuItem } from "../../models/DuckMenuItem";
 
 @Component({
   selector: 'duck-list',
@@ -9,7 +9,7 @@ import { UtilsService } from '../../services/utils.service';
 })
 export class DuckListComponent {
 
-  @Input() model: MenuItem[] = [];
+  @Input() model: DuckMenuItem[] = [];
   @Input() logged = false;
 
   constructor(

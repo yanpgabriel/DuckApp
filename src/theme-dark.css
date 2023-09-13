@@ -4,3 +4,7 @@
 .p-breadcrumb .p-breadcrumb-chevron:before {
   content: "";
 }
+
+.p-card .p-card-body {
+  padding: 1.5rem;
+}

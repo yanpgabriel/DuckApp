@@ -29,6 +29,7 @@ main {
 
 ::ng-deep .close .side-menu .duck-hide-closed {
   display: none;
+  transition: display 1s;
 }
 
 .close main {

@@ -6,6 +6,7 @@ import { TemaService } from "../../services/tema.service";
 import { Router } from "@angular/router";
 import { TranslateService } from "@ngx-translate/core";
 import { DuckLayoutComponent } from "../duck-layout/duck-layout.component";
+import { DuckMenuItem } from "../../models/DuckMenuItem";
 
 @Component({
   selector: 'duck-menu',
@@ -14,7 +15,7 @@ import { DuckLayoutComponent } from "../duck-layout/duck-layout.component";
 })
 export class DuckMenuComponent implements OnInit {
 
-  @Input() menuList: any[] | MenuItem[] = [];
+  @Input() menuList: any[] | DuckMenuItem[] = [];
   @Input() logged: boolean = false;
   @Input() picture: string = ''
   @Input() username: string = ''
@@ -58,7 +59,7 @@ export class DuckMenuComponent implements OnInit {
       }
     ];
 
-    this.translateService.onDefaultLangChange.subscribe(value => {
+    this.translateService.onDefaultLangChange.subscribe((value) => {
       this.updateTranslate()
     })
   }
