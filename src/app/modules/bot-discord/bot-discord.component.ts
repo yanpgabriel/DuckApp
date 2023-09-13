@@ -5,7 +5,7 @@ import { DuckTerminalComponent } from "../../shared/components/duck-terminal/duc
 import { DuckTerminalService } from "../../shared/components/duck-terminal/duck-terminal.service";
 
 @Component({
-  selector: 'bot-discord',
+  selector: 'duck-bot-discord',
   templateUrl: './bot-discord.component.html',
   styleUrls: ['./bot-discord.component.css']
 })
@@ -14,13 +14,14 @@ export class BotDiscordComponent implements OnInit {
   servers: any = [];
   queue: any = {};
   loading = false;
-  botUp: boolean = false;
+  botUp = false;
   @ViewChild('terminal') terminal: DuckTerminalComponent | any = null;
 
 
   set selectedServer(server) {
     this.botService.selectedServer = server;
   }
+
   get selectedServer() {
     return this.botService.selectedServer;
   }
@@ -29,7 +30,8 @@ export class BotDiscordComponent implements OnInit {
     private botService: BotDiscordService,
     private botWsService: BotDiscordSocketService,
     private terminalService: DuckTerminalService
-  ) { }
+  ) {
+  }
 
   ngOnInit(): void {
     this.servers = this.botService.servers;
@@ -47,7 +49,7 @@ export class BotDiscordComponent implements OnInit {
     this.botService.listServers().subscribe(res => {
       this.botService.servers = res.map((r: string) => {
         const splited = r.split(' #');
-        return { id: splited[1], nome: splited[0] };
+        return {id: splited[1], nome: splited[0]};
       });
     });
   }
@@ -76,17 +78,21 @@ export class BotDiscordComponent implements OnInit {
 
   iniciarBot() {
     this.loading = true;
-    this.botService.initBot().subscribe(res => {}, error => {}, () => {
-      this.checkBotUp();
-      this.loading = false;
+    this.botService.initBot().subscribe({
+      complete: () => {
+        this.checkBotUp();
+        this.loading = false;
+      }
     });
   }
 
   pararBot() {
     this.loading = true;
-    this.botService.stopBot().subscribe(res => {}, error => {}, () => {
-      this.checkBotUp();
-      this.loading = false;
+    this.botService.stopBot().subscribe({
+      complete: () => {
+        this.checkBotUp();
+        this.loading = false;
+      }
     });
   }
 }

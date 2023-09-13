@@ -24,7 +24,7 @@ export class AppComponent implements OnInit {
   menu: any | MenuItem[] = [];
   home = { icon: 'fas fa-home', routerLink: '/' };
   breadcrumb: MenuItem[] = [];
-  picture: string = '/assets/img/duck.png';
+  picture = '/assets/img/duck.png';
   profile: any = {};
   private _isLoggedIn = false;
   get isLoggedIn(): boolean {

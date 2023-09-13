@@ -1,5 +1,6 @@
-import { Component, Input, OnInit, } from '@angular/core';
+import { Component, Input, } from '@angular/core';
 import { AbstractControl, ControlValueAccessor, NG_VALIDATORS, NG_VALUE_ACCESSOR, Validator } from '@angular/forms';
+import { GenericFunction, notImplemented } from "../../util";
 
 @Component({
   selector: 'duck-input-text',
@@ -21,25 +22,19 @@ import { AbstractControl, ControlValueAccessor, NG_VALIDATORS, NG_VALUE_ACCESSOR
     { provide: NG_VALIDATORS, multi: true, useExisting: DuckInputTextComponent }
   ]
 })
-export class DuckInputTextComponent implements OnInit, ControlValueAccessor, Validator {
+export class DuckInputTextComponent implements ControlValueAccessor, Validator {
 
-  value: string = '';
+  value = '';
 
   @Input() id: string | number = 0;
-  @Input() helpTxt: string = '';
-  @Input() label: string = '';
-  @Input() styleClass: string = '';
+  @Input() helpTxt = '';
+  @Input() label = '';
+  @Input() styleClass = '';
 
-  onChange = (value) => {};
-  onTouched = () => {};
+  onChange: GenericFunction<unknown> = notImplemented;
+  onTouched: GenericFunction<never> = notImplemented;
   touched = false;
   disabled = false;
-
-  constructor() {
-  }
-
-  ngOnInit(): void {
-  }
 
   input(event) {
     this.onChange(event.target.value);
@@ -48,10 +43,10 @@ export class DuckInputTextComponent implements OnInit, ControlValueAccessor, Val
   writeValue(newValue: string): void {
     this.value = newValue;
   }
-  registerOnChange(fn: any): void {
+  registerOnChange(fn: GenericFunction<unknown>): void {
     this.onChange = fn;
   }
-  registerOnTouched(fn: any): void {
+  registerOnTouched(fn: GenericFunction<never>): void {
     this.onTouched = fn;
   }
 

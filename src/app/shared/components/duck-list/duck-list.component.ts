@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { MenuItem } from 'primeng/api';
 import { UtilsService } from '../../services/utils.service';
 
@@ -7,16 +7,13 @@ import { UtilsService } from '../../services/utils.service';
   templateUrl: './duck-list.component.html',
   styleUrls: ['./duck-list.component.css']
 })
-export class DuckListComponent implements OnInit {
+export class DuckListComponent {
 
-  @Input() model: any[] | MenuItem[] = [];
-  @Input() logged: boolean = false;
+  @Input() model: MenuItem[] = [];
+  @Input() logged = false;
 
   constructor(
     public utilsService: UtilsService
   ) { }
-
-  ngOnInit(): void {
-  }
 
 }

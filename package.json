@@ -14,7 +14,8 @@
     "cy:run": "cypress run",
     "cy:open": "cypress open",
     "ci:start-ng": "angular-http-server --path ./dist/DuckApp -p 4200",
-    "ci:cy-run": "start-server-and-test ci:start-ng http://localhost:4200 cy:run"
+    "ci:cy-run": "start-server-and-test ci:start-ng http://localhost:4200 cy:run",
+    "lint": "ng lint"
   },
   "private": true,
   "dependencies": {
@@ -49,13 +50,21 @@
   "devDependencies": {
     "@angular-builders/custom-webpack": "^13.1.0",
     "@angular-devkit/build-angular": "^15.2.9",
+    "@angular-eslint/builder": "15.2.1",
+    "@angular-eslint/eslint-plugin": "15.2.1",
+    "@angular-eslint/eslint-plugin-template": "15.2.1",
+    "@angular-eslint/schematics": "15.2.1",
+    "@angular-eslint/template-parser": "15.2.1",
     "@angular/cli": "^15.2.9",
     "@angular/compiler-cli": "^15.2.9",
     "@cypress/schematic": "^2.4.0",
     "@types/jasmine": "~3.10.0",
     "@types/node": "^12.20.55",
+    "@typescript-eslint/eslint-plugin": "5.48.2",
+    "@typescript-eslint/parser": "5.48.2",
     "angular-http-server": "^1.11.1",
     "cypress": "^12.3.0",
+    "eslint": "^8.33.0",
     "jasmine-core": "~3.10.0",
     "karma": "~6.3.0",
     "karma-chrome-launcher": "~3.1.0",

@@ -23,7 +23,8 @@ export class ListUserComponent implements OnInit {
     public toastService: ToastService,
     public router: Router,
     public confirmationService: ConfirmationService
-  ) { }
+  ) {
+  }
 
   ngOnInit(): void {
     this.cols = [
@@ -37,7 +38,7 @@ export class ListUserComponent implements OnInit {
     ];
     this.atualizarLista();
     const obterProfile = this.authService.obterUsuario();
-    if (obterProfile != null && obterProfile.id != undefined) {
+    if (obterProfile?.id) {
       this.idUsuarioLogado = obterProfile.id;
     }
   }
@@ -64,10 +65,13 @@ export class ListUserComponent implements OnInit {
       acceptLabel: 'Confirmar',
       rejectLabel: 'Cancelar',
       accept: () => {
-        this.userService.delete(idUsuario).subscribe(res => {
-          this.toastService.showMultipleSuccess(res.extras);
-        }, () => {}, () => {
-          this.atualizarLista();
+        this.userService.delete(idUsuario).subscribe({
+          next: (res) => {
+            this.toastService.showMultipleSuccess(res.extras);
+          },
+          complete: () => {
+            this.atualizarLista();
+          }
         })
       },
       reject: () => {
